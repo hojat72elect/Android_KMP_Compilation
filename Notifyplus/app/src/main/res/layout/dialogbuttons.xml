@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/mb1"
+                style="@style/raisedButton"
+                android:layout_width="150dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="4dp"
+
+                android:text="@string/_1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/mb2"
+                style="@style/raisedButton"
+                android:layout_width="150dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="4dp"
+                android:text="@string/_2" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/mb3"
+                style="@style/raisedButton"
+                android:layout_width="150dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="4dp"
+
+                android:text="@string/_3" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/mb4"
+                style="@style/raisedButton"
+                android:layout_width="150dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="4dp"
+                android:text="@string/_4" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/mb5"
+                style="@style/raisedButton"
+                android:layout_width="150dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="4dp"
+                android:text="@string/_5" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/mb6"
+                style="@style/raisedButton"
+                android:layout_width="150dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="4dp"
+                android:text="@string/_6" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/mb7"
+                style="@style/raisedButton"
+                android:layout_width="150dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="4dp"
+                android:text="@string/_7" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/mb8"
+                style="@style/raisedButton"
+                android:layout_width="150dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="4dp"
+                android:text="@string/_8" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
