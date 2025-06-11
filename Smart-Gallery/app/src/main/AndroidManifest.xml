@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:installLocation="auto">
+
+    <!-- override the android:maxSdkVersion="28" from PhotoEditorSDK with some higher number -->
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="40"
+        tools:replace="android:maxSdkVersion" />
+
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission
+        android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+
+    <uses-permission
+        android:name="android.permission.MANAGE_MEDIA"
+        tools:ignore="ProtectedPermissions" />
+
+    <uses-permission
+        android:name="android.permission.ACCESS_NETWORK_STATE"
+        tools:node="remove" />
+
+    <uses-permission
+        android:name="android.permission.CAMERA"
+        tools:ignore="PermissionImpliesUnsupportedChromeOsHardware"
+        tools:node="remove" />
+
+    <queries>
+        <package android:name="ca.hojat.smart.gallery.debug" />
+        <package android:name="ca.hojat.smart.gallery" />
+    </queries>
+
+    <uses-feature
+        android:name="android.hardware.faketouch"
+        android:required="false" />
+
+    <application
+        android:name="ca.hojat.smart.gallery.App"
+        android:allowBackup="true"
+        android:appCategory="image"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_launcher_name"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:label">
+
+        <activity
+            android:name="ca.hojat.smart.gallery.shared.activities.SplashActivity"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher"
+            android:roundIcon="@mipmap/ic_launcher"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="ca.hojat.smart.gallery.feature_home.HomeActivity"
+            android:configChanges="orientation"
+            android:exported="true"
+            android:resizeableActivity="true"
+            tools:ignore="NewApi"
+            tools:targetApi="n">
+
+            <intent-filter>
+                <action android:name="android.intent.action.PICK" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="image/*" />
+                <data android:mimeType="video/*" />
+                <data android:mimeType="vnd.android.cursor.dir/image" />
+                <data android:mimeType="vnd.android.cursor.dir/video" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.GET_CONTENT" />
+
+                <category android:name="android.intent.category.OPENABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="image/*" />
+                <data android:mimeType="video/*" />
+                <data android:mimeType="vnd.android.cursor.dir/image" />
+                <data android:mimeType="vnd.android.cursor.dir/video" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="ca.hojat.smart.gallery.feature_media_viewer.MediaActivity"
+            android:configChanges="orientation"
+            android:exported="false"
+            android:parentActivityName="ca.hojat.smart.gallery.feature_home.HomeActivity"
+            tools:ignore="NewApi" />
+
+        <activity
+            android:name="ca.hojat.smart.gallery.feature_search.SearchActivity"
+            android:configChanges="orientation"
+            android:exported="false"
+            android:label="@string/search"
+            android:parentActivityName="ca.hojat.smart.gallery.feature_home.HomeActivity"
+            android:resizeableActivity="true"
+            tools:ignore="NewApi"
+            tools:targetApi="n" />
+
+
+        <activity
+            android:name="ca.hojat.smart.gallery.feature_media_viewer.ViewPagerActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:parentActivityName="ca.hojat.smart.gallery.feature_media_viewer.MediaActivity"
+            android:theme="@style/TranslucentTheme"
+            tools:ignore="NewApi">
+
+            <intent-filter>
+                <action android:name="com.android.camera.action.REVIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="image/*" />
+                <data android:mimeType="video/*" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="ca.hojat.smart.gallery.feature_about.AboutActivity"
+            android:configChanges="orientation"
+            android:exported="false"
+            android:label="@string/about"
+            android:parentActivityName="ca.hojat.smart.gallery.feature_home.HomeActivity"
+            tools:ignore="NewApi" />
+
+        <activity
+            android:name="ca.hojat.smart.gallery.feature_about.LicenseActivity"
+            android:configChanges="orientation"
+            android:label="@string/third_party_licences" />
+
+        <activity
+            android:name="ca.hojat.smart.gallery.feature_about.FAQActivity"
+            android:configChanges="orientation" />
+
+        <activity
+            android:name="ca.hojat.smart.gallery.feature_about.ContributorsActivity"
+            android:configChanges="orientation" />
+
+
+        <activity
+            android:name="ca.hojat.smart.gallery.feature_settings.CustomizationActivity"
+            android:configChanges="orientation"
+            android:exported="false"
+            android:label="@string/customize_colors"
+            android:parentActivityName="ca.hojat.smart.gallery.feature_settings.SettingsActivity"
+            tools:ignore="NewApi" />
+
+        <activity
+            android:name="ca.hojat.smart.gallery.feature_settings.SettingsActivity"
+            android:configChanges="orientation"
+            android:exported="true"
+            android:label="@string/settings"
+            android:parentActivityName="ca.hojat.smart.gallery.feature_home.HomeActivity"
+            tools:ignore="NewApi">
+
+            <intent-filter>
+                <action android:name="android.intent.action.APPLICATION_PREFERENCES" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="ca.hojat.smart.gallery.feature_media_viewer.PhotoVideoActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:theme="@style/TranslucentTheme"
+            tools:ignore="NewApi" />
+
+        <activity
+            android:name="ca.hojat.smart.gallery.feature_media_viewer.VideoPlayerActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:parentActivityName="ca.hojat.smart.gallery.feature_media_viewer.MediaActivity"
+            android:theme="@style/TranslucentTheme"
+            tools:ignore="NewApi" />
+
+        <activity
+            android:name="ca.hojat.smart.gallery.feature_media_viewer.PanoramaPhotoActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:theme="@style/FullScreenTheme" />
+
+        <activity
+            android:name="ca.hojat.smart.gallery.feature_media_viewer.PanoramaVideoActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:theme="@style/FullScreenTheme"
+            tools:ignore="NewApi" />
+
+        <activity
+            android:name="ca.hojat.smart.gallery.feature_media_viewer.PhotoActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true">
+            <intent-filter tools:ignore="AppLinkUrlError">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="image/*" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="ca.hojat.smart.gallery.feature_media_viewer.VideoActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            tools:ignore="NewApi">
+            <intent-filter tools:ignore="AppLinkUrlError">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="video/*" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="ca.hojat.smart.gallery.feature_wallpaper.SetWallpaperActivity"
+            android:configChanges="orientation"
+            android:exported="true"
+            android:label="@string/simple_wallpaper"
+            tools:ignore="NewApi">
+            <intent-filter>
+                <action android:name="android.intent.action.ATTACH_DATA" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="image/*" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.SET_WALLPAPER" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="ca.hojat.smart.gallery.feature_widget.WidgetConfigureActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyWidgetConfigTheme"
+            tools:ignore="NewApi">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <receiver
+            android:name="ca.hojat.smart.gallery.shared.broadcast_receivers.RefreshMediaReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="ca.hojat.smart.gallery.REFRESH_MEDIA" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name="ca.hojat.smart.gallery.shared.helpers.MyWidgetProvider"
+            android:exported="true"
+            android:icon="@drawable/img_widget_preview"
+            android:label="@string/folder">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info" />
+        </receiver>
+
+        <receiver
+            android:name="ca.hojat.smart.gallery.shared.broadcast_receivers.BootCompletedReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="ca.hojat.smart.gallery.feature_home.NewPhotoFetcher"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+
+    </application>
+</manifest>
