@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer name="default_window_animation_duration">300</integer>
+
+
+    <!-- Horizontal Sliding Window Animations -->
+    <item name="horizontal_sliding_animation_window_a_min_alpha" type="integer" format="float">0.80</item>
+    <item name="horizontal_sliding_animation_window_a_max_alpha" type="integer" format="float">1.0</item>
+
+    <integer name="horizontal_sliding_animation_duration">@integer/default_window_animation_duration</integer>
+</resources>

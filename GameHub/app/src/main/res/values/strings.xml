@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <string name="app_name" translatable="false">Game Hub</string>
+
+    <!--    feature search -->
+    <string name="games_search_toolbar_hint">Search games</string>
+    <string name="games_search_info_title_default">Search for specific games</string>
+    <string name="games_search_info_title_empty">No games found for\n\"%s\"</string>
+
+    <!--    feature news -->
+    <string name="gaming_news_toolbar_title">News</string>
+    <string name="gaming_news_info_view_title">No News Available</string>
+
+    <!--    feature likes -->
+    <string name="liked_games_toolbar_title">Likes</string>
+    <string name="liked_games_info_title">You haven\'t liked any games yet</string>
+
+    <!--    feature info -->
+    <string name="game_info_info_view_title">No Data Available</string>
+    <string name="game_info_header_page_indicator_template">%1$d/%2$d</string>
+    <string name="game_info_videos_title">Videos</string>
+    <string name="game_info_video_title_fallback">Video</string>
+    <string name="game_info_screenshots_title">Screenshots</string>
+    <string name="game_info_summary_title">Summary</string>
+    <string name="game_info_details_title">Details</string>
+    <string name="game_info_details_genres_title">Genres</string>
+    <string name="game_info_details_platforms_title">Platforms</string>
+    <string name="game_info_details_modes_title">Modes</string>
+    <string name="game_info_details_player_perspectives_title">Player Perspectives</string>
+    <string name="game_info_details_themes_title">Themes</string>
+    <string name="game_info_links_title">Links</string>
+    <string name="game_info_companies_title">Involved Companies</string>
+    <string name="game_info_other_company_games_title_template">More Games by %s</string>
+    <string name="game_info_other_company_games_title_default_arg">Developer</string>
+    <string name="game_info_similar_games_title">Similar Games</string>
+
+    <!--    feature image viewer -->
+    <string name="image_viewer_default_toolbar_title">Image</string>
+    <string name="image_viewer_toolbar_title_template">%1$s %2$d of %3$d</string>
+    <string name="image_viewer_download_completion_prompt">The photo was downloaded successfully!</string>
+
+
+    <!--    feature category -->
+    <string name="games_category_info_view_title">No Games Available</string>
+
+    <!--    feature discovery -->
+    <string name="games_discovery_toolbar_title">Discover</string>
+
+    <!--    feature settings -->
+    <string name="settings_toolbar_title">Settings</string>
+    <string name="settings_section_general_title">General</string>
+    <string name="settings_item_theme_title">Theme</string>
+    <string name="settings_item_theme_option_light">Light</string>
+    <string name="settings_item_theme_option_dark">Dark</string>
+    <string name="settings_item_theme_option_system_default">System Default</string>
+
+
+    <string name="settings_item_language_title">Language</string>
+    <!--    pay attention that it's a better UX practice for names of languages to not be translated-->
+    <string name="settings_item_language_option_english" translatable="false">English</string>
+    <string name="settings_item_language_option_persian" translatable="false">فارسی</string>
+
+
+    <string name="settings_section_about_title">About</string>
+    <string name="settings_item_source_code_title">Source Code</string>
+    <string name="settings_item_source_code_description">View GameHub\'s source code</string>
+    <string name="settings_item_privacy_policy_description">View GameHub\'s privacy policies</string>
+    <string name="settings_item_version_title">Version</string>
+    <string name="settings_item_privacy_policy_title">Privacy Policy</string>
+
+    <string name="games_category_popular">Popular</string>
+    <string name="games_category_recently_released">Recently Released</string>
+    <string name="games_category_coming_soon">Coming Soon</string>
+    <string name="games_category_most_anticipated">Most Anticipated</string>
+
+    <string name="company_role_developer">Main Developer</string>
+    <string name="company_role_publisher">Publisher</string>
+    <string name="company_role_porter">Porting Developer</string>
+    <string name="company_role_supporting">Supporting Developer</string>
+    <string name="url_opener_not_found">No app was found capable of opening the URL!</string>
+
+    <string name="artwork">Artwork</string>
+    <string name="cover">Cover</string>
+    <string name="screenshot">Screenshot</string>
+    <string name="text_sharing_message_template">Hey, check out this %1$s - %2$s</string>
+    <string name="image">image</string>
+    <string name="news_article">news item</string>
+
+
+    <string name="error_unknown_message">Oops! Something went wrong.</string>
+    <string name="error_api_server_message">The server is not responding! Please try again later.</string>
+    <string name="error_no_network_message">Please check your network connection.</string>
+    <string name="error_api_unknown_message">Could not perform the request! Please try again later.</string>
+    <string name="version_name_template">v%s</string>
+
+    <string name="website_unknown">Unknown website</string>
+    <string name="website_steam">Steam</string>
+    <string name="website_gog">GOG</string>
+    <string name="website_epic_games">Epic Games</string>
+    <string name="website_google_play">Google Play</string>
+    <string name="website_app_store">App Store</string>
+    <string name="website_official">Official</string>
+    <string name="website_twitter">Twitter</string>
+    <string name="website_subreddit">Reddit</string>
+    <string name="website_youtube">Youtube</string>
+    <string name="website_twitch">Twitch</string>
+    <string name="website_instagram">Instagram</string>
+    <string name="website_facebook">Facebook</string>
+    <string name="website_wikipedia">Wikipedia</string>
+    <string name="website_fandom">Fandom</string>
+    <string name="website_discord">Discord</string>
+
+    <string name="action_share_via">Share via…</string>
+
+    <string name="not_available_abbr">N/A</string>
+    <string name='age_rating_template'>%1$s-%2$s</string>
+    <string name="rating_template">%d%%</string>
+
+    <string name="game_category_main">Main</string>
+    <string name="game_category_dlc">DLC</string>
+    <string name="game_category_bundle">Bundle</string>
+    <string name="game_category_mod">Mod</string>
+    <string name="game_category_episode">Episode</string>
+    <string name="game_category_season">Season</string>
+
+    <string name="unknown">Unknown</string>
+    <string name="year_with_quarter_template">%1$d (%2$s)</string>
+
+    <string name="year_quarter_first">Q1</string>
+    <string name="year_quarter_second">Q2</string>
+    <string name="year_quarter_third">Q3</string>
+    <string name="year_quarter_fourth">Q4</string>
+
+    <string name="games_category_preview_info_view_title">No Games Available</string>
+    <string name="games_category_preview_more_button_text">See All</string>
+
+
+</resources>

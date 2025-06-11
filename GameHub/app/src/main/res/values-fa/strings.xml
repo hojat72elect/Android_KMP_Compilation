@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--    feature search -->
+    <string name="games_search_toolbar_hint">جستجو</string>
+    <string name="games_search_info_title_default">بازی مورد نظرتان را جستجو کنید</string>
+    <string name="games_search_info_title_empty">بازی ای برای \n\"%s\پیدا نشد"</string>
+
+    <!--    feature news -->
+    <string name="gaming_news_toolbar_title">اخبار</string>
+    <string name="gaming_news_info_view_title">اخبار در دسترس نیست</string>
+
+    <!--    feature likes -->
+    <string name="liked_games_toolbar_title">علاقمندی ها</string>
+    <string name="liked_games_info_title">هیچ بازی ای را لایک نکرده اید</string>
+
+    <!--    feature info -->
+    <string name="game_info_info_view_title">اطلاعات خاصی از بازی در دسترس نیست</string>
+    <string name="game_info_header_page_indicator_template">%1$d/%2$d</string>
+    <string name="game_info_videos_title">ویدِئو ها</string>
+    <string name="game_info_video_title_fallback">ویدِئو</string>
+    <string name="game_info_screenshots_title">اسکرین شات ها</string>
+    <string name="game_info_summary_title">خلاصه</string>
+    <string name="game_info_details_title">جزئیات</string>
+    <string name="game_info_details_genres_title">ژانر</string>
+    <string name="game_info_details_platforms_title">پلتفرم</string>
+    <string name="game_info_details_modes_title">مود</string>
+    <string name="game_info_details_player_perspectives_title">زاویه دوربین</string>
+    <string name="game_info_details_themes_title">تم بازی</string>
+    <string name="game_info_links_title">پیوندها</string>
+    <string name="game_info_companies_title">کمپانی های دست اندرکار</string>
+    <string name="game_info_other_company_games_title_template">بازی های بیشتر از %s</string>
+    <string name="game_info_other_company_games_title_default_arg">توسعه دهنده</string>
+    <string name="game_info_similar_games_title">بازی های مشابه</string>
+
+    <!--    feature image viewer -->
+    <string name="image_viewer_default_toolbar_title">عکس</string>
+    <string name="image_viewer_toolbar_title_template">%1$s %2$d از %3$d</string>
+    <string name="image_viewer_download_completion_prompt">عکس مورد نظر با موفقیت دانلود شد!</string>
+
+    <!--    feature category -->
+    <string name="games_category_info_view_title">هیچ بازی ای در دسترس نیست</string>
+
+    <!--    feature discovery -->
+    <string name="games_discovery_toolbar_title">خانه</string>
+
+    <!--    feature settings -->
+    <string name="settings_toolbar_title">تنظیمات</string>
+    <string name="settings_section_general_title">تنظیمات کلی</string>
+    <string name="settings_item_theme_title">تم</string>
+    <string name="settings_item_theme_option_light">روشن</string>
+    <string name="settings_item_theme_option_dark">تاریک</string>
+    <string name="settings_item_theme_option_system_default">پیش فرض سیستم</string>
+    <string name="settings_item_language_title">زبان</string>
+    <string name="settings_section_about_title">درباره ی گیم هاب</string>
+    <string name="settings_item_source_code_title">سورس کد</string>
+    <string name="settings_item_source_code_description">سورس کد گیم هاب را مشاهده کنید</string>
+    <string name="settings_item_privacy_policy_description">قوانین حریم خصوصی گیم هاب را مشاهده کنید</string>
+    <string name="settings_item_version_title">ورژن</string>
+    <string name="settings_item_privacy_policy_title">حریم خصوصی</string>
+
+    <string name="games_category_popular">پرطرفدارها</string>
+    <string name="games_category_recently_released">به تازگی منتشر شده</string>
+    <string name="games_category_coming_soon">به زودی منتشر می شود</string>
+    <string name="games_category_most_anticipated">مورد انتظارترین ها</string>
+
+    <string name="company_role_developer">توسعه ی دهنده ی اصلی</string>
+    <string name="company_role_publisher">منتشر کننده</string>
+    <string name="company_role_porter">پورت کننده ی بازی</string>
+    <string name="company_role_supporting">توسعه دهنده ی کمکی</string>
+    <string name="url_opener_not_found">!اپلیکیشنی که قابلیت باز کردن این لینک را داشته باشد یافت نشد</string>
+
+    <string name="artwork">پوستر بازی</string>
+    <string name="cover">کاور بازی</string>
+    <string name="screenshot">اسکرین شات</string>
+    <string name="text_sharing_message_template">سلام! یه نگاهی به این بنداز %1$s - %2$s</string>
+    <string name="image">عکس</string>
+    <string name="news_article">مقاله خبری</string>
+
+    <string name="error_unknown_message">آخ! یه مشکلی پیش اومده.</string>
+    <string name="error_api_server_message">سرور اپلیکیشن در دسترس نیست! لطفاْ بعداْ امتحان کنید</string>
+    <string name="error_no_network_message">لطفاْ دسترسی اینترنت خود را دوباره چک کنید.</string>
+    <string name="error_api_unknown_message">درخواست مورد نظر قابل اجرا نیست! لطقاْ بعداْ امتحان کنید.</string>
+    <string name="version_name_template">v%s</string>
+
+    <string name="website_unknown">وبسایت ناشناخته</string>
+    <string name="website_steam">استیم</string>
+    <string name="website_gog">جی او جی</string>
+    <string name="website_epic_games">اپیک گیمز</string>
+    <string name="website_google_play">گوگل پلی</string>
+    <string name="website_app_store">اپ استور</string>
+    <string name="website_official">وبسایت رسمی</string>
+    <string name="website_twitter">توییتر</string>
+    <string name="website_subreddit">ردیت</string>
+    <string name="website_youtube">یوتیوب</string>
+    <string name="website_twitch">توییچ</string>
+    <string name="website_instagram">اینستاگرام</string>
+    <string name="website_facebook">فیسبوک</string>
+    <string name="website_wikipedia">ویکی پدیا</string>
+    <string name="website_fandom">فندوم</string>
+    <string name="website_discord">دیسکورد</string>
+
+    <string name="action_share_via">اشتراک گذاری با …</string>
+
+    <string name="not_available_abbr">نامشخص</string>
+    <string name='age_rating_template'>%1$s-%2$s</string>
+    <string name="rating_template">%d%%</string>
+
+    <string name="game_category_main">بازی اصلی</string>
+    <string name="game_category_dlc">محتوای قابل دانلود(دی ال سی)</string>
+    <string name="game_category_bundle">باندل</string>
+    <string name="game_category_mod">ماد (تغییر در بازی توسط طرفداران)</string>
+    <string name="game_category_episode">قسمت</string>
+    <string name="game_category_season">فصل</string>
+
+    <string name="unknown">نامشخص</string>
+    <string name="year_with_quarter_template">%1$d (%2$s)</string>
+
+    <string name="year_quarter_first">فصل اول</string>
+    <string name="year_quarter_second">فصل دوم</string>
+    <string name="year_quarter_third">فصل سوم</string>
+    <string name="year_quarter_fourth">فصل چهارم</string>
+
+    <string name="games_category_preview_info_view_title">هیچ بازی ای در دسترس نیست</string>
+    <string name="games_category_preview_more_button_text">مشاهده ی همه</string>
+
+</resources>

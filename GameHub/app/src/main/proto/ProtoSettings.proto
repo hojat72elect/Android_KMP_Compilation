@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option java_package = "ca.hojat.gamehub.feature_settings.data.datastores";
+option java_multiple_files = true;
+
+message ProtoSettings {
+
+  string themeName = 1;
+  string languageName = 2;
+
+
+}

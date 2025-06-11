@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="ImpliedQuantity">
+    <plurals name="future_relative_timestamp_year">
+        <item quantity="one">سال آینده</item>
+        <item quantity="other">%d سال دیگه</item>
+    </plurals>
+
+    <plurals name="future_relative_timestamp_month">
+        <item quantity="one">ماه آینده</item>
+        <item quantity="other">%d ماه دیگه</item>
+    </plurals>
+
+    <plurals name="future_relative_timestamp_day">
+        <item quantity="one">فردا</item>
+        <item quantity="other">%d روز دیگه</item>
+    </plurals>
+
+    <plurals name="future_relative_timestamp_hour">
+        <item quantity="one">یک ساعت دیگه</item>
+        <item quantity="other">%d ساعت دیگه</item>
+    </plurals>
+
+    <plurals name="future_relative_timestamp_minute">
+        <item quantity="one">یک دقیقه دیگه</item>
+        <item quantity="other">%d دقیقه دیگه</item>
+    </plurals>
+
+    <plurals name="future_relative_timestamp_second">
+        <item quantity="one">یک ثانیه دیگه</item>
+        <item quantity="other">%d ثانیه دیگه</item>
+    </plurals>
+
+    <plurals name="past_relative_timestamp_year">
+        <item quantity="one">یک سال پیش</item>
+        <item quantity="other">%d سال پیش</item>
+    </plurals>
+
+    <plurals name="past_relative_timestamp_month">
+        <item quantity="one">یک ماه پیش</item>
+        <item quantity="other">%d ماه پیش</item>
+    </plurals>
+
+    <plurals name="past_relative_timestamp_day">
+        <item quantity="one">یک روز پیش</item>
+        <item quantity="other">%d روز پیش</item>
+    </plurals>
+
+    <plurals name="past_relative_timestamp_hour">
+        <item quantity="one">یک ساعت پیش</item>
+        <item quantity="other">%d ساعت پیش</item>
+    </plurals>
+
+    <plurals name="past_relative_timestamp_minute">
+        <item quantity="one">یک دقیقه پیش</item>
+        <item quantity="other">%d دقیقه پیش</item>
+    </plurals>
+
+    <plurals name="past_relative_timestamp_second">
+        <item quantity="one">یک ثانیه پیش</item>
+        <item quantity="other">%d ثانیه پیش</item>
+    </plurals>
+</resources>
