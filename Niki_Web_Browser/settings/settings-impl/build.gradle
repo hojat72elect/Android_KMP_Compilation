@@ -1,0 +1,31 @@
+
+
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'com.squareup.anvil'
+}
+
+apply from: "$rootProject.projectDir/gradle/android-library.gradle"
+
+android {
+    namespace 'com.duckduckgo.settings.impl'
+    anvil {
+        generateDaggerFactories = true // default is false
+    }
+}
+
+
+dependencies {
+    anvil project(path: ':anvil-compiler')
+    implementation project(path: ':anvil-annotations')
+
+    implementation project(path: ':di')
+    implementation project(path: ':settings-api')
+    implementation project(path: ':common-utils')
+
+    implementation AndroidX.core.ktx
+
+    // Dagger
+    implementation Google.dagger
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <attr name="horizontalDividerStyle" format="reference"/>
+    <attr name="verticalDividerStyle" format="reference"/>
+
+    <attr name="defaultPadding" format="boolean" />
+
+    <!--Horizontal Divider-->
+    <declare-styleable name="HorizontalDivider">
+        <attr name="fullWidth" format="boolean" />
+        <attr name="defaultPadding" />
+    </declare-styleable>
+
+    <!--Vertical Divider-->
+    <declare-styleable name="VerticalDivider">
+        <attr name="defaultPadding"/>
+    </declare-styleable>
+
+</resources>

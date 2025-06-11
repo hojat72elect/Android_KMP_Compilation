@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="wrap_content"
+             android:layout_height="@dimen/omnibarCookieAnimationBannerHeight"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             android:background="@drawable/cookies_text_background"
+             xmlns:tools="http://schemas.android.com/tools">
+
+    <com.duckduckgo.common.ui.view.text.DaxTextView
+        android:id="@+id/cookiesManagedText"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:typography="body1"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:maxLines="1"
+        android:gravity="center"
+        android:visibility="visible"
+        android:text="@string/autoconsentCosmeticNoticeAnimationText"
+        android:ellipsize="end"
+        tools:ignore="RtlCompat" />
+</FrameLayout>

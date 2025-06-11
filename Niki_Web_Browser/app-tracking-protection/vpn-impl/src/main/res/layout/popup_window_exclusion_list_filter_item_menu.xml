@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:background="@drawable/popup_menu_bg"
+              android:orientation="vertical">
+
+    <com.duckduckgo.common.ui.view.PopupMenuItemView
+        android:id="@+id/allApps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:primaryText="@string/atp_ExcludedAppsFilterMenuAllLabel" />
+
+    <com.duckduckgo.common.ui.view.PopupMenuItemView
+        android:id="@+id/protectedApps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:primaryText="@string/atp_ExcludedAppsFilterMenuProtectedLabel" />
+
+    <com.duckduckgo.common.ui.view.PopupMenuItemView
+        android:id="@+id/unprotectedApps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:primaryText="@string/atp_ExcludedAppsFilterMenuUnprotectedLabel" />
+
+</LinearLayout>

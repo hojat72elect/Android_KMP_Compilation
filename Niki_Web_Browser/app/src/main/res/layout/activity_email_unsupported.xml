@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.duckduckgo.app.email.ui.EmailProtectionUnsupportedActivity">
+
+    <include
+        android:id="@+id/includeToolbar"
+        layout="@layout/include_default_toolbar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/headerImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="32dp"
+            app:srcCompat="@drawable/contact_us" />
+
+        <com.duckduckgo.common.ui.view.text.DaxTextView
+            android:id="@+id/statusTitle"
+            app:typography="h2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="24dp"
+            android:text="@string/emailNotSupported"
+            android:gravity="center"/>
+
+        <com.duckduckgo.common.ui.view.text.DaxTextView
+            android:id="@+id/emailPrivacyDescription"
+            app:typography="body2"
+            app:textType="secondary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:paddingTop="8dp"
+            android:text="@string/emailNotSupportedExplanation"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+</LinearLayout>
+
+

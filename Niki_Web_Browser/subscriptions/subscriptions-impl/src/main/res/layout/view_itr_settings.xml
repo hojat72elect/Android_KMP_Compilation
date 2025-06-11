@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.duckduckgo.common.ui.view.listitem.SettingsListItem xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/itrSettings"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:indicatorStatus="on"
+    app:leadingIcon="@drawable/ic_identity_theft_restoration_color_24"
+    app:primaryText="@string/itrSettingTitle" />

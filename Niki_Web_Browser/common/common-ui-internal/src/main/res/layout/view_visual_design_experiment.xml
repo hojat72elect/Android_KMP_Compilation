@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/internalUISettingsLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.duckduckgo.common.ui.view.listitem.SectionHeaderListItem
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:primaryText="@string/experimentalUISettings" />
+
+    <com.duckduckgo.common.ui.view.listitem.TwoLineListItem
+        android:id="@+id/experimentalUIMode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:primaryText="@string/experimentalUITitle"
+        app:primaryTextTruncated="false"
+        app:secondaryText="@string/experimentalUIMessage"
+        app:showSwitch="true" />
+
+    <com.duckduckgo.common.ui.view.listitem.TwoLineListItem
+        android:id="@+id/duckAIPoC"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:primaryText="@string/duckAIUpdateTitle"
+        app:primaryTextTruncated="false"
+        app:secondaryText="@string/duckAIUpdateMessage"
+        app:showSwitch="true" />
+
+    <com.duckduckgo.common.ui.view.text.DaxTextView
+        android:id="@+id/experimentalUIModeConflictAlert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="disabled - conflict with another experiment"
+        android:visibility="gone"
+        app:textType="secondary"
+        app:typography="caption_allCaps"
+        tools:ignore="HardcodedText" />
+
+</LinearLayout>

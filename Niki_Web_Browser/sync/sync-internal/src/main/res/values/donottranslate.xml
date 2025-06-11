@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <!-- sync dev settings -->
+    <string name="syncSettingsTitle">Sync Dev Settings</string>
+    <string name="syncSettingsSubtitle">Sync Dev Internal Test</string>
+</resources>

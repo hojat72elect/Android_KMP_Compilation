@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:showIn="@layout/activity_add_widget_instructions">
+
+    <com.duckduckgo.common.ui.view.divider.HorizontalDivider
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/homeButton" />
+
+    <com.duckduckgo.common.ui.view.button.DaxButtonPrimary
+        android:id="@+id/closeButton"
+        app:daxButtonSize="large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/keyline_2"
+        android:text="@string/addWidgetInstructionsButtonClose"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/homeButton" />
+
+    <com.duckduckgo.common.ui.view.button.DaxButtonPrimary
+        android:id="@+id/homeButton"
+        app:daxButtonSize="large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/addWidgetInstructionsButtonGoHome"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

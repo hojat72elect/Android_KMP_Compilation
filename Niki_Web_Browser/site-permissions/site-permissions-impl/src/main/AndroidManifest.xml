@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<manifest package="com.duckduckgo.site.permissions.impl"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application>
+        <activity
+            android:name="com.duckduckgo.site.permissions.impl.ui.SitePermissionsActivity"
+            android:exported="false"
+            android:label="@string/settingsSitePermissions"
+            android:parentActivityName="com.duckduckgo.app.settings.SettingsActivity" />
+        <activity
+            android:name="com.duckduckgo.site.permissions.impl.ui.permissionsperwebsite.PermissionsPerWebsiteActivity"
+            android:exported="false"
+            android:parentActivityName="com.duckduckgo.site.permissions.impl.ui.SitePermissionsActivity" />
+
+    </application>
+</manifest>

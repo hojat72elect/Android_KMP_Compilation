@@ -1,0 +1,100 @@
+
+
+package com.duckduckgo.app.browser.tabs.adapter
+
+import android.annotation.SuppressLint
+import android.os.Bundle
+import android.os.Message
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView
+import com.duckduckgo.app.browser.BrowserActivity
+import com.duckduckgo.app.browser.BrowserTabFragment
+import com.duckduckgo.app.browser.tabs.TabManager.TabModel
+import com.duckduckgo.common.ui.tabs.SwipingTabsFeatureProvider
+
+class TabPagerAdapter(
+    private val activity: BrowserActivity,
+    swipingTabsFeature: SwipingTabsFeatureProvider,
+) : FragmentStateAdapter(activity, swipingTabsFeature) {
+    private val tabs = mutableListOf<TabModel>()
+    private var messageForNewFragment: Message? = null
+
+    override fun getItemCount() = tabs.size
+
+    override fun getItemId(position: Int): Long {
+        return if (position >= 0 && position < tabs.size) {
+            tabs[position].tabId.hashCode().toLong()
+        } else {
+            RecyclerView.NO_ID
+        }
+    }
+
+    override fun containsItem(itemId: Long) = tabs.any { it.tabId.hashCode().toLong() == itemId }
+
+    override fun createFragment(position: Int): Fragment {
+        val tab = tabs[position]
+        val isExternal = activity.intent?.getBooleanExtra(BrowserActivity.LAUNCH_FROM_EXTERNAL_EXTRA, false) == true
+
+        return if (messageForNewFragment != null) {
+            val message = messageForNewFragment
+            messageForNewFragment = null
+            return BrowserTabFragment.newInstance(tab.tabId, null, false, isExternal).apply {
+                this.messageFromPreviousTab = message
+            }
+        } else {
+            BrowserTabFragment.newInstance(tab.tabId, tab.url, tab.skipHome, isExternal)
+        }
+    }
+
+    fun restore(state: Bundle) {
+        // state is only useful when there are fragments to restore (also avoids a crash)
+        if (activity.supportFragmentManager.fragments.isNotEmpty()) {
+            restoreState(state)
+        }
+    }
+
+    fun setMessageForNewFragment(message: Message) {
+        messageForNewFragment = message
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun onTabsUpdated(newTabs: List<TabModel>) {
+        if (tabs.map { it.tabId } != newTabs.map { it.tabId }) {
+            // we only want to notify the adapter if the tab IDs change
+            val diff = DiffUtil.calculateDiff(PagerDiffUtil(tabs, newTabs))
+            tabs.clear()
+            tabs.addAll(newTabs)
+            diff.dispatchUpdatesTo(this)
+        } else {
+            // the state of tabs is managed separately, so we don't need to notify the adapter, but we need URL and skipHome to create new fragments
+            tabs.clear()
+            tabs.addAll(newTabs)
+        }
+    }
+
+    fun getTabIdAtPosition(position: Int): String? {
+        return if (position < tabs.size) {
+            tabs[position].tabId
+        } else {
+            null
+        }
+    }
+
+    inner class PagerDiffUtil(
+        private val oldList: List<TabModel>,
+        private val newList: List<TabModel>,
+    ) : DiffUtil.Callback() {
+        override fun getOldListSize() = oldList.size
+
+        override fun getNewListSize() = newList.size
+
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldList[oldItemPosition].tabId == newList[newItemPosition].tabId
+        }
+
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return areItemsTheSame(oldItemPosition, newItemPosition)
+        }
+    }
+}

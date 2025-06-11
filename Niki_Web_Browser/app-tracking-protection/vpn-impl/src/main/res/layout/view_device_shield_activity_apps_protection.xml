@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/appsStateContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.duckduckgo.mobile.android.vpn.ui.tracker_activity.view.AppsProtectionStateView
+        android:id="@+id/protectedAppsState"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.duckduckgo.common.ui.view.divider.HorizontalDivider
+        android:id="@+id/protectedAppsBottomDivider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/horizontalDividerHeight"
+        android:layout_marginStart="@dimen/apps_protection_state_insetPadding"
+        app:defaultPadding="false" />
+
+    <com.duckduckgo.mobile.android.vpn.ui.tracker_activity.view.AppsProtectionStateView
+        android:id="@+id/unProtectedAppsState"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.duckduckgo.common.ui.view.divider.HorizontalDivider
+        android:id="@+id/unProtectedAppsBottomDivider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/horizontalDividerHeight"
+        android:layout_marginStart="@dimen/apps_protection_state_insetPadding"
+        app:defaultPadding="false" />
+
+</LinearLayout>

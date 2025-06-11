@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.duckduckgo.windows.impl">
+    <application>
+        <activity
+            android:name=".ui.WindowsActivity"
+            android:exported="false"
+            android:label="@string/windows_app"
+            android:parentActivityName="com.duckduckgo.app.settings.SettingsActivity" />
+
+        <receiver
+            android:name=".WindowsLinkShareBroadcastReceiver"
+            android:exported="false" />
+    </application>
+</manifest>

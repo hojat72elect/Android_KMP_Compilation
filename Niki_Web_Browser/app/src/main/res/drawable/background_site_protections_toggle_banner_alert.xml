@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<!--
+    This is designed to go inside a a 1dp rounded outline without overlapping it,
+    hence the weird sizing.
+  -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:bottom="1.25dp"
+        android:end="1.25dp"
+        android:start="1.25dp">
+        <shape>
+            <solid android:color="?attr/daxInfoPanelAlertBackgroundColor" />
+
+            <corners
+                android:bottomLeftRadius="7dp"
+                android:bottomRightRadius="7dp"
+                android:topLeftRadius="0dp"
+                android:topRightRadius="0dp" />
+        </shape>
+    </item>
+</layer-list>

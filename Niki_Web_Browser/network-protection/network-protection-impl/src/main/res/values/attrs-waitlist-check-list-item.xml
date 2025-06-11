@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <attr name="waitlistCheckListItemStyle" format="reference"/>
+
+    <!-- Check List Item view-->
+    <declare-styleable name="WaitlistCheckListItem">
+        <attr name="primaryText"/>
+        <attr name="primaryTextColorOverlay"/>
+        <attr name="primaryTextTruncated"/>
+        <attr name="secondaryText"/>
+        <attr name="secondaryTextColorOverlay"/>
+        <attr name="showBetaPill"/>
+        <attr name="leadingIcon" />
+    </declare-styleable>
+
+</resources>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<resources>
+
+    <attr name="daxInfoPanelTooltipBackgroundColor" format="color" />
+    <color name="daxInfoPanelTooltipBackgroundColorLight">@color/blue0_50</color>
+    <color name="daxInfoPanelTooltipBackgroundColorDark">@color/blue50_14</color>
+
+    <attr name="daxInfoPanelAlertBackgroundColor" format="color" />
+    <color name="daxInfoPanelAlertBackgroundColorLight">@color/yellow10</color>
+    <color name="daxInfoPanelAlertBackgroundColorDark">@color/yellow50_14</color>
+
+    <!--Panel view-->
+    <declare-styleable name="InfoPanel">
+        <attr name="panelBackground" format="reference" />
+        <attr name="panelDrawable" format="reference" />
+        <attr name="panelText" format="string" />
+    </declare-styleable>
+
+</resources>

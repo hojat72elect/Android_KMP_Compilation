@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <declare-styleable name="SettingsToggleOptionWithSubtitle">
+        <attr name="toggleTitle" format="string" />
+        <attr name="toggleSubTitle" format="string" />
+        <attr name="isChecked" format="boolean" />
+    </declare-styleable>
+</resources>

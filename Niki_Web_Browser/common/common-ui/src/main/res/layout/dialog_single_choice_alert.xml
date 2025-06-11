@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    style="@style/Widget.DuckDuckGo.Dialog.Content">
+
+    <com.duckduckgo.common.ui.view.text.DaxTextView
+        android:id="@+id/radioListDialogTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:textType="primary"
+        app:typography="h2"/>
+
+    <com.duckduckgo.common.ui.view.text.DaxTextView
+        android:id="@+id/radioListDialogMessage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/keyline_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioListDialogTitle"
+        app:textType="secondary"
+        app:typography="body1"/>
+
+    <ScrollView
+        android:id="@+id/radioListDialogContent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/keyline_2"
+        android:fadeScrollbars="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_max="@dimen/dialogRadioGroupHeightMax"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/radioListDialogMessage"
+        app:layout_constraintBottom_toTopOf="@id/radioListAlertDialogButtonContainer"
+        android:layout_marginBottom="@dimen/keyline_4">
+
+        <RadioGroup
+            android:id="@+id/radioListDialogRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/radioListDialogMessage"/>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/radioListAlertDialogButtonContainer"
+        android:layout_width="0dp"
+        android:gravity="end"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

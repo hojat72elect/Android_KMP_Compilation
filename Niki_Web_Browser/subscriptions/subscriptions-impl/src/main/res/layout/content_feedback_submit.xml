@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="@dimen/keyline_4">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.duckduckgo.common.ui.view.text.DaxTextView
+            android:id="@+id/feedbackSubmitHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/keyline_2"
+            android:text="@string/feedbackSubmitVpnHeader" />
+
+        <com.duckduckgo.common.ui.view.text.DaxTextInput
+            android:id="@+id/feedbackSubmitDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/keyline_4"
+            android:hint="@string/feedbackSubmitVpnDescriptionHint"
+            app:type="form_mode" />
+
+        <com.duckduckgo.common.ui.view.text.DaxTextView
+            android:id="@+id/feedbackSubmitEmailByLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/keyline_4"
+            android:text="@string/feedbackSubmitEmailByLine" />
+
+        <com.duckduckgo.common.ui.view.text.DaxTextInput
+            android:id="@+id/feedbackSubmitEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/keyline_2"
+            android:hint="@string/feedbackSubmitEmailHint"
+            app:type="single_line" />
+
+        <com.duckduckgo.common.ui.view.text.DaxTextView
+            android:id="@+id/feedbackSubmitByLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/keyline_4"
+            android:text="@string/feedbackSubmitVpnDisclaimer" />
+
+        <com.duckduckgo.common.ui.view.button.DaxButtonPrimary
+            android:id="@+id/feedbackSubmitButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/keyline_4"
+            android:text="@string/feedbackSubmitVpnSubmit"
+            android:enabled="false"
+            app:daxButtonSize="large" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

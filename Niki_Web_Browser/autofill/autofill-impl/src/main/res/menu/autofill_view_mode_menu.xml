@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/view_menu_edit"
+        android:title="@string/credentialManagementViewMenuEdit"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/view_menu_delete"
+        android:title="@string/credentialManagementViewMenuDelete"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/view_menu_save"
+        android:title="@string/credentialManagementEditButtonSaveChanges"
+        android:icon="@drawable/ic_check_24"
+        app:showAsAction="always" />
+
+</menu>

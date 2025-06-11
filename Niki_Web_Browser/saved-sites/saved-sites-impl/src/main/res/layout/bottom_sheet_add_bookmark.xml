@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/actionBottomSheetVerticalPadding"
+    android:paddingBottom="@dimen/actionBottomSheetVerticalPadding"
+    android:background="@drawable/rounded_top_corners_bottom_sheet_drawable">
+
+    <com.duckduckgo.common.ui.view.text.DaxTextView
+        android:id="@+id/bookmarksBottomSheetDialogTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/keyline_4"
+        android:paddingTop="@dimen/bottomSheetTitleVerticalPadding"
+        android:paddingBottom="@dimen/bottomSheetTitleVerticalPadding"
+        android:visibility="gone"
+        app:textType="secondary"
+        app:typography="body1"
+        tools:text="Actions" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.duckduckgo.common.ui.view.listitem.OneLineListItem
+            android:id="@+id/bookmarksBottomSheetDialogPrimaryItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:leadingIconBackground="circular"
+            app:primaryText="Primary Item" />
+
+        <com.duckduckgo.common.ui.view.DaxSwitch
+            android:id="@+id/bookmarksBottomSheetSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="16dp" />
+    </FrameLayout>
+
+
+    <com.duckduckgo.common.ui.view.listitem.OneLineListItem
+        android:id="@+id/bookmarksBottomSheetDialogSecondaryItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leadingIconBackground="circular"
+        app:primaryText="Secondary Item" />
+
+</LinearLayout>

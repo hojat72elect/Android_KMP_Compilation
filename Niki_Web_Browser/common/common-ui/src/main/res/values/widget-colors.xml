@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<resources>
+    <!-- Widget colors -->
+    <color name="favoriteTitleTextColor">@color/black60</color>
+    <color name="favoriteFaviconBackgroundColor">@color/black3</color>
+    <color name="searchWidgetBackgroundColor">@color/white</color>
+    <color name="searchWidgetSearchBarBackgroundColor">@color/black6</color>
+    <color name="searchWidgetSearchBarHintColor">@color/black60</color>
+    <color name="searchWidgetSearchBarTrailingIconColor">@color/black84</color>
+    <color name="emptyFavoriteDescriptionTextColor">@color/black60</color>
+    <color name="emptyFavoriteActionTextColor">@color/blue50</color>
+</resources>

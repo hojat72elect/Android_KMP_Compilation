@@ -1,0 +1,18 @@
+
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <stroke
+                android:width="2dp"
+                android:color="?attr/daxColorAccentBlue" />
+            <corners android:radius="@dimen/smallShapeCornerRadius" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <solid android:color="?attr/daxColorContainer" />
+            <corners android:radius="@dimen/smallShapeCornerRadius" />
+        </shape>
+    </item>
+</layer-list>

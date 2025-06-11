@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/internal_input_layout"
+        style="@style/Widget.DuckDuckGo.TextInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:endIconMode="none">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/internal_edit_text"
+            style="@style/Widget.DuckDuckGo.TextInputText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:textCursorDrawable="@drawable/text_cursor"
+            android:textColor="?attr/daxColorPrimaryText" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.duckduckgo.common.ui.view.button.IconButton
+        android:id="@+id/internal_password_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/keyline_1"
+        android:layout_marginEnd="@dimen/outlinedTextPasswordEndMarginWithEndIcon"
+        android:foregroundGravity="center_vertical"
+        android:visibility="gone"
+        app:backgroundTint="?attr/daxColorPrimaryIcon"
+        app:layout_constraintBottom_toBottomOf="@+id/internal_input_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/internal_input_layout"
+        app:srcCompat="@drawable/ic_eye_24" />
+</merge>

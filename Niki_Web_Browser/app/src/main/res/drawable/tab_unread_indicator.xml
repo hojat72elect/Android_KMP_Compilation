@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item>
+        <shape android:shape="oval">
+            <solid
+                android:color="?attr/daxColorPrimaryInvertedText"
+                tools:color="#F00" />
+            <size
+                android:width="9dp"
+                android:height="9dp" />
+        </shape>
+    </item>
+
+    <item android:gravity="center">
+        <shape android:shape="oval">
+
+            <solid android:color="?attr/daxColorAccentBlue" />
+            <size
+                android:width="6dp"
+                android:height="6dp" />
+        </shape>
+    </item>
+
+
+</layer-list>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/deviceShieldSwitch"
+        android:title="@string/atp_EnableCTA"
+        app:showAsAction="always"
+        app:actionLayout="@layout/menu_item_device_tracker_switch"/>
+
+</menu>

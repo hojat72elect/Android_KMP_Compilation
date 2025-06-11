@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+      android:id="@+id/label_leading_image_view"
+      android:layout_width="24dp"
+      android:layout_height="24dp"
+      android:padding="5dp"
+      android:layout_marginEnd="@dimen/keyline_2"
+      app:tint="@color/material_on_background_emphasis_medium"
+      app:srcCompat="@drawable/ic_format_size_24dp"
+      android:visibility="gone"
+      tools:ignore="ContentDescription" />
+
+    <com.duckduckgo.common.ui.view.text.DaxTextView
+      android:id="@+id/label_text_view"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center_vertical"
+      android:text="Button"
+      android:textColor="@color/material_on_background_emphasis_medium" />
+
+    <ImageView
+      android:id="@+id/label_trailing_image_view"
+      android:layout_width="24dp"
+      android:layout_height="24dp"
+      android:padding="5dp"
+      android:layout_marginStart="@dimen/keyline_2"
+      android:layout_marginEnd="@dimen/keyline_2"
+      android:layout_gravity="center_vertical"
+      android:background="?attr/selectableItemBackgroundBorderless"
+      app:tint="@color/material_on_background_emphasis_medium"
+      app:srcCompat="@drawable/ic_open_in_24"
+      tools:ignore="ContentDescription" />
+
+</merge>

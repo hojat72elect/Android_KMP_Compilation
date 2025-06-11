@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/keyline_4"
+    android:layout_marginStart="@dimen/keyline_4"
+    android:layout_marginEnd="@dimen/keyline_4">
+
+    <com.duckduckgo.common.ui.view.InfoPanel
+        android:id="@+id/excludedAppsEnabledVPNLabel"
+        android:minHeight="80dp"
+        style="@style/Widget.DuckDuckGo.InfoPanel"
+        app:panelBackground="@drawable/info_panel_tooltip_background"
+        app:panelDrawable="@drawable/ic_info_panel_info"/>
+
+    <com.duckduckgo.common.ui.view.InfoPanel
+        android:id="@+id/excludedAppsDisabledVPNLabel"
+        style="@style/Widget.DuckDuckGo.InfoPanel"
+        app:panelBackground="@drawable/info_panel_alert_background"
+        app:panelDrawable="@drawable/ic_exclamation_yellow_16"/>
+
+</FrameLayout>
+
+

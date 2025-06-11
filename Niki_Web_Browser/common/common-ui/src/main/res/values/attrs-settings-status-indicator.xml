@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <attr name="indicatorStatus">
+        <enum name="alwaysOn" value="0" />
+        <enum name="on" value="1" />
+        <enum name="off" value="2" />
+    </attr>
+    <attr name="labelText" format="string" />
+
+    <declare-styleable name="StatusIndicator">
+        <attr name="indicatorStatus" />
+        <attr name="labelText" />
+    </declare-styleable>
+</resources>

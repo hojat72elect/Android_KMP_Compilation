@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <attr name="radioListItemStyle" format="reference" />
+
+    <!--Radio List Item view-->
+    <declare-styleable name="RadioListItem">
+        <attr name="android:checked" />
+        <attr name="primaryText" />
+        <attr name="primaryTextColorOverlay" />
+        <attr name="secondaryText" />
+        <attr name="secondaryTextColorOverlay" />
+        <attr name="leadingIconBackground" />
+        <attr name="leadingEmojiIcon" format="string" />
+        <attr name="showTrailingIcon" format="boolean" />
+        <attr name="android:minHeight"/>
+    </declare-styleable>
+</resources>

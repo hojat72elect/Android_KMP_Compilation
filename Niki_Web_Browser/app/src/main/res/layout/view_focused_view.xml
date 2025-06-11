@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<com.duckduckgo.savedsites.impl.newtab.FavouritesNewTabSectionView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/focusedFavourites"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:isExpandable="false"
+    app:showPlaceholders="false"
+    app:favoritesPlacement="focused_state"
+    android:background="?attr/daxColorBrowserOverlay" />
+
+

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    style="@style/Widget.DuckDuckGo.Dialog.Content">
+
+    <ImageView
+        android:id="@+id/stackedAlertDialogImage"
+        android:layout_width="@dimen/dialogImageSize"
+        android:layout_height="@dimen/dialogImageSize"
+        android:layout_marginBottom="@dimen/keyline_4"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_globe_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <com.duckduckgo.common.ui.view.text.DaxTextView
+        android:id="@+id/stackedAlertDialogTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stackedAlertDialogImage"
+        app:textType="primary"
+        app:typography="h2"/>
+
+    <com.duckduckgo.common.ui.view.text.DaxTextView
+        android:id="@+id/stackedlertDialogMessage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/keyline_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stackedAlertDialogTitle"
+        app:textType="secondary"
+        app:typography="body1"/>
+
+    <LinearLayout
+        android:id="@+id/stackedAlertDialogButtonLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/keyline_5"
+        android:gravity="end"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stackedlertDialogMessage"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

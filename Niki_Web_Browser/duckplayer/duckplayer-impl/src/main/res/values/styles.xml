@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <style name="DuckPlayerBottomSheetDialogTheme" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/DuckPlayerBottomSheetStyle</item>
+    </style>
+
+    <style name="DuckPlayerBottomSheetStyle" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="backgroundTint">@android:color/transparent</item>
+    </style>
+
+    <style name="DuckPlayerDialogRootViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@drawable/rounded_top_corners_bottom_sheet_background</item>
+        <item name="android:paddingBottom">30dp</item>
+    </style>
+</resources>

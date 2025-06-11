@@ -1,0 +1,69 @@
+
+
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'com.squareup.anvil'
+    id 'com.google.devtools.ksp'
+}
+
+apply from: "$rootProject.projectDir/gradle/android-library.gradle"
+
+dependencies {
+    anvil project(':anvil-compiler')
+    implementation project(':anvil-annotations')
+
+    implementation project(':di')
+    implementation project(':common-utils')
+    implementation project(':browser-api')
+    implementation project(':feature-toggles-api')
+    implementation project(':privacy-config-api')
+    implementation project(':app-build-config-api')
+    implementation project(':user-agent-api')
+    implementation project(':statistics-api')
+    implementation project(':user-agent-store')
+
+    implementation AndroidX.room.ktx
+    implementation AndroidX.appCompat
+    implementation Google.android.material
+    implementation AndroidX.constraintLayout
+    implementation JakeWharton.timber
+    implementation Google.dagger
+    implementation AndroidX.core.ktx
+    implementation AndroidX.webkit
+    implementation Square.retrofit2.converter.moshi
+    implementation "com.squareup.moshi:moshi-kotlin:_"
+
+    // Room
+    implementation AndroidX.room.runtime
+    implementation AndroidX.room.ktx
+    testImplementation AndroidX.room.testing
+    ksp AndroidX.room.compiler
+
+    // Testing dependencies
+    testImplementation project(':feature-toggles-test')
+    testImplementation project(':common-test')
+    testImplementation project(':app-build-config-api')
+    testImplementation project(':privacy-config-api')
+    testImplementation "org.mockito.kotlin:mockito-kotlin:_"
+    testImplementation Testing.robolectric
+    testImplementation AndroidX.test.ext.junit
+    testImplementation Square.retrofit2.converter.moshi
+    testImplementation Testing.junit4
+    testImplementation AndroidX.archCore.testing
+    androidTestImplementation AndroidX.archCore.testing
+
+    coreLibraryDesugaring Android.tools.desugarJdkLibs
+}
+
+anvil {
+    generateDaggerFactories = true // default is false
+}
+
+
+android {
+    namespace 'com.duckduckgo.user.agent.impl'
+    compileOptions {
+        coreLibraryDesugaringEnabled = true
+    }
+}

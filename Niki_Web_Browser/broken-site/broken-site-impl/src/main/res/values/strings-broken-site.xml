@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- smartling.entity_escaping = false -->
+<!-- smartling.instruction_attributes = instruction -->
+<resources>
+    <string name="broken_site_prompt_title">Site not working? Let us know.</string>
+    <string name="broken_site_prompt_description">This helps us improve the DuckDuckGo browser.</string>
+    <string name="broken_site_prompt_button_dismiss">Dismiss</string>
+    <string name="broken_site_prompt_button_report">Report Broken Site</string>
+</resources>

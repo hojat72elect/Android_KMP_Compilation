@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".feature.rules.ExceptionRulesDebugActivity">
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+    />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <com.duckduckgo.common.ui.view.InfoPanel
+                style="@style/Widget.DuckDuckGo.InfoPanel"
+                app:panelBackground="@drawable/info_panel_alert_background"
+                app:panelDrawable="@drawable/ic_exclamation_yellow_16"
+                app:panelText="Check system apps to exclude them from NetP VPN tunnel"
+                android:layout_margin="16dp"/>
+
+
+            <LinearLayout
+                android:id="@+id/systemApps"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

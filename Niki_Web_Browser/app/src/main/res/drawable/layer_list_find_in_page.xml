@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="?attr/daxColorSurface" />
+        </shape>
+    </item>
+    <item android:left="@dimen/keyline_2"
+          android:right="@dimen/keyline_2"
+          android:top="@dimen/keyline_2"
+          android:bottom="@dimen/keyline_2">
+        <shape>
+            <solid android:color="?attr/daxColorContainer" />
+            <stroke
+                android:width="1dp"
+                android:color="?attr/daxColorContainer" />
+            <corners android:radius="@dimen/smallShapeCornerRadius" />
+        </shape>
+    </item>
+
+</layer-list>

@@ -1,0 +1,102 @@
+
+
+package com.duckduckgo.common.ui
+
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
+import android.content.res.Configuration
+import androidx.appcompat.app.AppCompatActivity
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import com.duckduckgo.common.ui.DuckDuckGoTheme.DARK
+import com.duckduckgo.common.ui.DuckDuckGoTheme.EXPERIMENT_DARK
+import com.duckduckgo.common.ui.DuckDuckGoTheme.EXPERIMENT_LIGHT
+import com.duckduckgo.common.ui.DuckDuckGoTheme.SYSTEM_DEFAULT
+import com.duckduckgo.common.ui.Theming.Constants.BROADCAST_THEME_CHANGED
+import com.duckduckgo.common.ui.Theming.Constants.FIXED_THEME_ACTIVITIES
+import com.duckduckgo.mobile.android.R
+
+enum class DuckDuckGoTheme {
+    SYSTEM_DEFAULT,
+    DARK,
+    LIGHT,
+    EXPERIMENT_DARK,
+    EXPERIMENT_LIGHT,
+    ;
+
+    fun getOptionIndex(): Int {
+        return when (this) {
+            SYSTEM_DEFAULT -> 1
+            DARK -> 2
+            LIGHT -> 3
+            EXPERIMENT_DARK -> 4
+            EXPERIMENT_LIGHT -> 5
+        }
+    }
+}
+
+object Theming {
+    object Constants {
+        const val BROADCAST_THEME_CHANGED = "BROADCAST_THEME_CHANGED"
+        val FIXED_THEME_ACTIVITIES = listOf(
+            "com.duckduckgo.sync.impl.ui.SyncLoginActivity",
+            "com.duckduckgo.sync.impl.ui.SyncConnectActivity",
+            "com.duckduckgo.sync.impl.ui.ShowQRCodeActivity",
+            "com.duckduckgo.sync.impl.ui.EnterCodeActivity",
+            "com.duckduckgo.sync.impl.ui.SyncWithAnotherDeviceActivity",
+            "com.duckduckgo.autofill.impl.service.AutofillProviderFillSuggestionActivity",
+        )
+    }
+}
+
+fun AppCompatActivity.applyTheme(theme: DuckDuckGoTheme): BroadcastReceiver? {
+    if (!FIXED_THEME_ACTIVITIES.contains(this.localClassName)) {
+        setTheme(getThemeId(theme))
+    }
+    return registerForThemeChangeBroadcast()
+}
+
+fun AppCompatActivity.getThemeId(theme: DuckDuckGoTheme): Int {
+    return when (theme) {
+        SYSTEM_DEFAULT -> getSystemDefaultTheme()
+        DARK -> R.style.Theme_DuckDuckGo_Dark
+        EXPERIMENT_DARK -> R.style.Theme_DuckDuckGo_Dark_Experiment
+        EXPERIMENT_LIGHT -> R.style.Theme_DuckDuckGo_Light_Experiment
+        else -> R.style.Theme_DuckDuckGo_Light
+    }
+}
+
+private fun Context.getSystemDefaultTheme(): Int {
+    return if (isInNightMode()) {
+        R.style.Theme_DuckDuckGo_Dark
+    } else {
+        R.style.Theme_DuckDuckGo_Light
+    }
+}
+
+fun Context.isInNightMode(): Boolean {
+    val mode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+    return mode == Configuration.UI_MODE_NIGHT_YES
+}
+
+// Move this to LiveData/Flow and use appDelegate for night/day theming
+private fun AppCompatActivity.registerForThemeChangeBroadcast(): BroadcastReceiver {
+    val manager = LocalBroadcastManager.getInstance(applicationContext)
+    val receiver =
+        object : BroadcastReceiver() {
+            override fun onReceive(
+                context: Context,
+                intent: Intent,
+            ) {
+                recreate()
+            }
+        }
+    manager.registerReceiver(receiver, IntentFilter(BROADCAST_THEME_CHANGED))
+    return receiver
+}
+
+fun AppCompatActivity.sendThemeChangedBroadcast() {
+    val manager = LocalBroadcastManager.getInstance(applicationContext)
+    manager.sendBroadcast(Intent(BROADCAST_THEME_CHANGED))
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/keyline_4"
+    android:paddingTop="@dimen/keyline_2"
+    android:paddingEnd="@dimen/keyline_4"
+    android:paddingBottom="@dimen/keyline_2"
+    android:gravity="center">
+
+    <com.duckduckgo.common.ui.view.listitem.OneLineListItem
+        android:id="@+id/system_app_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:showSwitch="true"
+    />
+
+</LinearLayout>

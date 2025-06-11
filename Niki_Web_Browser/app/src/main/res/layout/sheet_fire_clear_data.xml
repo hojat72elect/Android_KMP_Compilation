@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/fireAnimationView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        app:lottie_loop="false" />
+
+    <LinearLayout
+        android:id="@+id/fireDialogRootView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_top_corners_bottom_sheet_background"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/actionBottomSheetVerticalPadding"
+        android:paddingBottom="@dimen/actionBottomSheetVerticalPadding">
+
+        <com.duckduckgo.common.ui.view.listitem.OneLineListItem
+            android:id="@+id/clearAllOption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:leadingIcon="@drawable/ic_fire_red_24"
+            app:primaryText="@string/fireClearAll"
+            app:primaryTextColorOverlay="?attr/daxColorDestructive" />
+
+        <com.duckduckgo.common.ui.view.listitem.OneLineListItem
+            android:id="@+id/cancelOption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:leadingIcon="@drawable/ic_close_24"
+            app:primaryText="@string/fireCancel" />
+
+    </LinearLayout>
+</FrameLayout>

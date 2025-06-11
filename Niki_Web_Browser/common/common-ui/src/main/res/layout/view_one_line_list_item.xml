@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:minHeight="@dimen/oneLineItemHeight">
+
+    <FrameLayout
+        android:id="@+id/leadingIconBackground"
+        android:layout_width="@dimen/listItemImageContainerSize"
+        android:layout_height="@dimen/listItemImageContainerSize"
+        android:layout_marginStart="@dimen/keyline_4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/leadingIcon"
+            android:layout_width="@dimen/listItemImageMediumSize"
+            android:layout_height="@dimen/listItemImageMediumSize"
+            android:layout_gravity="center"
+            android:importantForAccessibility="no" />
+
+    </FrameLayout>
+
+    <com.duckduckgo.common.ui.view.text.DaxTextView
+        android:id="@+id/primaryText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/keyline_4"
+        android:layout_marginEnd="@dimen/keyline_1"
+        android:textColor="@color/primary_text_color_selector"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/trailingBarrier"
+        app:layout_constraintStart_toEndOf="@id/leadingIconBackground"
+        app:layout_constraintTop_toTopOf="parent"
+        app:typography="body1"
+        tools:ignore="InvalidColorAttribute"
+        tools:text="Title" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/trailingBarrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="start"
+        app:constraint_referenced_ids="trailingSwitch,trailingIconContainer,endTrailingPadding" />
+
+    <com.duckduckgo.common.ui.view.DaxSwitch
+        android:id="@+id/trailingSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/keyline_1"
+        android:layout_marginEnd="@dimen/keyline_4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/trailingBarrier"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <FrameLayout
+        android:id="@+id/trailingIconContainer"
+        android:layout_width="@dimen/listItemTrailingIconWidth"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/trailingIcon"
+            android:layout_width="@dimen/listItemImageMediumSize"
+            android:layout_height="@dimen/listItemImageMediumSize"
+            android:layout_gravity="center"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:srcCompat="@drawable/ic_menu_vertical_24"
+            tools:ignore="ContentDescription" />
+    </FrameLayout>
+
+    <View
+        android:id="@+id/endTrailingPadding"
+        android:layout_width="@dimen/keyline_0"
+        android:layout_height="0dp"
+        android:layout_marginEnd="@dimen/keyline_4"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

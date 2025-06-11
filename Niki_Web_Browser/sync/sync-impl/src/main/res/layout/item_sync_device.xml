@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+    <com.duckduckgo.common.ui.view.listitem.TwoLineListItem
+        android:id="@+id/localSyncDevice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leadingIconBackground="circular"
+        android:visibility="gone"
+        app:trailingIcon="@drawable/ic_menu_vertical_24"/>
+
+    <com.duckduckgo.common.ui.view.listitem.OneLineListItem
+        android:id="@+id/remoteSyncDevice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leadingIconBackground="circular"
+        android:visibility="gone"
+        app:trailingIcon="@drawable/ic_menu_vertical_24"/>
+</LinearLayout>

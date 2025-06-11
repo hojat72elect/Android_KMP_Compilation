@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <include
+        android:id="@+id/remoteMessage"
+        layout="@layout/view_remote_message_cta"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <include
+        android:id="@+id/promoRemoteMessage"
+        layout="@layout/view_promo_message_cta"
+        android:visibility="gone" />
+
+</FrameLayout>

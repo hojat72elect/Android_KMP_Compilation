@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/newTabContent"
+    android:layout_width="90dp"
+    android:layout_height="90dp"
+    android:orientation="vertical">
+
+    <com.duckduckgo.common.ui.view.SkeletonView
+        android:layout_width="@dimen/gridItemImageSize"
+        android:layout_height="@dimen/gridItemImageSize"
+        android:layout_gravity="center"/>
+
+    <com.duckduckgo.common.ui.view.SkeletonView
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="@dimen/keyline_1"
+        android:layout_gravity="center"/>
+
+</LinearLayout>

@@ -1,0 +1,17 @@
+
+
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+apply from: "$rootProject.projectDir/gradle/android-library.gradle"
+
+dependencies {
+    implementation KotlinX.coroutines.core
+    implementation AndroidX.core.ktx
+}
+
+android {
+    namespace 'com.duckduckgo.cookies.api'
+}

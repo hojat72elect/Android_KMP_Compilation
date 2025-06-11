@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/actionBottomSheetVerticalPadding"
+    android:paddingBottom="@dimen/actionBottomSheetVerticalPadding">
+
+    <com.duckduckgo.common.ui.view.text.DaxTextView
+        android:id="@+id/actionBottomSheetDialogTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/keyline_4"
+        android:paddingTop="@dimen/bottomSheetTitleVerticalPadding"
+        android:paddingBottom="@dimen/bottomSheetTitleVerticalPadding"
+        android:visibility="gone"
+        app:textType="secondary"
+        app:typography="body1"
+        tools:text="Actions" />
+
+    <com.duckduckgo.common.ui.view.listitem.OneLineListItem
+        android:id="@+id/actionBottomSheetDialogPrimaryItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:primaryText="Primary Item" />
+
+    <com.duckduckgo.common.ui.view.listitem.OneLineListItem
+        android:id="@+id/actionBottomSheetDialogSecondaryItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:primaryText="Secondary Item" />
+
+</LinearLayout>

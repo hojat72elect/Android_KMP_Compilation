@@ -1,0 +1,96 @@
+
+
+package com.duckduckgo.app.browser.navigation.bar
+
+import com.duckduckgo.app.browser.BrowserTabFragment
+import com.duckduckgo.app.browser.databinding.FragmentBrowserTabBinding
+import com.duckduckgo.app.browser.navigation.bar.view.BrowserNavigationBarObserver
+import com.duckduckgo.app.browser.navigation.bar.view.BrowserNavigationBarView
+import com.duckduckgo.app.browser.navigation.bar.view.BrowserNavigationBarView.ViewMode.Browser
+import com.duckduckgo.app.browser.navigation.bar.view.BrowserNavigationBarView.ViewMode.NewTab
+import com.duckduckgo.app.browser.omnibar.Omnibar
+import com.duckduckgo.common.ui.view.gone
+import com.duckduckgo.common.ui.view.show
+import com.duckduckgo.common.utils.keyboardVisibilityFlow
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.launch
+
+/**
+ * Helper class that extracts business logic that manages the [BrowserNavigationBarView] from the [BrowserTabFragment].
+ *
+ * The class needs to be instantiated strictly after the fragment's view has been created,
+ * and [onDestroyView] has to be called when the the fragment's view is destroyed.
+ * After the view is destroyed, the class becomes no-op and needs to be re-instantiated with a valid view binding.
+ */
+class BrowserNavigationBarViewIntegration(
+    private val lifecycleScope: CoroutineScope,
+    private val browserTabFragmentBinding: FragmentBrowserTabBinding,
+    isExperimentEnabled: Boolean,
+    private val omnibar: Omnibar,
+    browserNavigationBarObserver: BrowserNavigationBarObserver,
+) {
+
+    val navigationBarView: BrowserNavigationBarView = omnibar.getNavigationBar()?.also {
+        // if the navigation bar is embedded inside of the omnibar, we remove the ones that was added directly to the Fragment's Coordinator layout
+        browserTabFragmentBinding.rootView.removeView(browserTabFragmentBinding.navigationBar)
+    } ?: browserTabFragmentBinding.navigationBar
+
+    private var keyboardVisibilityObserverJob: Job? = null
+    private var navigationBarVisibilityChangeJob: Job? = null
+
+    init {
+        if (isExperimentEnabled) {
+            onEnabled()
+        } else {
+            onDisabled()
+        }
+        navigationBarView.browserNavigationBarObserver = browserNavigationBarObserver
+    }
+
+    fun configureCustomTab() {
+        navigationBarView.setCustomTab(isCustomTab = true)
+    }
+
+    fun configureBrowserViewMode() {
+        navigationBarView.setViewMode(Browser)
+    }
+
+    fun configureNewTabViewMode() {
+        navigationBarView.setViewMode(NewTab)
+    }
+
+    fun configureFireButtonHighlight(highlighted: Boolean) {
+        navigationBarView.setFireButtonHighlight(highlighted)
+    }
+
+    fun onDestroyView() {
+        onDisabled()
+    }
+
+    private fun onEnabled() {
+        navigationBarView.show()
+        // we're hiding the navigation bar when keyboard is shown,
+        // to prevent it from being "pushed up" within the coordinator layout
+        keyboardVisibilityObserverJob = lifecycleScope.launch {
+            omnibar.textInputRootView.keyboardVisibilityFlow().distinctUntilChanged().collect { keyboardVisible ->
+                navigationBarVisibilityChangeJob?.cancel()
+                if (keyboardVisible) {
+                    navigationBarView.gone()
+                } else {
+                    navigationBarVisibilityChangeJob = launch {
+                        delay(BrowserTabFragment.KEYBOARD_DELAY)
+                        navigationBarView.show()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun onDisabled() {
+        navigationBarView.gone()
+        keyboardVisibilityObserverJob?.cancel()
+    }
+}

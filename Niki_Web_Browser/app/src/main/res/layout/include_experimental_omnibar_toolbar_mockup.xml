@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/appBarLayoutMockup"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/experimentalToolbarSize"
+    android:background="?daxColorToolbar"
+    android:theme="@style/Widget.DuckDuckGo.ToolbarTheme">
+
+    <LinearLayout
+        android:id="@+id/omniBarContainerMockup"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="@dimen/keyline_4"
+        android:layout_marginStart="@dimen/keyline_4"
+        android:layout_marginTop="@dimen/experimentalOmnibarCardMarginTop"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/fade_omnibar_field_background"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/searchIconMockup"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:importantForAccessibility="no"
+            android:paddingVertical="6dp"
+            android:paddingHorizontal="10dp"
+            android:src="@drawable/ic_find_search_small_24" />
+
+        <com.duckduckgo.common.ui.view.text.DaxTextView
+            android:id="@+id/omnibarTextInputMockup"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="start|center"
+            android:maxLines="1"
+            android:paddingStart="3dp"
+            android:paddingEnd="8dp"
+            android:text="@string/omnibarInputHint"
+            android:textColor="?attr/daxColorSecondaryText" />
+
+        <ImageView
+            android:id="@+id/aiChatIconMockup"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:importantForAccessibility="no"
+            android:paddingVertical="6dp"
+            android:paddingHorizontal="10dp"
+            android:src="@drawable/ic_ai_chat_24" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,18 @@
+
+
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+apply from: "$rootProject.projectDir/gradle/android-library.gradle"
+
+dependencies {
+    implementation project(path: ':navigation-api')
+    implementation project(':js-messaging-api')
+    implementation KotlinX.coroutines.core
+}
+
+android {
+    namespace 'com.duckduckgo.subscriptions.api'
+}

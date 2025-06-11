@@ -1,0 +1,208 @@
+package com.duckduckgo.adclick.impl
+
+import com.duckduckgo.adclick.impl.remoteconfig.AdClickAttributionFeature
+import com.duckduckgo.adclick.impl.store.exemptions.AdClickExemptionsDao
+import com.duckduckgo.adclick.impl.store.exemptions.AdClickExemptionsDatabase
+import com.duckduckgo.adclick.impl.store.exemptions.AdClickTabExemptionEntity
+import com.duckduckgo.common.utils.DispatcherProvider
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
+import timber.log.Timber
+import java.util.concurrent.ConcurrentHashMap
+
+interface AdClickData {
+
+    fun setAdDomainTldPlusOne(adDomainTldPlusOne: String)
+    fun removeAdDomain()
+    fun removeAdDomain(tabId: String)
+    fun addExemption(exemption: Exemption)
+    fun addExemption(tabId: String, exemption: Exemption)
+    fun getExemption(): Exemption?
+    fun getExemption(tabId: String): Exemption?
+    fun isHostExempted(host: String): Boolean
+    fun removeExemption()
+    fun setActiveTab(tabId: String)
+    fun getAdDomainTldPlusOne(): String?
+    fun getAdDomainTldPlusOne(tabId: String): String?
+    fun remove(tabId: String)
+    fun removeAll()
+    fun removeAllExpired()
+    fun setCurrentPage(currentPageUrl: String)
+    fun getCurrentPage(): String
+}
+
+class DuckDuckGoAdClickData(
+    val database: AdClickExemptionsDatabase,
+    private val coroutineScope: CoroutineScope,
+    private val dispatcherProvider: DispatcherProvider,
+    private val adClickAttributionFeature: AdClickAttributionFeature,
+    isMainProcess: Boolean,
+) : AdClickData {
+
+    private val adClickExemptionsDao: AdClickExemptionsDao = database.adClickExemptionsDao()
+
+    private var currentPageUrl = ""
+    private var activeTabId = ""
+    private val tabAdDomains = mutableMapOf<String, String>() // tabId -> adDomain or empty
+    private val tabExemptions = ConcurrentHashMap<String, Exemption>() // tabId -> exemption
+
+    init {
+        coroutineScope.launch(dispatcherProvider.io()) {
+            if (isMainProcess && adClickAttributionFeature.persistExemptions().isEnabled()) {
+                loadToMemory()
+            }
+        }
+    }
+
+    override fun setAdDomainTldPlusOne(adDomainTldPlusOne: String) {
+        tabAdDomains[activeTabId] = adDomainTldPlusOne
+        Timber.d("Detected ad. Tab ad domains: $tabAdDomains")
+    }
+
+    override fun removeAdDomain() {
+        tabAdDomains.remove(activeTabId)
+        Timber.d("Removed previously detected ad. Tab ad domains: $tabAdDomains")
+    }
+
+    override fun removeAdDomain(tabId: String) {
+        tabAdDomains.remove(tabId)
+        Timber.d("Removed previously detected ad for $tabId. Current active tabId is $activeTabId. Tab ad domains: $tabAdDomains")
+    }
+
+    override fun setActiveTab(tabId: String) {
+        this.activeTabId = tabId
+    }
+
+    override fun getAdDomainTldPlusOne(): String? {
+        Timber.d("Is ad? ${tabAdDomains[activeTabId] != null} Tab ad domains: $tabAdDomains")
+        return tabAdDomains[activeTabId]
+    }
+
+    override fun getAdDomainTldPlusOne(tabId: String): String? {
+        Timber.d("Is ad for tabId $tabId? ${tabAdDomains[tabId] != null}. Active tab is $activeTabId. Tab ad domains: $tabAdDomains")
+        return tabAdDomains[tabId]
+    }
+
+    override fun removeExemption() {
+        tabExemptions.remove(activeTabId)
+        coroutineScope.launch(dispatcherProvider.io()) {
+            if (adClickAttributionFeature.persistExemptions().isEnabled()) {
+                adClickExemptionsDao.deleteTabExemption(activeTabId)
+            }
+        }
+        Timber.d("Removed exemption for active tab $activeTabId. Tab exemptions: $tabExemptions")
+    }
+
+    override fun addExemption(exemption: Exemption) {
+        tabExemptions[activeTabId] = exemption
+        coroutineScope.launch(dispatcherProvider.io()) {
+            if (adClickAttributionFeature.persistExemptions().isEnabled()) {
+                adClickExemptionsDao.insertTabExemption(
+                    AdClickTabExemptionEntity(
+                        tabId = activeTabId,
+                        hostTldPlusOne = exemption.hostTldPlusOne,
+                        navigationExemptionDeadline = exemption.navigationExemptionDeadline,
+                        exemptionDeadline = exemption.exemptionDeadline,
+                        adClickActivePixelFired = exemption.adClickActivePixelFired,
+                    ),
+                )
+            }
+        }
+        Timber.d("Added exemption for active tab $activeTabId. Tab exemptions: $tabExemptions")
+    }
+
+    override fun addExemption(tabId: String, exemption: Exemption) {
+        tabExemptions[tabId] = exemption
+        coroutineScope.launch(dispatcherProvider.io()) {
+            if (adClickAttributionFeature.persistExemptions().isEnabled()) {
+                adClickExemptionsDao.insertTabExemption(
+                    AdClickTabExemptionEntity(
+                        tabId = tabId,
+                        hostTldPlusOne = exemption.hostTldPlusOne,
+                        navigationExemptionDeadline = exemption.navigationExemptionDeadline,
+                        exemptionDeadline = exemption.exemptionDeadline,
+                        adClickActivePixelFired = exemption.adClickActivePixelFired,
+                    ),
+                )
+            }
+        }
+        Timber.d("Added exemption for tab $tabId. Tab exemptions: $tabExemptions")
+    }
+
+    override fun getExemption(): Exemption? {
+        Timber.d("Get exemption for tab $activeTabId. Tab exemptions: $tabExemptions")
+        return tabExemptions[activeTabId]
+    }
+
+    override fun getExemption(tabId: String): Exemption? {
+        return tabExemptions[tabId]
+    }
+
+    override fun isHostExempted(host: String): Boolean {
+        val tabExemption = tabExemptions[activeTabId] ?: return false
+        return tabExemption.hostTldPlusOne == host
+    }
+
+    override fun remove(tabId: String) {
+        tabAdDomains.remove(tabId)
+        tabExemptions.remove(tabId)
+        coroutineScope.launch(dispatcherProvider.io()) {
+            if (adClickAttributionFeature.persistExemptions().isEnabled()) {
+                adClickExemptionsDao.deleteTabExemption(tabId)
+            }
+        }
+        Timber.d("Removed data for tab $tabId. Tab ad domains: $tabAdDomains. Tab exemptions: $tabExemptions")
+    }
+
+    override fun removeAll() {
+        tabAdDomains.clear()
+        tabExemptions.clear()
+        coroutineScope.launch(dispatcherProvider.io()) {
+            if (adClickAttributionFeature.persistExemptions().isEnabled()) {
+                adClickExemptionsDao.deleteAllTabExemptions()
+            }
+        }
+        Timber.d("Removed all data. Ad clicked map is empty ${tabAdDomains.isEmpty()}. Empty tab exemptions? ${tabExemptions.isEmpty()}")
+    }
+
+    override fun removeAllExpired() {
+        val currentTime = System.currentTimeMillis()
+        val iterator = tabExemptions.iterator()
+        while (iterator.hasNext()) {
+            val entry = iterator.next()
+            if (entry.value.exemptionDeadline < currentTime) {
+                iterator.remove()
+            }
+        }
+        coroutineScope.launch(dispatcherProvider.io()) {
+            if (adClickAttributionFeature.persistExemptions().isEnabled()) {
+                adClickExemptionsDao.deleteAllExpiredTabExemptions(currentTime)
+            }
+        }
+        Timber.d("Removed all expired data. Tab exemptions: $tabExemptions")
+    }
+
+    override fun setCurrentPage(currentPageUrl: String) {
+        this.currentPageUrl = currentPageUrl
+    }
+
+    override fun getCurrentPage(): String {
+        return currentPageUrl
+    }
+
+    private fun loadToMemory() {
+        tabExemptions.putAll(
+            adClickExemptionsDao.getAllTabExemptions().associateBy(
+                { it.tabId },
+                {
+                    Exemption(
+                        hostTldPlusOne = it.hostTldPlusOne,
+                        navigationExemptionDeadline = it.navigationExemptionDeadline,
+                        exemptionDeadline = it.exemptionDeadline,
+                        adClickActivePixelFired = it.adClickActivePixelFired,
+                    )
+                },
+            ),
+        )
+    }
+}

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<resources>
+    <string name="featureFlagInventoryHeading">Some feature flags may need to re-launch the app or even force close it. You may know better!</string>
+</resources>

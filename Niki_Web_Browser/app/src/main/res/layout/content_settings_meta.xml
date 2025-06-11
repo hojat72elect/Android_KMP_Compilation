@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/settingsSectionOther"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.duckduckgo.common.ui.view.divider.HorizontalDivider
+        android:id="@+id/settingsOtherDivider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.duckduckgo.common.ui.view.listitem.OneLineListItem
+        android:id="@+id/aboutSetting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:primaryText="@string/settingsHeadingAbout"
+        app:leadingIcon="@drawable/ic_duckduckgo_color_24" />
+
+    <com.duckduckgo.common.ui.view.listitem.OneLineListItem
+        android:id="@+id/shareFeedbackSetting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:primaryText="@string/leaveFeedbackNew"
+        app:leadingIcon="@drawable/ic_feedback_color_24" />
+
+    <com.duckduckgo.common.ui.view.listitem.OneLineListItem
+        android:id="@+id/ddgOnOtherPlatformsSetting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leadingIcon="@drawable/ic_downloads_color_24"
+        app:primaryText="@string/settingsDDGOnOtherPlatforms"
+        app:trailingIcon="@drawable/ic_open_in_16"
+        app:trailingIconTint="?attr/daxColorSecondaryIcon"/>
+
+</LinearLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<resources>
+    <color name="daxPromptBackground">#ffe080</color>
+    <color name="daxPromptBackgroundDark">#074daf</color>
+</resources>

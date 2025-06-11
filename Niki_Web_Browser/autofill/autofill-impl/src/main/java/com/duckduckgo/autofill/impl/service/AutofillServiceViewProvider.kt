@@ -1,0 +1,133 @@
+
+
+package com.duckduckgo.autofill.impl.service
+
+import android.annotation.SuppressLint
+import android.app.PendingIntent
+import android.app.slice.Slice
+import android.content.Context
+import android.graphics.drawable.Icon
+import android.service.autofill.InlinePresentation
+import android.view.View
+import android.widget.RemoteViews
+import android.widget.inline.InlinePresentationSpec
+import androidx.annotation.DrawableRes
+import androidx.annotation.RequiresApi
+import androidx.autofill.inline.UiVersions
+import androidx.autofill.inline.v1.InlineSuggestionUi
+import com.duckduckgo.appbuildconfig.api.AppBuildConfig
+import com.duckduckgo.autofill.impl.R
+import com.duckduckgo.di.scopes.AppScope
+import com.squareup.anvil.annotations.ContributesBinding
+import dagger.SingleInstanceIn
+import javax.inject.Inject
+
+interface AutofillServiceViewProvider {
+    fun createFormPresentation(
+        context: Context,
+        suggestionTitle: String,
+        suggestionSubtitle: String,
+        icon: Int,
+    ): RemoteViews
+
+    fun createInlinePresentation(
+        context: Context,
+        pendingIntent: PendingIntent,
+        suggestionTitle: String,
+        suggestionSubtitle: String,
+        icon: Int,
+        inlinePresentationSpec: InlinePresentationSpec,
+    ): InlinePresentation?
+}
+
+@SingleInstanceIn(AppScope::class)
+@ContributesBinding(AppScope::class)
+class RealAutofillServiceViewProvider @Inject constructor(
+    private val appBuildConfig: AppBuildConfig,
+) : AutofillServiceViewProvider {
+
+    override fun createFormPresentation(
+        context: Context,
+        suggestionTitle: String,
+        suggestionSubtitle: String,
+        icon: Int,
+    ) = buildAutofillRemoteViews(
+        context = context,
+        name = suggestionTitle,
+        subtitle = suggestionSubtitle,
+        iconRes = icon,
+    )
+
+    @RequiresApi(30)
+    override fun createInlinePresentation(
+        context: Context,
+        pendingIntent: PendingIntent,
+        suggestionTitle: String,
+        suggestionSubtitle: String,
+        icon: Int,
+        inlinePresentationSpec: InlinePresentationSpec,
+    ): InlinePresentation? {
+        val isInlineSupported = isInlineSuggestionSupported(inlinePresentationSpec)
+        if (isInlineSupported) {
+            val slice = createSlice(context, pendingIntent, suggestionTitle, suggestionSubtitle, icon)
+            return InlinePresentation(slice, inlinePresentationSpec, false)
+        }
+        return null
+    }
+
+    @RequiresApi(30)
+    private fun isInlineSuggestionSupported(inlinePresentationSpec: InlinePresentationSpec?): Boolean {
+        // requires >= android 11
+        return if (appBuildConfig.sdkInt >= 30 && inlinePresentationSpec != null) {
+            UiVersions.getVersions(inlinePresentationSpec.style).contains(UiVersions.INLINE_UI_VERSION_1)
+        } else {
+            false
+        }
+    }
+
+    @SuppressLint("RestrictedApi") // because getSlice, but docs clearly indicate you need to use that method.
+    @RequiresApi(30)
+    private fun createSlice(
+        context: Context,
+        pendingIntent: PendingIntent,
+        suggestionTitle: String,
+        suggestionSubtitle: String,
+        icon: Int,
+    ): Slice {
+        val slice = InlineSuggestionUi.newContentBuilder(
+            pendingIntent,
+        ).setTitle(suggestionTitle)
+            .setSubtitle(suggestionSubtitle)
+            .setStartIcon(Icon.createWithResource(context, icon))
+            .build().slice
+        return slice
+    }
+
+    private fun buildAutofillRemoteViews(
+        context: Context,
+        name: String,
+        subtitle: String,
+        @DrawableRes iconRes: Int,
+    ): RemoteViews =
+        RemoteViews(
+            context.packageName,
+            R.layout.autofill_remote_view,
+        ).apply {
+            setTextViewText(
+                R.id.title,
+                name,
+            )
+            setTextViewText(
+                R.id.subtitle,
+                subtitle,
+            )
+            setImageViewResource(
+                R.id.ddgIcon,
+                iconRes,
+            )
+            setViewVisibility(
+                R.id.subtitle,
+                if (subtitle.isEmpty()) View.GONE else View.VISIBLE,
+            )
+        }
+}

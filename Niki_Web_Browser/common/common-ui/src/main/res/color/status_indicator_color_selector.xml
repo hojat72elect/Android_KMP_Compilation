@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <item android:color="@color/gray50"  android:state_enabled="false" tools:ignore="InvalidColorAttribute" />
+    <item android:color="@color/alertGreen"  android:state_enabled="true" tools:ignore="InvalidColorAttribute" />
+</selector>

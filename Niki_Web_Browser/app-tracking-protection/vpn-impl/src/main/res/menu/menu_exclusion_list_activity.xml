@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/restoreDefaults"
+        android:title="@string/atp_ExcludeAppsManuallyMenuRestore"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/reportIssue"
+        android:title="@string/atp_ExcludeAppsManuallyMenuReport"
+        app:showAsAction="never" />
+
+</menu>

@@ -1,0 +1,11 @@
+
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="20dp"
+    android:height="20dp"
+    android:viewportWidth="20"
+    android:viewportHeight="20">
+    <path
+        android:pathData="M15.25,5a0.75,0.75 0,0 0,0 -1.5h-11a0.75,0.75 0,0 0,-0.75 0.75v11a0.75,0.75 0,0 0,1.5 0V6.06l10.22,10.22a0.75,0.75 0,1 0,1.06 -1.06L6.06,5h9.19Z"
+        android:fillColor="?attr/daxColorSecondaryText"/>
+</vector>

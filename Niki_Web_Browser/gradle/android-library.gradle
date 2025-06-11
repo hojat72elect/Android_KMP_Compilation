@@ -1,0 +1,61 @@
+
+
+apply from: "$rootDir/code-formatting.gradle"
+
+android {
+    compileSdkVersion compile_sdk
+
+    defaultConfig {
+        minSdk min_sdk
+        targetSdk target_sdk
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    lint {
+        abortOnError true
+        ignoreTestSources false
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlin {
+        jvmToolchain(17)
+    }
+    buildFeatures {
+        viewBinding = true
+    }
+}
+dependencies {
+    lintChecks project(':lint-rules')
+}
+
+tasks.register('checks') {
+    dependsOn 'jvm_checks', 'android_checks'
+}
+
+tasks.register('android_checks') {
+    dependsOn 'connectedDebugAndroidTest'
+}
+
+tasks.register('jvm_checks') {
+    dependsOn 'spotlessCheck', 'lint', 'testDebugUnitTest'
+}
+
+tasks.register('jvm_tests') {
+    dependsOn 'testDebugUnitTest'
+}
+
+tasks.register('lint_check') {
+    dependsOn 'lint'
+}

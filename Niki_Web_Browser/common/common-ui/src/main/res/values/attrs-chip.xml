@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<resources>
+
+    <!--Chip view-->
+    <declare-styleable name="Chip">
+        <attr name="chipBackground" format="reference" />
+        <attr name="android:text"/>
+    </declare-styleable>
+
+</resources>

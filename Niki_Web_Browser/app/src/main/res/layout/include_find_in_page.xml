@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/findInPageContainer"
+              android:layout_width="match_parent"
+              android:layout_height="?attr/actionBarSize"
+              android:background="@drawable/layer_list_find_in_page"
+              android:orientation="horizontal"
+              android:gravity="center"
+              tools:ignore="KeyboardInaccessibleWidget"
+              tools:layout_height="?attr/actionBarSize">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:importantForAccessibility="no"
+        android:gravity="center"
+        android:layout_marginStart="20dp"
+        android:src="@drawable/ic_find_search_small_24" />
+
+    <EditText
+        android:id="@+id/findInPageInput"
+        style="@style/Widget.DuckDuckGo.SearchInput"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:hint="@string/findInPageHint"
+        tools:text="Search term"/>
+
+    <com.duckduckgo.common.ui.view.text.DaxTextView
+        app:typography="body2"
+        app:textType="secondary"
+        android:id="@+id/findInPageMatches"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        tools:text="1/10"/>
+
+    <ImageView
+        android:id="@+id/previousSearchTermButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/keyline_2"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/previousSearchTermDescription"
+        android:src="@drawable/ic_chevron_up_24"/>
+
+    <ImageView
+        android:id="@+id/nextSearchTermButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/keyline_2"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/nextSearchTermDescription"
+        android:src="@drawable/ic_chevron_down_24"/>
+
+    <ImageView
+        android:id="@+id/closeFindInPagePanel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/closeFindInPageButtonDescription"
+        android:padding="@dimen/keyline_2"
+        android:layout_marginEnd="12dp"
+        android:src="@drawable/ic_close_24"/>
+
+</LinearLayout>

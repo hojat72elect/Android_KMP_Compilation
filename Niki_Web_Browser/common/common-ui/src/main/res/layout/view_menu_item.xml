@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:parentTag="android.widget.LinearLayout">
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="@dimen/keyline_4"
+        android:layout_height="@dimen/keyline_4"
+        android:layout_gravity="center_vertical"
+        tools:ignore="ContentDescription" />
+
+    <com.duckduckgo.common.ui.view.text.DaxTextView
+        android:id="@+id/label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="@dimen/keyline_2"
+        app:typography="body1"
+        tools:text="Text label" />
+</merge>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/incompatibleAppIconContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/listItemImageContainerSize"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="@dimen/keyline_4">
+
+        <ImageView
+            android:id="@+id/incompatibleAppIcon"
+            android:layout_width="@dimen/listItemImageLargeSize"
+            android:layout_height="@dimen/listItemImageLargeSize"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_globe_16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/incompatibleAppIconWarning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="-8dp"
+            android:layout_marginBottom="-4dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_exclamation_yellow_24"
+            app:layout_constraintBottom_toBottomOf="@id/incompatibleAppIcon"
+            app:layout_constraintEnd_toEndOf="@id/incompatibleAppIcon" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.duckduckgo.common.ui.view.listitem.TwoLineListItem
+        android:id="@+id/incompatibleAppInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/keyline_7"
+        app:showSwitch="true" />
+</FrameLayout>

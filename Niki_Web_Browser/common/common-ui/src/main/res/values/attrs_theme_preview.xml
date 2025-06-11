@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <!--Common attributes-->
+    <attr name="colorFillColor" format="color"/>
+    <attr name="colorStrokeColor" format="color"/>
+
+    <!--Label view attributes-->
+    <declare-styleable name="LabelLinkView">
+        <attr name="android:text" />
+        <attr name="leadingIcon"/>
+        <attr name="linkUrl" format="string" />
+    </declare-styleable>
+
+    <!--Color attribute view attributes-->
+    <declare-styleable name="ColorAttributeView">
+        <attr name="android:text"/>
+        <attr name="colorFillColor"/>
+        <attr name="colorStrokeColor"/>
+    </declare-styleable>
+
+    <!--Color dot view attributes-->
+    <declare-styleable name="ColorDotView">
+        <attr name="colorFillColor"/>
+        <attr name="colorStrokeColor"/>
+    </declare-styleable>
+
+</resources>

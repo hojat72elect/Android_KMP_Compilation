@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/newTabLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:fillViewport="true"
+    app:layout_behavior="com.duckduckgo.app.browser.webview.TopOmnibarBrowserContainerLayoutBehavior"
+    tools:context="com.duckduckgo.app.browser.BrowserActivity"
+    tools:showIn="@layout/fragment_browser_tab">
+
+    <ImageView
+        android:id="@+id/browserBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        tools:srcCompat="@drawable/onboarding_background_bitmap_light" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/newTabPage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:foreground="@android:color/transparent">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/newTabContainerScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <FrameLayout
+                android:id="@+id/newTabContainerLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.core.widget.NestedScrollView>
+
+        <include
+            android:id="@+id/includeOnboardingDaxDialogBubble"
+            layout="@layout/include_onboarding_bubble_dax_dialog"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/keyline_4"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_max="600dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

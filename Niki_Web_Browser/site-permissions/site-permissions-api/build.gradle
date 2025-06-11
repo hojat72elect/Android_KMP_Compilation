@@ -1,0 +1,25 @@
+
+
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+apply from: "$rootProject.projectDir/gradle/android-library.gradle"
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+kotlin {
+    jvmToolchain(17)
+}
+
+dependencies {
+    implementation AndroidX.appCompat
+}
+
+android {
+    namespace 'com.duckduckgo.site.permissions.api'
+}

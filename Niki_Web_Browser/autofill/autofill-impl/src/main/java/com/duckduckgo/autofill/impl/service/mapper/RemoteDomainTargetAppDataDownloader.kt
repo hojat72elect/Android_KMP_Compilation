@@ -1,0 +1,88 @@
+
+
+package com.duckduckgo.autofill.impl.service.mapper
+
+import androidx.lifecycle.LifecycleOwner
+import com.duckduckgo.app.di.AppCoroutineScope
+import com.duckduckgo.app.lifecycle.MainProcessLifecycleObserver
+import com.duckduckgo.autofill.impl.service.AutofillServiceFeature
+import com.duckduckgo.autofill.store.AutofillPrefsStore
+import com.duckduckgo.autofill.store.targets.DomainTargetAppDao
+import com.duckduckgo.autofill.store.targets.DomainTargetAppEntity
+import com.duckduckgo.autofill.store.targets.TargetApp
+import com.duckduckgo.common.utils.CurrentTimeProvider
+import com.duckduckgo.common.utils.DispatcherProvider
+import com.duckduckgo.di.scopes.AppScope
+import com.squareup.anvil.annotations.ContributesMultibinding
+import javax.inject.Inject
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
+import timber.log.Timber
+
+@ContributesMultibinding(
+    scope = AppScope::class,
+    boundType = MainProcessLifecycleObserver::class,
+)
+class RemoteDomainTargetAppDataDownloader @Inject constructor(
+    @AppCoroutineScope private val appCoroutineScope: CoroutineScope,
+    private val dispatcherProvider: DispatcherProvider,
+    private val remoteDomainTargetAppService: RemoteDomainTargetAppService,
+    private val autofillPrefsStore: AutofillPrefsStore,
+    private val domainTargetAppDao: DomainTargetAppDao,
+    private val currentTimeProvider: CurrentTimeProvider,
+    private val autofillServiceFeature: AutofillServiceFeature,
+) : MainProcessLifecycleObserver {
+    override fun onCreate(owner: LifecycleOwner) {
+        super.onCreate(owner)
+        appCoroutineScope.launch(dispatcherProvider.io()) {
+            if (autofillServiceFeature.canUpdateAppToDomainDataset().isEnabled().not()) return@launch
+
+            Timber.d("Autofill-mapping: Attempting to download")
+            download()
+            removeExpiredCachedData()
+        }
+    }
+
+    private suspend fun download() {
+        runCatching {
+            remoteDomainTargetAppService.fetchDataset().run {
+                Timber.d("Autofill-mapping: Downloaded targets dataset version: ${this.version}")
+                if (autofillPrefsStore.domainTargetDatasetVersion != this.version) {
+                    persistData(this)
+                    autofillPrefsStore.domainTargetDatasetVersion = this.version
+                }
+            }
+        }.onFailure {
+            Timber.e(it, "Autofill-mapping: Dataset download failed")
+        }
+    }
+
+    private fun persistData(dataset: RemoteDomainTargetDataSet) {
+        Timber.d("Autofill-mapping: Persisting targets dataset")
+        val toPersist = mutableListOf<DomainTargetAppEntity>()
+        dataset.targets.forEach { target ->
+            target.apps.forEach { app ->
+                app.sha256_cert_fingerprints.forEach {
+                    toPersist.add(
+                        DomainTargetAppEntity(
+                            domain = target.url,
+                            targetApp = TargetApp(
+                                packageName = app.package_name,
+                                sha256CertFingerprints = it,
+                            ),
+                            dataExpiryInMillis = 0L,
+                        ),
+                    )
+                }
+            }
+        }
+        Timber.d("Autofill-mapping: Attempting to persist ${toPersist.size} entries")
+        domainTargetAppDao.updateRemote(toPersist)
+        Timber.d("Autofill-mapping: Persist complete")
+    }
+
+    private fun removeExpiredCachedData() {
+        Timber.d("Autofill-mapping: Removing expired cached data")
+        domainTargetAppDao.deleteAllExpired(currentTimeProvider.currentTimeMillis())
+    }
+}

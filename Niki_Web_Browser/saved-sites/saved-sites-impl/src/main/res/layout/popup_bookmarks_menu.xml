@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/popup_menu_bg">
+
+    <com.duckduckgo.common.ui.view.PopupMenuItemView
+        android:id="@+id/sortManually"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:primaryText="@string/popupBookmarksSortManually" />
+
+    <com.duckduckgo.common.ui.view.PopupMenuItemView
+        android:id="@+id/sortByName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:primaryText="@string/popupBookmarksSortByName" />
+
+    <com.duckduckgo.common.ui.view.divider.HorizontalDivider
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:defaultPadding="false" />
+
+    <com.duckduckgo.common.ui.view.PopupMenuItemView
+        android:id="@+id/importBookmarks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:primaryText="@string/importBookmarksMenu" />
+
+    <com.duckduckgo.common.ui.view.PopupMenuItemView
+        android:id="@+id/exportBookmarks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:primaryText="@string/exportBookmarksMenu" />
+</LinearLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.duckduckgo.common.ui.view.listitem.SettingsListItem xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/netpPSetting"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:leadingIcon="@drawable/ic_vpn_color_24"
+    app:indicatorStatus="off"
+    app:primaryText="@string/netpSubscriptionSettingsTitle" />

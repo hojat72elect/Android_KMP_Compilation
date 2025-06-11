@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:background="@drawable/top_banner"
+    android:paddingStart="@dimen/keyline_4"
+    android:paddingTop="@dimen/keyline_4"
+    android:paddingEnd="@dimen/keyline_4"
+    android:paddingBottom="@dimen/keyline_4"
+    android:alpha="0"
+    android:elevation="4dp"
+    tools:alpha="1">
+
+    <com.duckduckgo.common.ui.view.text.DaxTextView
+        android:id="@+id/titleText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/broken_site_prompt_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:typography="h3" />
+
+    <com.duckduckgo.common.ui.view.text.DaxTextView
+        android:id="@+id/bodyText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/broken_site_prompt_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleText"
+        app:typography="body2" />
+
+    <com.duckduckgo.common.ui.view.button.DaxButtonPrimary
+        android:id="@+id/reportButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/broken_site_prompt_button_report"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bodyText"
+        android:layout_marginTop="@dimen/keyline_2"
+        app:daxButtonSize="small" />
+
+    <com.duckduckgo.common.ui.view.button.DaxButtonGhost
+        android:id="@+id/dismissButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/broken_site_prompt_button_dismiss"
+        android:layout_marginStart="@dimen/keyline_2"
+        app:layout_constraintStart_toEndOf="@id/reportButton"
+        app:layout_constraintTop_toTopOf="@id/reportButton"
+        app:daxButtonSize="small" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

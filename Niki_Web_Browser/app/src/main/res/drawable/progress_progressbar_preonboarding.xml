@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Background for the progress bar (gray border) -->
+    <item>
+        <shape android:shape="rectangle">
+            <stroke
+                android:width="@dimen/horizontalDividerHeight"
+                android:color="?attr/daxColorLines" />
+            <corners android:radius="64dp" />
+            <solid android:color="@android:color/transparent" />
+        </shape>
+    </item>
+
+    <!-- Progress with gradient (using ClipDrawable for progress effect) -->
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape android:shape="rectangle">
+                <gradient
+                    android:angle="0"
+                    android:centerColor="?attr/daxColorPreonboardingProgressBarCenter"
+                    android:endColor="?attr/daxColorPreonboardingProgressBarEnd"
+                    android:startColor="?attr/daxColorPreonboardingProgressBarStart" />
+                <corners android:radius="64dp" />
+            </shape>
+        </clip>
+    </item>
+
+</layer-list>

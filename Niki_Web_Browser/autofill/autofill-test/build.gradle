@@ -1,0 +1,20 @@
+
+
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+apply from: "$rootProject.projectDir/gradle/android-library.gradle"
+
+dependencies {
+    implementation project(path: ':autofill-api')
+
+    implementation KotlinX.coroutines.core
+    implementation AndroidX.appCompat
+}
+
+
+android {
+  namespace 'com.duckduckgo.autofill.api.test'
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <declare-styleable name="SettingsListItem">
+        <attr name="leadingIcon" />
+        <attr name="primaryText" />
+        <attr name="showBetaPill" />
+        <attr name="indicatorStatus" />
+    </declare-styleable>
+</resources>

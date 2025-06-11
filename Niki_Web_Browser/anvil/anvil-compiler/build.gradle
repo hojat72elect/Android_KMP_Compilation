@@ -1,0 +1,34 @@
+
+import static de.fayard.refreshVersions.core.Versions.versionFor
+
+plugins {
+    id 'java-library'
+    id 'kotlin'
+    id 'com.google.devtools.ksp'
+}
+
+apply from: "$rootProject.projectDir/code-formatting.gradle"
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+kotlin {
+    jvmToolchain(17)
+}
+
+dependencies {
+    implementation project(path: ':anvil-annotations')
+
+    def anvil_version = versionFor(project, "plugin.com.squareup.anvil")
+    api "com.squareup.anvil:compiler-api:$anvil_version"
+    implementation("com.squareup.anvil:compiler-utils:$anvil_version")
+    implementation("com.squareup:kotlinpoet:1.11.0")
+    implementation Google.dagger
+    implementation project(":feature-toggles-api")
+
+    implementation "com.google.auto.service:auto-service-annotations:1.1.0"
+    ksp "dev.zacsweers.autoservice:auto-service-ksp:1.1.0"
+}
+

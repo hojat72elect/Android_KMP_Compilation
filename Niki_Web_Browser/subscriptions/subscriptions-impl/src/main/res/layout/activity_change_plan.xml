@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              tools:context="com.duckduckgo.subscriptions.impl.ui.ChangePlanActivity">
+
+    <include
+            android:id="@+id/includeToolbar"
+            layout="@layout/include_default_toolbar"/>
+
+    <ScrollView
+            android:fillViewport="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <ImageView
+                    android:id="@+id/headerImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/keyline_5"
+                    app:srcCompat="@drawable/ic_apple_logo"
+                    tools:ignore="ContentDescription" />
+
+            <com.duckduckgo.common.ui.view.text.DaxTextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/keyline_5"
+                    android:layout_marginStart="@dimen/keyline_5"
+                    android:layout_marginEnd="@dimen/keyline_5"
+                    android:gravity="center"
+                    app:typography="body1"
+                    android:text="@string/changePlanDescription"
+                    tools:ignore="HardcodedText"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

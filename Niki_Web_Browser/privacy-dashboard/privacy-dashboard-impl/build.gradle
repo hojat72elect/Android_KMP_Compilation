@@ -1,0 +1,92 @@
+
+
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'com.squareup.anvil'
+    id 'com.google.devtools.ksp'
+}
+
+apply from: "$rootProject.projectDir/gradle/android-library.gradle"
+
+android {
+    namespace 'com.duckduckgo.privacy.dashboard.impl'
+}
+
+dependencies {
+    anvil project(':anvil-compiler')
+    implementation project(':anvil-annotations')
+    implementation project(':di')
+    implementation project(':privacy-dashboard-api')
+    implementation project(':privacy-config-api')
+    implementation project(':statistics-api')
+    implementation project(':common-utils')
+    implementation project(':common-ui')
+    implementation project(':browser-api')
+    implementation project(':autoconsent')
+    implementation project(':app-build-config-api')
+    implementation project(':navigation-api')
+    implementation project(':feature-toggles-api')
+    implementation project(':privacy-protections-popup-api')
+    implementation project(':broken-site-api')
+    api AndroidX.dataStore.preferences
+
+    implementation Google.dagger
+    implementation AndroidX.appCompat
+    implementation AndroidX.lifecycle.runtime.ktx
+    implementation AndroidX.lifecycle.viewModelKtx
+    implementation Google.android.material
+
+    implementation JakeWharton.timber
+    implementation Square.moshi
+    implementation "com.squareup.moshi:moshi-adapters:_"
+    implementation "com.airbnb.android:lottie:_"
+    implementation Square.okHttp3.okHttp
+
+    testImplementation project(':common-test')
+    testImplementation project(':feature-toggles-test')
+    testImplementation Testing.junit4
+    testImplementation AndroidX.test.ext.junit
+    testImplementation CashApp.turbine
+    testImplementation Testing.mockito.kotlin
+    testImplementation "org.mockito.kotlin:mockito-kotlin:_"
+    testImplementation "androidx.test:runner:_"
+    testImplementation Testing.robolectric
+    testImplementation (KotlinX.coroutines.test) {
+        // https://github.com/Kotlin/kotlinx.coroutines/issues/2023
+        // conflicts with mockito due to direct inclusion of byte buddy
+        exclude group: "org.jetbrains.kotlinx", module: "kotlinx-coroutines-debug"
+    }
+
+    androidTestImplementation project(':common-test')
+    androidTestImplementation AndroidX.archCore.testing
+    androidTestImplementation AndroidX.test.runner
+    androidTestImplementation AndroidX.test.rules
+    androidTestImplementation CashApp.turbine
+    androidTestImplementation "org.mockito:mockito-android:_"
+    androidTestImplementation "org.mockito.kotlin:mockito-kotlin:_"
+
+    coreLibraryDesugaring Android.tools.desugarJdkLibs
+}
+
+android {
+    anvil {
+        generateDaggerFactories = true // default is false
+    }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+    compileOptions {
+        coreLibraryDesugaringEnabled = true
+    }
+}
+
+fulladleModuleConfig {
+    maxTestShards.set(1)
+}
+
+tasks.register('androidTestsBuild') {
+    dependsOn 'assembleDebugAndroidTest'
+}

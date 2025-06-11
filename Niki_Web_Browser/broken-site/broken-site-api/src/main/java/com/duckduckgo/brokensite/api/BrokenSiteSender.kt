@@ -1,0 +1,35 @@
+
+
+package com.duckduckgo.brokensite.api
+
+interface BrokenSiteSender {
+    fun submitBrokenSiteFeedback(brokenSite: BrokenSite, toggle: Boolean)
+}
+
+data class BrokenSite(
+    val category: String?,
+    val description: String?,
+    val siteUrl: String,
+    val upgradeHttps: Boolean,
+    val blockedTrackers: String,
+    val surrogates: String,
+    val siteType: String,
+    val urlParametersRemoved: Boolean,
+    val consentManaged: Boolean,
+    val consentOptOutFailed: Boolean,
+    val consentSelfTestFailed: Boolean,
+    val errorCodes: String,
+    val httpErrorCodes: String,
+    val loginSite: String?,
+    val reportFlow: ReportFlow?,
+    val userRefreshCount: Int,
+    val openerContext: String?,
+    val jsPerformance: List<Double>?,
+) {
+    companion object {
+        const val SITE_TYPE_DESKTOP = "desktop"
+        const val SITE_TYPE_MOBILE = "mobile"
+    }
+}
+
+enum class ReportFlow { DASHBOARD, MENU, TOGGLE_DASHBOARD, TOGGLE_MENU, RELOAD_THREE_TIMES_WITHIN_20_SECONDS }

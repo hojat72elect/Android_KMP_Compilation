@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<animated-selector xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:width="@dimen/mtrl_switch_thumb_size"
+  android:height="@dimen/mtrl_switch_thumb_size"
+  tools:ignore="NewApi">
+
+  <item
+    android:id="@+id/pressed"
+    android:drawable="@drawable/mtrl_switch_thumb_pressed"
+    android:state_pressed="true" />
+
+  <item
+    android:id="@+id/checked"
+    android:drawable="@drawable/mtrl_switch_thumb_checked"
+    android:state_checked="true" />
+
+  <item
+    android:id="@+id/with_icon"
+    android:drawable="@drawable/mtrl_switch_thumb_checked"
+    app:state_with_icon="true" />
+
+  <item
+    android:id="@+id/unchecked"
+    android:drawable="@drawable/mtrl_switch_thumb_checked" />
+
+</animated-selector>

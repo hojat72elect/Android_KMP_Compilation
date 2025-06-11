@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <declare-styleable name="SearchBarView">
+        <attr name="android:background"/>
+        <attr name="searchHint" format="string" />
+        <attr name="clearActionContentDescription" format="string" />
+        <attr name="upActionContentDescription" format="string" />
+    </declare-styleable>
+
+</resources>
