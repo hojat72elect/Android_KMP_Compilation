@@ -1,0 +1,11 @@
+Added setting to have a search button shown in the suggestions row
+Added support for multiple active media players
+Added separate color settings for the today view card
+
+Redesigned app icon
+Redesigned media player
+Changed today view
+Tweaked UI
+Improved suggestions
+
+Fixed using new functions on old android versions

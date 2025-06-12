@@ -1,0 +1,21 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="IonLauncher">
+        <item name="android:windowShowWallpaper">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:colorAccent">#fff</item>
+    </style>
+
+    <!-- Settings theme. -->
+    <style name="IonLauncher.Settings">
+        <item name="android:windowShowWallpaper">false</item>
+        <item name="android:windowBackground">@color/color_bg</item>
+        <item name="android:colorBackground">@color/color_bg</item>
+    </style>
+</resources>
