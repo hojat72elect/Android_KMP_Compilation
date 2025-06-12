@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/camera_fragment">
+
+
+    <fragment
+        android:id="@+id/camera_fragment"
+        android:name="ca.hojat.smartcamera.feature_camera.CameraFragment"
+        android:label="CameraFragment"
+        tools:layout="@layout/fragment_camera">
+
+        <action
+            android:id="@+id/action_camera_to_gallery"
+            app:destination="@id/gallery_fragment" />
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/gallery_fragment"
+
+        android:name="ca.hojat.smartcamera.feature_gallery.GalleryFragment"
+        android:label="GalleryFragment"
+        tools:layout="@layout/fragment_gallery">
+
+        <argument
+            android:name="root_directory"
+            app:argType="string" />
+    </fragment>
+
+</navigation>
