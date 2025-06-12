@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="theme_dark">"Dunkel"</string>
+    <string name="dialog_delete">"Löschen"</string>
+    <string name="related_display_settings">"Display Einstellungen"</string>
+    <string name="dialog_gradient_color">"Farbverlauf"</string>
+    <string name="home_screen">"Startbildschirm"</string>
+    <string name="theme_light">"Hell"</string>
+    <string name="lock_screen">"Sperrbildschirm"</string>
+    <string name="notification_description">"Klicken um die Benachrichtigung auszublenden"</string>
+    <string name="dialog_pick_new_image">"Wähle ein neues Bild"</string>
+    <string name="dialog_plain_color">"Einfache Farbe"</string>
+    <string name="preference_time_next_day">"%s am nächsten Tag"</string>
+    <string name="preference_preview_placeholder">"Auswählen"</string>
+    <string name="related_service_notification">"Service Benachrichtigung"</string>
+    <string name="preference_set_schedule">"Zeitplan festlegen"</string>
+    <string name="dialog_set_wallpaper_as">"Hintergrund festlegen als"</string>
+    <string name="about_source_code">"Quellcode"</string>
+    <string name="about_translations">"Übersetzungen"</string>
+    <string name="preference_trigger">"Auslöser"</string>
+    <string name="preference_trigger_theme">"Geräte-Thema"</string>
+    <string name="preference_trigger_time">"Zeit"</string>
+    <string name="dialog_use_current">"Aktuellen benutzen"</string>
+    <string name="related_wallpaper_and_style">"Hintergrund und Stil"</string>
+    <string name="notification_title">"Hintergrund Service"</string>
+</resources>

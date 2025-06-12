@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="theme_dark">"มืด"</string>
+    <string name="dialog_delete">"ลบ"</string>
+    <string name="home_screen">"หน้าจอหลัก"</string>
+    <string name="theme_light">"สว่าง"</string>
+    <string name="lock_screen">"หน้าจอล็อก"</string>
+    <string name="notification_description">"แตะที่นี่เพื่อซ่อนการแจ้งเตือน"</string>
+    <string name="preference_time_next_day">"%s วันถัดไป"</string>
+    <string name="preference_preview_placeholder">"เลือก"</string>
+    <string name="related_service_notification">"หมวดหมู่การแจ้งเตือน"</string>
+    <string name="preference_set_schedule">"ตั้งค่ากำหนดการ"</string>
+    <string name="dialog_set_wallpaper_as">"ตั้งวอลเปเปอร์ที่"</string>
+    <string name="about_source_code">"รหัสแหล่งที่มา"</string>
+    <string name="about_translations">"แปลภาษา"</string>
+    <string name="dialog_use_current">"ใช้วอลเปเปอร์ปัจจุบัน"</string>
+    <string name="related_wallpaper_and_style">"วอลเปเปอร์และสไตล์"</string>
+    <string name="notification_title">"วอลเปเปอร์ปกติ"</string>
+</resources>

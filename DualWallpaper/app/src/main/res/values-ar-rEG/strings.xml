@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="theme_dark">"داكن"</string>
+    <string name="dialog_delete">"حذف"</string>
+    <string name="home_screen">"الشاشة الرئيسية"</string>
+    <string name="theme_light">"ساطع"</string>
+    <string name="lock_screen">"شاشة القفل"</string>
+    <string name="notification_description">"اضغط لإخفاء هذا الإشعار"</string>
+    <string name="preference_time_next_day">"%s اليوم التالي"</string>
+    <string name="preference_preview_placeholder">"حدد"</string>
+    <string name="related_service_notification">"إشعار الخدمة"</string>
+    <string name="preference_set_schedule">"ضبط جدول"</string>
+    <string name="dialog_set_wallpaper_as">"تعيين الخلفية كـ"</string>
+    <string name="about_source_code">"رمز المصدر"</string>
+    <string name="about_translations">"الترجمات"</string>
+    <string name="dialog_use_current">"استخدم الحالي"</string>
+    <string name="related_wallpaper_and_style">"الخلفية والنمط"</string>
+    <string name="notification_title">"خدمة الخلفيات"</string>
+</resources>

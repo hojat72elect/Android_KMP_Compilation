@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">"DualWallpaper"</string>
+
+    <string name="home_screen">"Home screen"</string>
+    <string name="lock_screen">"Lock screen"</string>
+
+    <string name="theme_dark">"Dark"</string>
+    <string name="theme_light">"Light"</string>
+
+    <string name="dialog_use_current">"Use current"</string>
+    <string name="dialog_gradient_color">"Gradient color"</string>
+    <string name="dialog_delete">"Delete"</string>
+    <string name="dialog_pick_new_image">"Pick new image"</string>
+    <string name="dialog_plain_color">"Plain color"</string>
+    <string name="dialog_set_wallpaper_as">"Set wallpaper as"</string>
+    <string name="dialog_type_name_separator" translatable="false">"%s - %s"</string>
+
+    <string name="preference_time_next_day">"%s next day"</string>
+    <string name="preference_preview_placeholder">"Select"</string>
+    <string name="preference_set_schedule">"Set Schedule"</string>
+    <string name="preference_trigger">"Trigger"</string>
+    <string name="preference_trigger_theme">"Device theme"</string>
+    <string name="preference_trigger_time">"Time"</string>
+
+    <string name="related_display_settings">"Display Settings"</string>
+    <string name="related_service_notification">"Service Notification"</string>
+    <string name="related_wallpaper_and_style">"Wallpaper and Style"</string>
+
+    <string name="about_translations">"Translations"</string>
+    <string name="about_source_code">"Source Code"</string>
+    <string name="about_sponsor">"Sponsor"</string>
+
+    <string name="notification_title">"Wallpaper Service"</string>
+    <string name="notification_description">"Click to hide this notification"</string>
+
+    <string name="error_wallpaper_not_supported">"Your current wallpaper is not supported."</string>
+    <string name="error_storage_permission_not_granted">"Storage permission not granted."</string>
+    <string name="error_saving_wallpaper">"Error while saving wallpaper."</string>
+
+</resources>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="theme_dark">"Tumma"</string>
+    <string name="dialog_delete">"Poista"</string>
+    <string name="related_display_settings">"Näyttö Asetukset"</string>
+    <string name="dialog_gradient_color">"Gradientin väri"</string>
+    <string name="home_screen">"Kotinäyttö"</string>
+    <string name="theme_light">"Kirkas"</string>
+    <string name="lock_screen">"Lukitusnäyttö"</string>
+    <string name="notification_description">"Paina suljettaeksi tämä ilmoitus."</string>
+    <string name="dialog_pick_new_image">"Valitse uusi kuva"</string>
+    <string name="dialog_plain_color">"Tavallinen väri"</string>
+    <string name="preference_time_next_day">"%s seuraava päivä"</string>
+    <string name="preference_preview_placeholder">"Valitse"</string>
+    <string name="related_service_notification">"Palvelu Ilmoitus"</string>
+    <string name="preference_set_schedule">"Aseta Aikataulu"</string>
+    <string name="dialog_set_wallpaper_as">"Aseta taustakuva"</string>
+    <string name="about_source_code">"Lähdekoodi"</string>
+    <string name="about_translations">"Käännökset"</string>
+    <string name="preference_trigger">"Laukaisu"</string>
+    <string name="preference_trigger_theme">"Laite Teema"</string>
+    <string name="preference_trigger_time">"Aika"</string>
+    <string name="dialog_use_current">"Käytä nykyistä"</string>
+    <string name="related_wallpaper_and_style">"Taustakuva ja Tyyli"</string>
+    <string name="notification_title">"Taustakuva Palvelu"</string>
+</resources>

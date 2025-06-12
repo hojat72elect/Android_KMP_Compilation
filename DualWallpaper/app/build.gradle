@@ -1,0 +1,70 @@
+plugins {
+    id 'com.android.application'
+    id 'com.hyperdevs.poeditor'
+}
+
+def locales = file('src/main/res').listFiles(new FilenameFilter() {
+    @Override
+    boolean accept(File dir, String name) {
+        return name.matches('values-.*') && new File(dir, name).list().contains('strings.xml')
+    }
+}).collect { it.name.substring(7) }
+
+println("Locales: " + locales.join(', '))
+
+android {
+    namespace "de.dlyt.yanndroid.dualwallpaper"
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "de.dlyt.yanndroid.dualwallpaper"
+        minSdk 26
+        targetSdk 33 //can't use 33: https://issuetracker.google.com/u/2/issues/237124750
+        versionCode 8
+        versionName "2.0.2"
+
+        resConfigs locales
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            applicationIdSuffix ".debug"
+            debuggable true
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+apply from: '../../_POEditor/dualwallpaper.gradle'
+
+configurations.all {
+    exclude group: 'androidx.appcompat', module: 'appcompat'
+    exclude group: 'androidx.core', module: 'core'
+    exclude group: 'androidx.drawerlayout', module: 'drawerlayout'
+    exclude group: 'androidx.viewpager', module: 'viewpager'
+    exclude group: 'androidx.fragment', module: 'fragment'
+    exclude group: 'androidx.customview', module: 'customview'
+    exclude group: 'androidx.coordinatorlayout', module: 'coordinatorlayout'
+    exclude group: 'com.android.support', module: 'support-compat'
+}
+
+dependencies {
+    implementation 'io.github.oneuiproject:design:1.2.5'
+    implementation 'io.github.oneuiproject.sesl:appcompat:1.4.0'
+    implementation 'io.github.oneuiproject.sesl:material:1.5.0'
+    implementation 'io.github.oneuiproject.sesl:recyclerview:1.4.0'
+    implementation 'io.github.oneuiproject.sesl:preference:1.1.0'
+    implementation 'io.github.oneuiproject.sesl:picker-color:1.1.0'
+    implementation 'io.github.oneuiproject.sesl:picker-basic:1.2.0'
+
+    implementation 'com.google.android.play:app-update:2.1.0'
+}

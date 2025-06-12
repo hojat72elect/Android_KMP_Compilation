@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <dev.oneuiproject.oneui.preference.SwitchBarPreference android:key="service_enabled" />
+
+    <PreferenceCategory />
+
+    <dev.oneuiproject.oneui.preference.LayoutPreference
+        android:key="preview"
+        android:layout="@layout/preference_preview"
+        android:selectable="false" />
+
+    <dev.oneuiproject.oneui.preference.InsetPreferenceCategory
+        app:height="0px"
+        app:roundedCorners="top_left|top_right" />
+
+    <DropDownPreference
+        android:defaultValue="0"
+        android:entries="@array/service_mode_entries"
+        android:entryValues="@array/service_mode_values"
+        android:key="service_mode"
+        android:title="@string/preference_trigger"
+        app:useSimpleSummaryProvider="true" />
+
+    <Preference
+        android:key="schedule"
+        android:summary="@string/not_set"
+        app:title="@string/preference_set_schedule" />
+
+</PreferenceScreen>
