@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/video_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:keepScreenOn="true">
+
+    <RelativeLayout
+        android:id="@+id/volume_hint_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="@dimen/material_generic_medium"
+        android:gravity="center_vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/one_sixty_dp"
+            android:background="@drawable/background_curved_video_hints"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="@dimen/eight_dp"
+            android:weightSum="1">
+
+            <ProgressBar
+                android:id="@+id/volume_progress"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/eight_dp"
+                android:layout_weight="0.8"
+                android:indeterminateTint="@color/highlight_yellow"
+                android:rotation="270" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:src="@drawable/ic_round_volume_up_24" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/lock_ui"
+        android:layout_width="@dimen/material_generic_large"
+        android:layout_height="@dimen/material_generic_large"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/material_generic_large"
+        android:layout_marginEnd="@dimen/material_generic_medium"
+        android:layout_marginRight="@dimen/material_generic_medium"
+        android:background="@drawable/background_curved_video_hints"
+        android:gravity="center_horizontal|center_vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/lock_image_view"
+            android:layout_width="@dimen/fourty_eight_dp"
+            android:layout_height="@dimen/fourty_eight_dp"
+            android:src="@drawable/ic_round_lock_open_24" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/continue_playing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/material_generic_medium"
+        android:layout_marginTop="@dimen/material_generic"
+        android:layout_marginEnd="@dimen/material_generic"
+        android:layout_marginBottom="@dimen/one_twenty_dp"
+        android:background="@drawable/background_curved_video_hints_highlighted"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/eight_dp"
+        android:visibility="gone"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.7"
+            android:gravity="center_vertical"
+            android:text="@string/continue_playing"
+            android:textColor="@color/white"
+            android:textSize="@dimen/twenty_four_sp" />
+
+        <ImageView
+            android:id="@+id/close_continue_playing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/eight_dp"
+            android:layout_weight="0.3"
+            android:background="@drawable/background_curved_video_hints"
+            android:padding="@dimen/four_dp"
+            android:src="@drawable/ic_round_close_32" />
+    </LinearLayout>
+
+    <com.google.android.exoplayer2.ui.PlayerView
+        android:id="@+id/video_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:controller_layout_id="@layout/exo_playback_controller_view"
+        app:surface_type="surface_view" />
+
+    <RelativeLayout
+        android:id="@+id/brightness_hint_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/material_generic_medium"
+        android:gravity="center_vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/one_sixty_dp"
+            android:background="@drawable/background_curved_video_hints"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="@dimen/eight_dp"
+            android:weightSum="1">
+
+            <ProgressBar
+                android:id="@+id/brightness_progress"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/eight_dp"
+                android:layout_weight="0.8"
+                android:indeterminateTint="@color/highlight_yellow"
+                android:rotation="270" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:src="@drawable/ic_sharp_brightness_high_24" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.amaze.fileutilities.home_page.welcome_helper.WelcomeViewPagerIndicator
+        android:id="@+id/wel_pager_indicator"
+        style="?attr/welcomeIndicatorStyle"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/welcomeButtonBarBackground">
+
+        <Button
+            android:id="@+id/wel_button_bar_first"
+            style="?attr/welcomeButtonBarFirstStyle"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/wel_button_bar_second"
+            style="?attr/welcomeButtonBarSecondStyle"
+            android:layout_weight="1" />
+
+    </TableRow>
+
+</TableLayout>

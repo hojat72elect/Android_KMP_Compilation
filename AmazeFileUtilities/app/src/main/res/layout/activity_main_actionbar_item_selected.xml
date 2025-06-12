@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:padding="@dimen/two_dp"
+    android:visibility="gone">
+
+    <ImageView
+        android:id="@+id/backActionBar"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginEnd="@dimen/material_generic"
+        android:layout_marginRight="@dimen/material_generic"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_32" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/title"
+        style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toStartOf="@id/thumbsDown"
+        android:layout_toLeftOf="@+id/thumbsDown"
+        android:layout_toEndOf="@+id/backActionBar"
+        android:layout_toRightOf="@+id/backActionBar"
+        android:ellipsize="marquee"
+        android:ems="25"
+        android:gravity="center_vertical"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:singleLine="true"
+        android:textColor="@color/white" />
+
+    <ImageView
+        android:id="@+id/thumbsDown"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="@dimen/eight_dp"
+        android:layout_marginLeft="@dimen/eight_dp"
+        android:visibility="gone"
+        app:srcCompat="@drawable/ic_round_thumb_down_off_alt_32" />
+
+    <TextView
+        android:id="@+id/playNextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="@dimen/eight_dp"
+        android:layout_marginLeft="@dimen/eight_dp"
+        android:gravity="center_vertical"
+        android:text="@string/play_next"
+        android:textColor="@color/white"
+        android:textSize="@dimen/eighteen_sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+</RelativeLayout>

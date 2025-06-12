@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <solid android:color="@color/white_translucent_2" />
+            <stroke
+                android:width="2dp"
+                android:color="@color/white" />
+            <corners android:radius="@dimen/material_generic" />
+        </shape>
+    </item>
+    <item android:drawable="@drawable/ripple_curved_16" />
+</layer-list>

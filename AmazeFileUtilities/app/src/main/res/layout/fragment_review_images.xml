@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/navy_blue">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:descendantFocusability="afterDescendants"
+        android:divider="@null"
+        android:scrollbars="none" />
+
+    <com.amaze.fileutilities.home_page.ui.ProcessingProgressView
+        android:id="@+id/processing_progress_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" />
+
+    <com.amaze.fileutilities.utilis.FastScroller
+        android:id="@+id/fastscroll"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:orientation="vertical"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/optionsFabParent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/material_generic"
+        android:orientation="vertical">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/selectAllButtonFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/material_generic"
+            android:visibility="gone"
+            app:backgroundTint="@color/highlight_yellow"
+            app:srcCompat="@drawable/ic_baseline_select_all_24"
+            app:tint="@color/black" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/locateFileButtonFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/material_generic"
+            android:visibility="gone"
+            app:backgroundTint="@color/highlight_yellow"
+            app:srcCompat="@drawable/ic_baseline_open_in_new_24"
+            app:tint="@color/black" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/shareButtonFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/material_generic"
+            android:visibility="gone"
+            app:backgroundTint="@color/highlight_yellow"
+            app:srcCompat="@drawable/ic_share"
+            app:tint="@color/black" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/deleteButtonFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/material_generic"
+            android:visibility="gone"
+            app:backgroundTint="@color/highlight_yellow"
+            app:srcCompat="@drawable/ic_round_delete_outline_32"
+            app:tint="@color/black" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/restoreTrashButtonFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/material_generic"
+            android:visibility="gone"
+            app:backgroundTint="@color/highlight_yellow"
+            app:srcCompat="@drawable/ic_round_restore_from_trash_24"
+            app:tint="@color/black" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/optionsButtonFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/material_generic"
+            android:visibility="gone"
+            app:backgroundTint="@color/highlight_yellow"
+            app:srcCompat="@drawable/ic_baseline_more_vert_24"
+            app:tint="@color/black" />
+    </LinearLayout>
+</RelativeLayout>

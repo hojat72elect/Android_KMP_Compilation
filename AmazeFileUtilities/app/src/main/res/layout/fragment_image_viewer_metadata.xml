@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/eight_dp">
+
+    <!-- file info -->
+    <LinearLayout
+        android:id="@+id/file_info_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_curved_recents"
+        android:orientation="vertical"
+        android:padding="@dimen/material_generic">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/file"
+            android:textColor="@color/highlight_yellow"
+            android:textSize="@dimen/eighteen_sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/file_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/eight_dp"
+            android:text="@string/file"
+            android:textColor="@color/white"
+            android:textSize="@dimen/twelve_sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/file_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/eight_dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/twelve_sp" />
+
+        <TextView
+            android:id="@+id/file_last_modified"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/eight_dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/twelve_sp" />
+
+        <TextView
+            android:id="@+id/file_path"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/eight_dp"
+            android:text="@string/file"
+            android:textColor="@color/white"
+            android:textSize="@dimen/twelve_sp" />
+    </LinearLayout>
+
+    <!-- lens info -->
+    <FrameLayout
+        android:id="@+id/lens_info_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/material_generic"
+        android:visibility="gone">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alpha="0.2"
+            android:scaleType="fitXY"
+            android:src="@drawable/camera_details_bg"
+            app:shapeAppearanceOverlay="@style/roundedImageView" />
+        <!--<View
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:background="@drawable/fading_gradient_curved"
+            />-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:orientation="vertical"
+            android:padding="@dimen/material_generic">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/details"
+                android:textColor="@color/highlight_yellow"
+                android:textSize="@dimen/eighteen_sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/make"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/eight_dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/twelve_sp" />
+
+            <TextView
+                android:id="@+id/model"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/eight_dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/twelve_sp" />
+
+            <TextView
+                android:id="@+id/aperture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/eight_dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/twelve_sp" />
+
+            <TextView
+                android:id="@+id/shutter_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/eight_dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/twelve_sp" />
+
+            <TextView
+                android:id="@+id/iso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/eight_dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/twelve_sp" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- gps -->
+    <FrameLayout
+        android:id="@+id/gps_info_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/material_generic"
+        android:visibility="gone">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alpha="0.2"
+            android:scaleType="fitXY"
+            android:src="@drawable/open_maps_bg"
+            app:shapeAppearanceOverlay="@style/roundedImageView" />
+        <!--<View
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:background="@drawable/fading_gradient_curved"
+            />-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:orientation="vertical"
+            android:padding="@dimen/material_generic">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/gps"
+                    android:textColor="@color/highlight_yellow"
+                    android:textSize="@dimen/eighteen_sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/open_in_maps_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toStartOf="@id/open_in_maps_image"
+                    android:text="@string/open_in_maps"
+                    android:textColor="@color/highlight_yellow"
+                    android:textSize="@dimen/eighteen_sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/open_in_maps_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="@dimen/eight_dp"
+                    android:outlineSpotShadowColor="@color/highlight_yellow"
+                    android:src="@drawable/ic_baseline_open_in_new_24" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/lat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/eight_dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/twelve_sp" />
+
+            <TextView
+                android:id="@+id/longitude"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/eight_dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/twelve_sp" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/histogram_info_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/material_generic"
+        android:background="@drawable/background_curved_recents"
+        android:orientation="vertical"
+        android:padding="@dimen/material_generic">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/histogram"
+            android:textColor="@color/highlight_yellow"
+            android:textSize="@dimen/eighteen_sp"
+            android:textStyle="bold" />
+
+        <ProgressBar
+            android:id="@+id/histogram_loading_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:indeterminate="true"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/load_histogram_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/button_curved_selected"
+            android:gravity="center"
+            android:text="@string/load"
+            android:textColor="@color/white"
+            app:cornerRadius="@dimen/material_generic"
+            app:elevation="@dimen/material_generic"
+            app:rippleColor="@color/highlight_yellow" />
+
+        <ImageView
+            android:id="@+id/histogram_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:outlineSpotShadowColor="@color/highlight_yellow"
+            android:visibility="gone" />
+    </LinearLayout>
+</LinearLayout>

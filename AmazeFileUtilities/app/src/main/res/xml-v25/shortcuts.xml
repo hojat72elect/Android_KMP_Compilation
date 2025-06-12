@@ -1,0 +1,28 @@
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_outline_analytics_32"
+        android:shortcutDisabledMessage="@string/title_analyse"
+        android:shortcutId="AnalyseFragment"
+        android:shortcutLongLabel="@string/title_analyse"
+        android:shortcutShortLabel="@string/title_analyse">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="amaze://teamamaze.xyz/analyse"
+            android:targetClass="com.amaze.fileutilities.home_page.MainActivity"
+            android:targetPackage="com.amaze.fileutilities" />
+    </shortcut>
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_outline_connect_without_contact_32"
+        android:shortcutDisabledMessage="@string/title_transfer"
+        android:shortcutId="TransferFragment"
+        android:shortcutLongLabel="@string/title_transfer"
+        android:shortcutShortLabel="@string/title_transfer">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="amaze://teamamaze.xyz/transfer"
+            android:targetClass="com.amaze.fileutilities.home_page.MainActivity"
+            android:targetPackage="com.amaze.fileutilities" />
+    </shortcut>
+</shortcuts>

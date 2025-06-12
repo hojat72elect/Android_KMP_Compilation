@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <Preference
+        android:summary="@string/general_summary"
+        app:icon="@drawable/ic_pref_appearance"
+        app:key="appearance"
+        app:title="@string/general" />
+    <Preference
+        android:summary="@string/analysis_hint"
+        app:icon="@drawable/ic_pref_analysis"
+        app:key="analysis"
+        app:title="@string/analysis" />
+    <Preference
+        android:summary="@string/image_viewer_hint"
+        app:icon="@drawable/ic_header_image"
+        app:key="image_viewer"
+        app:title="@string/image_viewer_normal" />
+    <Preference
+        android:summary="@string/audio_player_hint"
+        app:icon="@drawable/ic_header_audio"
+        app:key="audio_player"
+        app:title="@string/audio_player" />
+    <Preference
+        android:summary="@string/trash_bin_summary"
+        app:icon="@drawable/ic_header_trash"
+        app:key="trash_bin"
+        app:title="@string/trash_bin" />
+</PreferenceScreen>

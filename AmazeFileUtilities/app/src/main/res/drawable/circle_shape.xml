@@ -1,0 +1,7 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+
+    <size
+        android:width="@dimen/minimal_icon_size"
+        android:height="@dimen/minimal_icon_size" />
+</shape>

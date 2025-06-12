@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/wel_button_skip"
+            style="?attr/welcomeButtonSkipStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="?attr/welcomeButtonSkipText" />
+
+        <ImageButton
+            android:id="@+id/wel_button_prev"
+            style="?attr/welcomeButtonPrevStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible" />
+
+    </FrameLayout>
+
+    <com.amaze.fileutilities.home_page.welcome_helper.WelcomeViewPagerIndicator
+        android:id="@+id/wel_pager_indicator"
+        style="?attr/welcomeIndicatorStyle"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_weight="1" />
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/wel_button_done"
+            style="?attr/welcomeButtonDoneStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="?attr/welcomeButtonDoneText" />
+
+        <ImageButton
+            android:id="@+id/wel_button_next"
+            style="?attr/welcomeButtonNextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </FrameLayout>
+
+</LinearLayout>

@@ -1,0 +1,316 @@
+buildscript {
+    ext {
+        androidXLifecycleVersion = "2.3.1"
+        glideVersion = '4.16.0'
+        fragment_version = "1.3.6"
+        roomVersion = "2.5.2"
+        billing_version = "6.0.1"
+        work_version = "2.8.0"
+        BASE_CLOUD_FUNC = "https://us-central1-useful-cathode-91310.cloudfunctions.net"
+        BASE_API_STICKER_PACK = "https://us-central1-useful-cathode-91310.cloudfunctions.net/amaze-utils-sticker-pack/"
+        API_REQ_TRIAL_URI = "/amaze-utils-fdroid-trial-validator"
+        API_REQ_TRIAL_AUTH_TOKEN = "unk2G2vXc*qsKu"
+        API_REQ_TRIAL_APP_HASH = "Aw4\$B4VfR#V^*7"
+        API_REQ_STICKER_PACK_TOKEN = "c2PxRdya"
+        OPENSUBTITLES_API_KEY_RELEASE = "5CZlDmqIhLoRcalZHXItm5Thwq57MDE2"
+        OPENSUBTITLES_API_KEY_DEBUG = "5CZlDmqIhLoRcalZHXItm5Thwq57MDE2"
+        API_REQ_TRIAL_CODE_TRIAL_ACTIVE = "12341343"
+        API_REQ_TRIAL_CODE_TRIAL_EXPIRED = "24523424"
+        API_REQ_TRIAL_CODE_TRIAL_INACTIVE = "33452345"
+        API_REQ_TRIAL_CODE_TRIAL_EXCLUSIVE = "45345234"
+        API_REQ_TRIAL_CODE_TRIAL_UNOFFICIAL = "34534247"
+        API_REQ_TRIAL_TRIAL_ACTIVE = "trial_active"
+        API_REQ_TRIAL_TRIAL_EXPIRED = "trial_expired"
+        API_REQ_TRIAL_TRIAL_INACTIVE = "trial_inactive"
+        API_REQ_TRIAL_TRIAL_EXCLUSIVE = "trial_exclusive"
+        API_REQ_TRIAL_TRIAL_UNOFFICIAL = "trial_unofficial"
+        API_REQ_TRIAL_YEARLY = "Yearly"
+        SALT_DEVICE_ID = "#%36zkpCE2"
+    }
+}
+
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    id("com.github.triplet.play") version "3.8.1"
+    id 'com.starter.easylauncher'
+    id 'com.mikepenz.aboutlibraries.plugin'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace "com.amaze.fileutilities"
+    signingConfigs {
+        release
+    }
+
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.amaze.fileutilities"
+        minSdk 21
+        targetSdk 33
+
+        Integer sudoVersionCode = 35
+        String versionNameText = "1.94"
+
+        String[] abiFilterList = property("abiFilters").toString().split(';')
+        Integer minorVersion = 0
+        if (abiFilterList.size() == 1) {
+            switch (abiFilterList[0]) {
+                case "x86":
+                    minorVersion = 1
+                    break
+                case "x86_64":
+                    minorVersion = 2
+                    break
+                case "armeabi-v7a":
+                    minorVersion = 3
+                    break
+                case "arm64-v8a":
+                    minorVersion = 4
+                    break
+                default:
+                    minorVersion = 0
+            }
+
+            splits {
+                abi {
+                    enable true
+                    reset()
+                    include abiFilterList[0] //select ABIs to build APKs for
+                    universalApk false //generate an additional APK that contains all the ABIs
+                }
+            }
+        } else {
+            splits {
+                abi {
+                    enable true
+                    reset()
+                    include 'x86', 'x86_64', 'armeabi-v7a', 'arm64-v8a'
+                    //select ABIs to build APKs for
+                    universalApk false //generate an additional APK that contains all the ABIs
+                }
+            }
+        }
+        Integer sudoVersionCodeFinal = (sudoVersionCode * 4) + minorVersion
+        versionCode sudoVersionCodeFinal
+        versionName versionNameText
+
+        buildConfigField "String", "SUDO_VERSION_NAME", "\"v${versionNameText}\""
+
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "BASE_CLOUD_FUNC", "\"${BASE_CLOUD_FUNC}\""
+        buildConfigField "String", "BASE_API_STICKER_PACK", "\"${BASE_API_STICKER_PACK}\""
+        buildConfigField "String", "API_REQ_TRIAL_URI", "\"${API_REQ_TRIAL_URI}\""
+        buildConfigField "String", "API_REQ_TRIAL_APP_HASH", "\"${API_REQ_TRIAL_APP_HASH}\""
+        buildConfigField "Integer", "API_REQ_TRIAL_CODE_TRIAL_ACTIVE", API_REQ_TRIAL_CODE_TRIAL_ACTIVE
+        buildConfigField "Integer", "API_REQ_TRIAL_CODE_TRIAL_EXPIRED", API_REQ_TRIAL_CODE_TRIAL_EXPIRED
+        buildConfigField "Integer", "API_REQ_TRIAL_CODE_TRIAL_INACTIVE", API_REQ_TRIAL_CODE_TRIAL_INACTIVE
+        buildConfigField "Integer", "API_REQ_TRIAL_CODE_TRIAL_EXCLUSIVE", API_REQ_TRIAL_CODE_TRIAL_EXCLUSIVE
+        buildConfigField "Integer", "API_REQ_TRIAL_CODE_TRIAL_UNOFFICIAL", API_REQ_TRIAL_CODE_TRIAL_UNOFFICIAL
+        buildConfigField "String", "API_REQ_TRIAL_TRIAL_ACTIVE", "\"${API_REQ_TRIAL_TRIAL_ACTIVE}\""
+        buildConfigField "String", "API_REQ_TRIAL_TRIAL_EXPIRED", "\"${API_REQ_TRIAL_TRIAL_EXPIRED}\""
+        buildConfigField "String", "API_REQ_TRIAL_TRIAL_INACTIVE", "\"${API_REQ_TRIAL_TRIAL_INACTIVE}\""
+        buildConfigField "String", "API_REQ_TRIAL_TRIAL_EXCLUSIVE", "\"${API_REQ_TRIAL_TRIAL_EXCLUSIVE}\""
+        buildConfigField "String", "API_REQ_TRIAL_TRIAL_UNOFFICIAL", "\"${API_REQ_TRIAL_TRIAL_UNOFFICIAL}\""
+        buildConfigField "String", "API_REQ_TRIAL_YEARLY", "\"${API_REQ_TRIAL_YEARLY}\""
+        buildConfigField "String", "API_REQ_STICKER_PACK_TOKEN", "\"${API_REQ_STICKER_PACK_TOKEN}\""
+        buildConfigField "String", "API_REQ_TRIAL_AUTH_TOKEN", "\"${API_REQ_TRIAL_AUTH_TOKEN}\""
+        buildConfigField "String", "SALT_DEVICE_ID", "\"${SALT_DEVICE_ID}\""
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
+
+        sourceSets {
+            // Adds exported schema location as test app assets.
+            androidTest.assets.srcDirs += files("$projectDir/schemas".toString())
+        }
+
+        manifestPlaceholders = [app_display_name: "@string/app_name_launcher"]
+    }
+
+    signingConfigs {
+        release
+        config
+    }
+
+    buildTypes {
+        debug {
+            applicationIdSuffix ".debug"
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "OPENSUBTITLES_API_KEY", "\"${OPENSUBTITLES_API_KEY_DEBUG}\""
+            debuggable true //For "debug" banner on icon
+
+            manifestPlaceholders = [app_display_name: "AFU Debug"]
+        }
+    }
+
+    compileOptions {
+        // Flag to enable support for the new language APIs
+        coreLibraryDesugaringEnabled true
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    flavorDimensions 'static'
+
+    productFlavors {
+        register("play") {
+            dimension 'static'
+            buildConfigField "boolean", "IS_VERSION_FDROID", "false"
+            signingConfig signingConfigs.config
+        }
+    }
+
+    playConfigs {
+        register("play") {
+            serviceAccountCredentials.set(file("service_account_config.json"))
+            defaultToAppBundles.set(true)
+
+            //    track.set("internal")
+            track.set("production")
+            userFraction.set(1.0d)
+            updatePriority.set(4)
+            releaseStatus.set(com.github.triplet.gradle.androidpublisher.ReleaseStatus.COMPLETED)
+        }
+    }
+
+    packagingOptions {
+        pickFirst '**/*.so'
+        pickFirst 'versionchanges.txt'
+        pickFirst 'META-INF/DEPENDENCIES'
+        pickFirst 'META-INF/NOTICE'
+        pickFirst 'META-INF/LICENSE'
+        pickFirst 'META-INF/LICENSE.txt'
+        pickFirst 'META-INF/INDEX.LIST'
+    }
+    sourceSets {
+        main {
+            aidl {
+                srcDirs 'src/main/aidl'
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation 'androidx.core:core:1.7.0'
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$androidXLifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidXLifecycleVersion"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.multidex:multidex:2.0.1'//Multiple dex files
+    implementation 'androidx.palette:palette:1.0.0'
+    //Glide: loads icons seemlessly
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    implementation("com.github.bumptech.glide:recyclerview-integration:$glideVersion") {
+        // Excludes the support library because it's already included by Glide.
+        transitive = false
+    }
+    playImplementation 'com.google.android.play:core-ktx:1.8.1'
+    kapt "com.github.bumptech.glide:compiler:$glideVersion"
+    implementation 'androidx.webkit:webkit:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
+    implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.2'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.2'
+    implementation "androidx.fragment:fragment-ktx:$fragment_version"
+    implementation 'org.zwobble.mammoth:mammoth:1.4.2'
+    implementation 'me.zhanghai.android.fastscroll:library:1.1.8'
+    implementation "ch.acra:acra-core:5.7.0"
+    implementation 'com.github.TeamAmaze:AmazeTrashBin:1.0.11'
+    implementation group: 'com.drewnoakes', name: 'metadata-extractor', version: '2.16.0'
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+    implementation 'com.google.android.exoplayer:exoplayer:2.16.0'
+    implementation 'com.google.android.exoplayer:extension-mediasession:2.16.0'
+    implementation 'com.github.DroidsOnRoids:PercentageChartView:5a6836bd0d'
+    implementation 'com.github.massoudss:waveformSeekBar:5.0.1'
+    implementation 'com.github.lincollincol:amplituda:2.1.6'
+
+    implementation 'com.mikepenz:aboutlibraries:10.0.0'
+    implementation 'com.github.TeamAmaze:opencv-android:v1.0.0'
+
+    implementation "androidx.room:room-runtime:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.1.0"
+    implementation "androidx.preference:preference-ktx:1.2.0"
+    playImplementation 'com.google.android.gms:play-services-mlkit-text-recognition:18.0.0'
+    playImplementation 'com.google.android.gms:play-services-mlkit-face-detection:17.0.1'
+
+    implementation 'com.afollestad.material-dialogs:files:3.3.0'
+    implementation 'androidx.mediarouter:mediarouter:1.2.6'
+    playImplementation 'com.google.android.gms:play-services-cast-framework:21.0.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'org.slf4j:slf4j-api:1.7.32'
+    implementation 'com.github.tony19:logback-android:2.0.0'
+    playImplementation "com.android.billingclient:billing-ktx:$billing_version"
+    implementation 'me.tankery.lib:circularSeekBar:1.4.0'
+    implementation 'com.github.qoqa:glide-svg:2.0.4'
+    api "com.caverock:androidsvg:1.4"
+    implementation 'com.burhanrashid52:photoeditor:2.0.0'
+    implementation 'com.github.CanHub:Android-Image-Cropper:4.3.1'
+    api 'com.github.TeamAmaze:mupdf-android-viewer:1.0.27'
+    implementation "androidx.documentfile:documentfile:1.0.1"
+    implementation 'id.zelory:compressor:3.0.1'
+    implementation('com.github.AbedElazizShe:LightCompressor:1.3.1') {
+        exclude group: 'androidx.core', module: 'core'
+        exclude group: 'androidx.core', module: 'core-ktx'
+    }
+    implementation "androidx.work:work-runtime-ktx:$work_version"
+
+    implementation("androidx.annotation:annotation:1.5.0")
+
+    // For tests
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test:runner:1.5.2'
+    androidTestImplementation 'androidx.test:rules:1.5.0'
+    androidTestImplementation "androidx.room:room-testing:$roomVersion"
+
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
+}
+
+Properties props = new Properties()
+def propFile = new File('signing.properties')
+
+if (propFile.canRead()) {
+    props.load(new FileInputStream(propFile))
+
+    if (props != null &&
+            props.containsKey('STORE_FILE') &&
+            props.containsKey('STORE_PASSWORD') &&
+            props.containsKey('KEY_ALIAS') &&
+            props.containsKey('KEY_PASSWORD')) {
+        android.signingConfigs.release.storeFile = file(props['STORE_FILE'])
+        android.signingConfigs.release.storePassword = props['STORE_PASSWORD']
+        android.signingConfigs.release.keyAlias = props['KEY_ALIAS']
+        android.signingConfigs.release.keyPassword = props['KEY_PASSWORD']
+    } else {
+        println 'signing.properties found but some entries are missing'
+        android.buildTypes.release.signingConfig = null
+    }
+} else {
+    println 'signing.properties not found'
+    android.buildTypes.release.signingConfig = null
+}
