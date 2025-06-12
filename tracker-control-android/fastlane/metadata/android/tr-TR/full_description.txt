@@ -1,0 +1,18 @@
+TrackerControl, kullanıcıların mobil uygulamalarda kullanıcı davranışı ('izleme') hakkında yaygın, devam eden, gizli veri toplamayı izlemesini ve kontrol etmesini sağlar.
+
+TrackerControl, izlemeyi algılamak için Firefox tarafından kullanılan Bağlantıyı Kes engelleme listesinin gücünü birleştirir ve <i>~2 000 000</i> uygulamanın analizinden oluşturulan şirket içi engelleme listemiz kullanılır! Ek olarak, TrackerControl özel engelleme listelerini destekler.
+
+Bu yaklaşım
+
+- takibin arkasındaki şirketleri ortaya çıkarır,
+- seçici olarak izlemeyi engellemeye izin verir ve
+- analitik veya reklamcılık gibi izleme amaçlarını ortaya çıkarır.
+
+Uygulama ayrıca, AB Genel Veri Koruma Yönetmeliği (GDPR) gibi Veri Koruma Yasası kapsamındaki haklarınız hakkında eğitim vermeyi amaçlamaktadır.
+
+Başlık altında, TrackerControl, uygulamaların ağ iletişimlerini <i>Android cihazında yerel olarak</i> analiz etmek için Android'in VPN işlevini kullanır. Bu, TrackerControl tarafından ağ trafiği analizini etkinleştirmek için yerel bir VPN sunucusu aracılığıyla gerçekleştirilir.
+
+Kök erişimi gerekmez, diğer VPN'ler veya Özel DNS desteklenmez. Verilerinizi güvende tutmak için harici VPN sunucusu kullanılmaz! TrackerControl, sizi web sitelerinde ve uygulamalarda izleyicileri gizlemek için kullanılan popüler bir teknik olan <i>DNS gizlemeye</i> karşı bile korur.
+
+TrackerControl bir araştırma projesi olarak her zaman ücretsiz ve açık kaynak olacaktır.
+

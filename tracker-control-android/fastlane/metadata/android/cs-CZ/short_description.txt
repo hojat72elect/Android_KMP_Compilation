@@ -1,0 +1,1 @@
+TrackerControl umožňuje sledovat a kontrolovat skrytý sběr dat v aplikacích.

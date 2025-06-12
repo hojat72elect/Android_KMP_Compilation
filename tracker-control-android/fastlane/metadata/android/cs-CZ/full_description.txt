@@ -1,0 +1,18 @@
+TrackerControl umožňuje uživatelům sledovat a ovládat rozsáhlé, probíhající, skryté sbírání dat v mobilních aplikacích o chování uživatelů ("tracking").
+
+K detekci slídičů kombinuje TrackerControl sílu seznamu blokování Disconnect, který používá Firefox, a náš vlastní seznam blokování vytvořený na základě analýzy <i>~2 000 000</i> aplikací! TrackerControl navíc podporuje vlastní seznamy blokování.
+
+Tento přístup
+
+- odhaluje společnosti, které stojí za sledováním,
+- umožňuje selektivně blokovat sledování a
+- odhaluje účel sledování, jako je analýza nebo reklama.
+
+Cílem aplikace je také informovat o Vašich právech podle zákona o ochraně osobních údajů, například obecného nařízení EU o ochraně osobních údajů (GDPR).
+
+TrackerControl využívá funkci VPN systému Android k analýze síťové komunikace aplikací <i>lokálně v zařízení Android</i>. Toho je dosaženo prostřednictvím lokálního serveru VPN, který umožňuje analýzu síťového provozu pomocí TrackerControl.
+
+Není vyžadován root, jiné sítě VPN nebo privátní DNS nejsou podporovány. Pro bezpečnost dat se nepoužívá žádný externí server VPN! TrackerControl Vás dokonce chrání před <i>maskováním DNS</i>, což je oblíbená technika skrývání slídičů na webových stránkách a v aplikacích.
+
+TrackerControl bude vždy zdarma a s otevřeným zdrojovým kódem.
+

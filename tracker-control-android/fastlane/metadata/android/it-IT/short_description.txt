@@ -1,0 +1,1 @@
+TrackerControl aiuta a controllare la raccolta dati delle app.

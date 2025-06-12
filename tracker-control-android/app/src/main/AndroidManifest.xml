@@ -1,0 +1,249 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:installLocation="internalOnly">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <!-- http://developer.android.com/guide/topics/security/permissions.html#normal-dangerous -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+
+    <!-- https://developer.android.com/preview/privacy/package-visibility -->
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+    <!--queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+    </queries-->
+
+    <permission
+        android:name="net.kollnig.missioncontrol.permission.ADMIN"
+        android:description="@string/app_description"
+        android:label="@string/app_name"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="net.kollnig.missioncontrol.permission.ADMIN" />
+
+    <uses-feature
+        android:name="android.hardware.wifi"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+    <uses-feature
+        android:name="android.software.app_widgets"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+
+    <application
+        android:name="eu.faircode.netguard.ApplicationEx"
+        android:allowBackup="false"
+        android:appCategory="productivity"
+        android:description="@string/app_description"
+        android:icon="@mipmap/ic_launcher_round"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:supportsRtl="true"
+        android:theme="@style/AppThemeRed"
+        tools:ignore="ManifestResource"
+        tools:replace="android:allowBackup,android:theme">
+
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.1" />
+
+        <activity
+            android:name="eu.faircode.netguard.ActivityMain"
+            android:configChanges="orientation|screenSize"
+            android:exported="true"
+            android:label="@string/app_name_short"
+            android:launchMode="singleTop"
+            android:resizeableActivity="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MANAGE_NETWORK_USAGE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <!-- intent-filter android:label="@string/app_name">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="www.netguard.me"
+                    android:pathPrefix="/"
+                    android:scheme="https" />
+            </intent-filter-->
+        </activity>
+
+        <activity
+            android:name="eu.faircode.netguard.ActivitySettings"
+            android:configChanges="orientation|screenSize"
+            android:exported="true"
+            android:label="@string/menu_settings"
+            android:parentActivityName="eu.faircode.netguard.ActivityMain">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.APPLICATION_PREFERENCES" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="eu.faircode.netguard.ActivityMain" />
+        </activity>
+
+        <activity
+            android:name="eu.faircode.netguard.ActivityForwarding"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/setting_forwarding"
+            android:parentActivityName="eu.faircode.netguard.ActivitySettings">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="eu.faircode.netguard.ActivitySettings" />
+        </activity>
+
+        <activity
+            android:name="eu.faircode.netguard.ActivityForwardApproval"
+            android:configChanges="orientation|screenSize"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/AppDialog">
+            <intent-filter>
+                <action android:name="eu.faircode.netguard.START_PORT_FORWARD" />
+                <action android:name="eu.faircode.netguard.STOP_PORT_FORWARD" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="eu.faircode.netguard.ActivityLog"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/menu_log"
+            android:parentActivityName="eu.faircode.netguard.ActivityMain">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="eu.faircode.netguard.ActivityMain" />
+        </activity>
+
+        <activity
+            android:name="eu.faircode.netguard.ActivityDns"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/setting_show_resolved"
+            android:parentActivityName="eu.faircode.netguard.ActivitySettings">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="eu.faircode.netguard.ActivitySettings" />
+        </activity>
+
+        <activity
+            android:name="net.kollnig.missioncontrol.DetailsActivity"
+            android:exported="true"
+            android:label="@string/title_activity_detail"
+            android:parentActivityName="eu.faircode.netguard.ActivityMain"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="eu.faircode.netguard.ActivityMain" />
+        </activity>
+
+        <service
+            android:name="eu.faircode.netguard.ServiceSinkhole"
+            android:exported="true"
+            android:foregroundServiceType="dataSync"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_VPN_SERVICE">
+            <intent-filter>
+                <action android:name="android.net.VpnService" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="eu.faircode.netguard.ServiceExternal"
+            android:exported="true"
+            android:foregroundServiceType="dataSync"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="net.kollnig.missioncontrol.DOWNLOAD_HOSTS_FILE" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="eu.faircode.netguard.ServiceTileMain"
+            android:exported="true"
+            android:icon="@drawable/ic_rocket_white"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name="eu.faircode.netguard.ReceiverAutostart"
+            android:exported="true"
+            android:label="@string/app_name">
+            <intent-filter android:priority="999">
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name="eu.faircode.netguard.ReceiverPackageRemoved"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_FULLY_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name="eu.faircode.netguard.WidgetMain"
+            android:exported="true"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widgetmain" />
+        </receiver>
+
+        <receiver
+            android:name="eu.faircode.netguard.WidgetAdmin"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:permission="net.kollnig.missioncontrol.permission.ADMIN">
+            <intent-filter>
+                <action android:name="net.kollnig.missioncontrol.ON" />
+                <action android:name="net.kollnig.missioncontrol.PAUSE" />
+                <action android:name="net.kollnig.missioncontrol.OFF" />
+            </intent-filter>
+        </receiver>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+    </application>
+</manifest>

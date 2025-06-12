@@ -1,0 +1,22 @@
+<resources>
+    <color name="colorTrackerControl">#B71C1C</color>
+
+    <color name="colorPrimary">#B71C1C</color>
+    <color name="colorPrimaryDark">#7f0000</color>
+    <color name="colorAccent">#004D40</color>
+
+    <color name="colorRedPrimary">@color/colorPrimary</color> <!-- or: F44336 -->
+    <color name="colorRedPrimaryDark">@color/colorPrimaryDark</color> <!-- or: D32F2F -->
+    <color name="colorRedAccent">@color/colorAccent</color> <!-- or: 009688 -->
+    <color name="colorRedOn">@color/colorRedPrimary</color>
+    <color name="colorRedOff">@color/colorRedAccent</color>
+
+    <color name="switchTrackDisable">#999</color>
+    <color name="switchTrackActive">@color/colorAccent</color>
+    <color name="switchTrackNormal">#888</color>
+
+    <color name="colorSend">#FF0000</color>
+    <color name="colorReceive">#0000FF</color>
+
+    <color name="colorGrayed">#AAAAAA</color>
+</resources>
