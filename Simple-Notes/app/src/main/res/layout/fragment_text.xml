@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/note_fragment_holder"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/note_locked_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/activity_margin"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/note_locked_image"
+            android:layout_width="@dimen/normal_icon_size"
+            android:layout_height="@dimen/normal_icon_size"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/activity_margin"
+            android:src="@drawable/ic_lock_vector" />
+
+        <ca.hojat.notes.niki.shared.views.MyTextView
+            android:id="@+id/note_locked_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/note_locked_image"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/activity_margin"
+            android:paddingStart="@dimen/bigger_margin"
+            android:paddingTop="@dimen/medium_margin"
+            android:paddingEnd="@dimen/bigger_margin"
+            android:text="@string/note_content_locked" />
+
+        <TextView
+            android:id="@+id/note_locked_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/note_locked_label"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:background="@drawable/ripple_all_corners"
+            android:padding="@dimen/activity_margin"
+            android:text="@string/show_content" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/notes_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:id="@+id/notes_relative_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </ScrollView>
+
+    <ca.hojat.notes.niki.shared.views.MyTextView
+        android:id="@+id/notes_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:padding="@dimen/small_margin"
+        android:textStyle="italic"
+        tools:text="123" />
+
+</RelativeLayout>

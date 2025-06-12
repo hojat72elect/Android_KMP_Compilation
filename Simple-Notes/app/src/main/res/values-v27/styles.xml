@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="AppTheme.Material3.BottomSheetDialogTheme" parent="Theme.Material3.DayNight.BottomSheetDialog">
+        <item name="android:backgroundDimAmount">0.32</item>
+        <item name="bottomSheetStyle">@style/AppTheme.Material3.BottomSheetModalStyle</item>
+        <item name="elevationOverlayEnabled">true</item>
+        <item name="android:navigationBarColor">@color/you_status_bar_color</item>
+        <item name="android:navigationBarDividerColor" tools:targetApi="o_mr1">
+            @color/you_status_bar_color
+        </item>
+    </style>
+</resources>

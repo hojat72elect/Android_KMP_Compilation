@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:installLocation="auto">
+
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+
+    <uses-feature
+        android:name="android.hardware.faketouch"
+        android:required="false" />
+
+    <queries>
+        <package android:name="com.simplemobiletools.notes.debug" />
+        <package android:name="com.simplemobiletools.notes" />
+    </queries>
+
+    <application
+        android:name="ca.hojat.notes.niki.NotesApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_launcher_name"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name="ca.hojat.notes.niki.shared.activities.SplashActivity"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher"
+            android:launchMode="singleTask"
+            android:roundIcon="@mipmap/ic_launcher"
+            android:theme="@style/SplashTheme">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+
+        <activity
+            android:name="ca.hojat.notes.niki.shared.activities.MainActivity"
+            android:configChanges="orientation"
+            android:exported="true"
+            android:launchMode="singleTask">
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/*" />
+            </intent-filter>
+
+            <intent-filter
+                android:scheme="http"
+                tools:ignore="AppLinkUrlError">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/*" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="ca.hojat.notes.niki.feature_app_widget.WidgetConfigureActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyWidgetConfigTheme">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="ca.hojat.notes.niki.feature_about.AboutActivity"
+            android:configChanges="orientation"
+            android:exported="false"
+            android:label="@string/about"
+            android:parentActivityName="ca.hojat.notes.niki.shared.activities.MainActivity" />
+
+        <activity
+            android:name="ca.hojat.notes.niki.feature_settings.CustomizationActivity"
+            android:configChanges="orientation"
+            android:exported="false"
+            android:label="@string/customize_colors"
+            android:parentActivityName="ca.hojat.notes.niki.feature_settings.SettingsActivity" />
+
+        <activity
+            android:name="ca.hojat.notes.niki.feature_settings.SettingsActivity"
+            android:configChanges="orientation"
+            android:exported="true"
+            android:label="@string/settings"
+            android:parentActivityName="ca.hojat.notes.niki.shared.activities.MainActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.APPLICATION_PREFERENCES" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="ca.hojat.notes.niki.feature_about.FAQActivity"
+            android:configChanges="orientation"
+            android:exported="false"
+            android:label="Frequently asked Questions"
+            android:parentActivityName="ca.hojat.notes.niki.feature_about.AboutActivity" />
+
+        <activity
+            android:name="ca.hojat.notes.niki.feature_about.ContributorsActivity"
+            android:configChanges="orientation"
+            android:exported="false"
+            android:label="@string/contributors"
+            android:parentActivityName="ca.hojat.notes.niki.feature_about.AboutActivity" />
+
+        <activity
+            android:name="ca.hojat.notes.niki.feature_about.LicenseActivity"
+            android:configChanges="orientation"
+            android:exported="false"
+            android:label="@string/third_party_licences"
+            android:parentActivityName="ca.hojat.notes.niki.feature_about.AboutActivity" />
+
+
+        <service
+            android:name="ca.hojat.notes.niki.shared.services.WidgetService"
+            android:exported="true"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+
+        <receiver
+            android:name="ca.hojat.notes.niki.shared.helpers.MyWidgetProvider"
+            android:exported="true"
+            android:icon="@drawable/img_widget_preview">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info" />
+        </receiver>
+
+        <receiver
+            android:name="ca.hojat.notes.niki.shared.receivers.BootCompletedReceiver"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name="ca.hojat.notes.niki.shared.receivers.AutomaticBackupReceiver"
+            android:exported="false" />
+
+    </application>
+</manifest>

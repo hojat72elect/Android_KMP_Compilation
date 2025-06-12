@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/delete_note_holder"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ca.hojat.notes.niki.shared.views.MyTextView
+        android:id="@+id/delete_note_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/small_margin"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:padding="@dimen/activity_margin"
+        android:textSize="@dimen/bigger_text_size"
+        tools:text="@string/delete_note_prompt_message" />
+
+    <RelativeLayout
+        android:id="@+id/delete_note_checkbox_holder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:padding="@dimen/activity_margin"
+        android:visibility="gone">
+
+        <ca.hojat.notes.niki.shared.views.MyAppCompatCheckbox
+            android:id="@+id/delete_note_checkbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:background="@null"
+            android:checked="false"
+            android:clickable="false"
+            android:layoutDirection="rtl"
+            android:text="@string/delete_file_itself" />
+
+    </RelativeLayout>
+</LinearLayout>

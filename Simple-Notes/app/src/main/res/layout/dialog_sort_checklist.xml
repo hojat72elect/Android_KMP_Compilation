@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialog_holder"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/activity_margin"
+    android:paddingTop="@dimen/small_margin"
+    android:paddingEnd="@dimen/activity_margin">
+
+    <RadioGroup
+        android:id="@+id/sorting_dialog_radio_sorting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/medium_margin">
+
+        <ca.hojat.notes.niki.shared.views.MyCompatRadioButton
+            android:id="@+id/sorting_dialog_radio_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:paddingTop="@dimen/normal_margin"
+            android:paddingBottom="@dimen/normal_margin"
+            android:text="@string/title" />
+
+        <ca.hojat.notes.niki.shared.views.MyCompatRadioButton
+            android:id="@+id/sorting_dialog_radio_date_created"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/normal_margin"
+            android:paddingBottom="@dimen/normal_margin"
+            android:text="@string/date_created" />
+
+        <ca.hojat.notes.niki.shared.views.MyCompatRadioButton
+            android:id="@+id/sorting_dialog_radio_custom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/normal_margin"
+            android:paddingBottom="@dimen/normal_margin"
+            android:text="@string/custom" />
+
+    </RadioGroup>
+
+    <include
+        android:id="@+id/sorting_dialog_order_divider"
+        layout="@layout/divider" />
+
+    <RadioGroup
+        android:id="@+id/sorting_dialog_radio_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:layout_marginBottom="@dimen/medium_margin">
+
+        <ca.hojat.notes.niki.shared.views.MyCompatRadioButton
+            android:id="@+id/sorting_dialog_radio_ascending"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:paddingTop="@dimen/normal_margin"
+            android:paddingBottom="@dimen/normal_margin"
+            android:text="@string/ascending" />
+
+        <ca.hojat.notes.niki.shared.views.MyCompatRadioButton
+            android:id="@+id/sorting_dialog_radio_descending"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/normal_margin"
+            android:paddingBottom="@dimen/normal_margin"
+            android:text="@string/descending" />
+
+    </RadioGroup>
+
+    <include
+        android:id="@+id/move_undone_checklist_items_divider"
+        layout="@layout/divider" />
+
+    <RelativeLayout
+        android:id="@+id/settings_move_undone_checklist_items_holder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:background="?attr/selectableItemBackground"
+        android:paddingTop="@dimen/medium_margin"
+        android:paddingBottom="@dimen/medium_margin">
+
+        <ca.hojat.notes.niki.shared.views.MyAppCompatCheckbox
+            android:id="@+id/settings_move_undone_checklist_items"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:clickable="false"
+            android:text="@string/move_done_checklist_items" />
+
+    </RelativeLayout>
+</LinearLayout>

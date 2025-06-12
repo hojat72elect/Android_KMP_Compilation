@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ca.hojat.notes.niki.shared.views.MyHorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/notes_horizontal_scrollview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbarSize="5dp"
+    android:scrollbars="horizontal">
+
+    <ca.hojat.notes.niki.shared.views.MyEditText
+        android:id="@+id/text_note_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@null"
+        android:freezesText="true"
+        android:gravity="top"
+        android:hint="@string/insert_text_here"
+        android:inputType="textCapSentences|textMultiLine"
+        android:padding="@dimen/activity_margin"
+        android:scrollbars="vertical"
+        android:textCursorDrawable="@null" />
+
+</ca.hojat.notes.niki.shared.views.MyHorizontalScrollView>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme.Base" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
+        <item name="colorAccent">@color/color_accent</item>
+        <item name="android:spinnerItemStyle">@style/SpinnerItem</item>
+        <item name="spinnerDropDownItemStyle">@style/SpinnerItem.DropDownItem</item>
+        <item name="android:spinnerDropDownItemStyle">@style/SpinnerItem.DropDownItem</item>
+        <item name="buttonStyle">@style/MyTransparentButton</item>
+        <item name="android:buttonStyle">@style/MyTransparentButton</item>
+        <item name="actionOverflowMenuStyle">@style/TopPopupMenu.Overflow.Dark</item>
+        <item name="android:textColor">@color/default_text_color</item>
+        <item name="android:colorControlHighlight">@color/activated_item_foreground</item>
+        <item name="colorControlHighlight">@color/activated_item_foreground</item>
+        <item name="bottomSheetDialogTheme">@style/BottomSheetDialogTheme</item>
+        <item name="android:actionModeCloseDrawable">@drawable/ic_arrow_left_vector</item>
+        <item name="android:forceDarkAllowed">false</item>
+        <item name="windowActionModeOverlay">true
+        </item>    <!-- replace casual top menu with contextual menu after long pressing an item -->
+        <item name="android:actionOverflowButtonStyle">@style/ActionMenuOverflowIcon</item>
+        <item name="android:radioButtonStyle">@style/MyRadioButtonStyle</item>
+        <item name="radioButtonStyle">@style/MyRadioButtonStyle</item>
+    </style>
+
+    <style name="AppTheme.Base.Core" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="android:colorControlHighlight">@color/activated_item_foreground</item>
+        <item name="colorControlHighlight">@color/activated_item_foreground</item>
+        <item name="bottomSheetDialogTheme">@style/BottomSheetDialogTheme</item>
+        <item name="android:forceDarkAllowed">false</item>
+        <item name="actionOverflowMenuStyle">@style/TopPopupMenu.Overflow.Dark</item>
+        <item name="android:actionOverflowButtonStyle">@style/ActionMenuOverflowIcon</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <style name="AppTheme.Base.System" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/you_primary_color</item>
+        <item name="colorPrimaryDark">@color/you_primary_dark_color</item>
+        <item name="colorAccent">@color/you_primary_color</item>
+        <item name="colorPrimaryContainer">@color/you_primary_color</item>
+        <item name="colorOnPrimaryContainer">@color/you_neutral_text_color</item>
+        <item name="colorSecondaryContainer">@color/you_primary_color</item>
+        <item name="colorOnSecondaryContainer">@color/you_neutral_text_color</item>
+        <item name="colorTertiaryContainer">@color/you_primary_color</item>
+        <item name="colorOnTertiaryContainer">@color/you_neutral_text_color</item>
+        <item name="colorSurfaceVariant">@color/you_surface_color</item>
+        <item name="colorSurface">@color/you_dialog_background_color</item>
+        <item name="colorOnSurfaceVariant">@color/you_neutral_text_color</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="actionOverflowMenuStyle">@style/TopPopupMenuYou</item>
+        <item name="actionBarPopupTheme">@style/TopPopupMenuTextYou</item>
+        <item name="actionBarStyle">@style/AppTheme.ActionBar</item>
+        <item name="actionModeStyle">@style/AppTheme.ActionMode</item>
+        <item name="bottomSheetDialogTheme">@style/AppTheme.Material3.BottomSheetDialogTheme</item>
+        <item name="android:forceDarkAllowed">false</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:actionOverflowButtonStyle">@style/ActionMenuOverflowIcon</item>
+        <item name="android:radioButtonStyle">@style/MyRadioButtonStyle</item>
+        <item name="radioButtonStyle">@style/MyRadioButtonStyle</item>
+    </style>
+</resources>

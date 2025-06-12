@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/settings_coordinator"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/settings_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/color_primary"
+        app:title="@string/settings"
+        app:titleTextAppearance="@style/AppTheme.ActionBar.TitleTextStyle" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/settings_nested_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/settings_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/settings_color_customization_section_label"
+                style="@style/SettingsSectionLabelStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/color_customization" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/settings_color_customization_holder"
+                style="@style/SettingsHolderTextViewOneLinerStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ca.hojat.notes.niki.shared.views.MyTextView
+                    android:id="@+id/settings_color_customization_label"
+                    style="@style/SettingsTextLabelStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/customize_colors"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/settings_widget_color_customization_holder"
+                style="@style/SettingsHolderTextViewOneLinerStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ca.hojat.notes.niki.shared.views.MyTextView
+                    android:id="@+id/settings_widget_color_customization_label"
+                    style="@style/SettingsTextLabelStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/customize_widget_colors"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <include
+                android:id="@+id/settings_color_customization_divider"
+                layout="@layout/divider" />
+
+            <TextView
+                android:id="@+id/settings_general_settings_label"
+                style="@style/SettingsSectionLabelStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/general_settings" />
+
+            <RelativeLayout
+                android:id="@+id/settings_language_holder"
+                style="@style/SettingsHolderTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ca.hojat.notes.niki.shared.views.MyTextView
+                    android:id="@+id/settings_language_label"
+                    style="@style/SettingsTextLabelStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/language" />
+
+                <ca.hojat.notes.niki.shared.views.MyTextView
+                    android:id="@+id/settings_language"
+                    style="@style/SettingsTextValueStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/settings_language_label"
+                    tools:text="English" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/settings_font_size_holder"
+                style="@style/SettingsHolderTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ca.hojat.notes.niki.shared.views.MyTextView
+                    android:id="@+id/settings_font_size_label"
+                    style="@style/SettingsTextLabelStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/font_size" />
+
+                <ca.hojat.notes.niki.shared.views.MyTextView
+                    android:id="@+id/settings_font_size"
+                    style="@style/SettingsTextValueStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/settings_font_size_label"
+                    tools:text="100%" />
+
+            </RelativeLayout>
+
+            <include
+                android:id="@+id/settings_general_settings_divider"
+                layout="@layout/divider" />
+
+            <TextView
+                android:id="@+id/settings_text_label"
+                style="@style/SettingsSectionLabelStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text" />
+
+            <RelativeLayout
+                android:id="@+id/settings_show_word_count_holder"
+                style="@style/SettingsHolderCheckboxStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ca.hojat.notes.niki.shared.views.MyAppCompatCheckbox
+                    android:id="@+id/settings_show_word_count"
+                    style="@style/SettingsCheckboxStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/show_word_count" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/settings_clickable_links_holder"
+                style="@style/SettingsHolderCheckboxStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ca.hojat.notes.niki.shared.views.MyAppCompatCheckbox
+                    android:id="@+id/settings_clickable_links"
+                    style="@style/SettingsCheckboxStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/links_and_emails_clickable" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/settings_monospaced_font_holder"
+                style="@style/SettingsHolderCheckboxStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ca.hojat.notes.niki.shared.views.MyAppCompatCheckbox
+                    android:id="@+id/settings_monospaced_font"
+                    style="@style/SettingsCheckboxStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/monospaced_font" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/settings_use_incognito_mode_holder"
+                style="@style/SettingsHolderCheckboxStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ca.hojat.notes.niki.shared.views.MyAppCompatCheckbox
+                    android:id="@+id/settings_use_incognito_mode"
+                    style="@style/SettingsCheckboxStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/use_incognito_mode" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/settings_enable_line_wrap_holder"
+                style="@style/SettingsHolderCheckboxStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ca.hojat.notes.niki.shared.views.MyAppCompatCheckbox
+                    android:id="@+id/settings_enable_line_wrap"
+                    style="@style/SettingsCheckboxStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/enable_line_wrap" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/settings_gravity_holder"
+                style="@style/SettingsHolderTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ca.hojat.notes.niki.shared.views.MyTextView
+                    android:id="@+id/settings_gravity_label"
+                    style="@style/SettingsTextLabelStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/alignment" />
+
+                <ca.hojat.notes.niki.shared.views.MyTextView
+                    android:id="@+id/settings_gravity"
+                    style="@style/SettingsTextValueStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/settings_gravity_label"
+                    tools:text="@string/left" />
+
+            </RelativeLayout>
+
+            <include
+                android:id="@+id/settings_text_divider"
+                layout="@layout/divider" />
+
+            <TextView
+                android:id="@+id/settings_startup_label"
+                style="@style/SettingsSectionLabelStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/startup" />
+
+            <RelativeLayout
+                android:id="@+id/settings_cursor_placement_holder"
+                style="@style/SettingsHolderCheckboxStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ca.hojat.notes.niki.shared.views.MyAppCompatCheckbox
+                    android:id="@+id/settings_cursor_placement"
+                    style="@style/SettingsCheckboxStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/place_cursor_end" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/settings_show_keyboard_holder"
+                style="@style/SettingsHolderCheckboxStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ca.hojat.notes.niki.shared.views.MyAppCompatCheckbox
+                    android:id="@+id/settings_show_keyboard"
+                    style="@style/SettingsCheckboxStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/show_keyboard" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/settings_show_note_picker_holder"
+                style="@style/SettingsHolderCheckboxStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ca.hojat.notes.niki.shared.views.MyAppCompatCheckbox
+                    android:id="@+id/settings_show_note_picker"
+                    style="@style/SettingsCheckboxStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/show_note_picker" />
+
+            </RelativeLayout>
+
+            <include
+                android:id="@+id/settings_startup_divider"
+                layout="@layout/divider" />
+
+            <TextView
+                android:id="@+id/settings_saving_label"
+                style="@style/SettingsSectionLabelStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/saving_label" />
+
+            <RelativeLayout
+                android:id="@+id/settings_autosave_notes_holder"
+                style="@style/SettingsHolderCheckboxStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ca.hojat.notes.niki.shared.views.MyAppCompatCheckbox
+                    android:id="@+id/settings_autosave_notes"
+                    style="@style/SettingsCheckboxStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/autosave_notes" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/settings_display_success_holder"
+                style="@style/SettingsHolderCheckboxStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ca.hojat.notes.niki.shared.views.MyAppCompatCheckbox
+                    android:id="@+id/settings_display_success"
+                    style="@style/SettingsCheckboxStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/display_success_message" />
+
+            </RelativeLayout>
+
+            <include
+                android:id="@+id/settings_saving_divider"
+                layout="@layout/divider" />
+
+            <TextView
+                android:id="@+id/settings_migrating_label"
+                style="@style/SettingsSectionLabelStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/migrating" />
+
+            <RelativeLayout
+                android:id="@+id/settings_export_notes_holder"
+                style="@style/SettingsHolderTextViewOneLinerStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ca.hojat.notes.niki.shared.views.MyTextView
+                    android:id="@+id/settings_export_notes_label"
+                    style="@style/SettingsTextLabelStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/export_notes" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/settings_import_notes_holder"
+                style="@style/SettingsHolderTextViewOneLinerStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <ca.hojat.notes.niki.shared.views.MyTextView
+                android:id="@+id/settings_import_notes_label"
+                style="@style/SettingsTextLabelStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/import_notes" />
+            </RelativeLayout>
+
+            <include
+                android:id="@+id/settings_migrating_divider"
+                layout="@layout/divider" />
+
+            <TextView
+                android:id="@+id/settings_backups_label"
+                style="@style/SettingsSectionLabelStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/backups" />
+
+            <RelativeLayout
+                android:id="@+id/settings_enable_automatic_backups_holder"
+                style="@style/SettingsHolderCheckboxStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ca.hojat.notes.niki.shared.views.MyAppCompatCheckbox
+                    android:id="@+id/settings_enable_automatic_backups"
+                    style="@style/SettingsCheckboxStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/enable_automatic_backups" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/settings_manage_automatic_backups_holder"
+                style="@style/SettingsHolderTextViewOneLinerStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ca.hojat.notes.niki.shared.views.MyTextView
+                    android:id="@+id/settings_manage_automatic_backups"
+                    style="@style/SettingsTextLabelStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/manage_automatic_backups" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
