@@ -153,24 +153,9 @@ private fun ContributorsScreenPreview() {
             goBack = {},
             contributors = listOf(
                 LanguageContributor(
-                    R.drawable.ic_flag_arabic_vector,
-                    R.string.translation_arabic,
-                    R.string.translators_arabic
-                ),
-                LanguageContributor(
-                    R.drawable.ic_flag_azerbaijani_vector,
-                    R.string.translation_azerbaijani,
-                    R.string.translators_azerbaijani
-                ),
-                LanguageContributor(
-                    R.drawable.ic_flag_bengali_vector,
-                    R.string.translation_bengali,
-                    R.string.translators_bengali
-                ),
-                LanguageContributor(
-                    R.drawable.ic_flag_catalan_vector,
-                    R.string.translation_catalan,
-                    R.string.translators_catalan
+                    R.drawable.ic_flag_persian_vector,
+                    R.string.translation_persian,
+                    R.string.translators_persian
                 ),
             ).toImmutableList(),
             showContributorsLabel = true,
