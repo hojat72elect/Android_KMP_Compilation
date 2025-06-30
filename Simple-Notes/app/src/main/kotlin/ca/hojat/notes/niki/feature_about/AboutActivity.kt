@@ -1,16 +1,12 @@
 package ca.hojat.notes.niki.feature_about
 
 import android.annotation.SuppressLint
-import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.Intent.ACTION_SEND
-import android.content.Intent.ACTION_SENDTO
-import android.content.Intent.EXTRA_EMAIL
 import android.content.Intent.EXTRA_SUBJECT
 import android.content.Intent.EXTRA_TEXT
 import android.content.Intent.createChooser
 import android.content.res.Resources
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -19,23 +15,20 @@ import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
-import androidx.core.net.toUri
 import ca.hojat.notes.niki.R
 import ca.hojat.notes.niki.feature_about.ui.AboutScreen
-import ca.hojat.notes.niki.feature_about.ui.HelpUsSection
 import ca.hojat.notes.niki.feature_about.ui.AboutSection
-import ca.hojat.notes.niki.feature_about.ui.SocialSection
+import ca.hojat.notes.niki.feature_about.ui.HelpUsSection
 import ca.hojat.notes.niki.feature_about.ui.OtherSection
-import ca.hojat.notes.niki.shared.ui.compose.alert_dialog.rememberAlertDialogState
-import ca.hojat.notes.niki.shared.ui.compose.extensions.enableEdgeToEdgeSimple
-import ca.hojat.notes.niki.shared.ui.compose.extensions.rateStarsRedirectAndThankYou
-import ca.hojat.notes.niki.shared.ui.compose.theme.AppThemeSurface
+import ca.hojat.notes.niki.feature_about.ui.SocialSection
+import ca.hojat.notes.niki.shared.data.models.FAQItem
+import ca.hojat.notes.niki.shared.dialogs.ConfirmationAdvancedAlertDialog
+import ca.hojat.notes.niki.shared.dialogs.RateStarsAlertDialog
 import ca.hojat.notes.niki.shared.extensions.baseConfig
 import ca.hojat.notes.niki.shared.extensions.getStoreUrl
 import ca.hojat.notes.niki.shared.extensions.launchMoreAppsFromUsIntent
 import ca.hojat.notes.niki.shared.extensions.launchViewIntent
 import ca.hojat.notes.niki.shared.extensions.redirectToRateUs
-import ca.hojat.notes.niki.shared.extensions.showErrorToast
 import ca.hojat.notes.niki.shared.extensions.toast
 import ca.hojat.notes.niki.shared.helpers.APP_FAQ
 import ca.hojat.notes.niki.shared.helpers.APP_ICON_IDS
@@ -44,9 +37,10 @@ import ca.hojat.notes.niki.shared.helpers.APP_LICENSES
 import ca.hojat.notes.niki.shared.helpers.APP_NAME
 import ca.hojat.notes.niki.shared.helpers.APP_VERSION_NAME
 import ca.hojat.notes.niki.shared.helpers.SHOW_FAQ_BEFORE_MAIL
-import ca.hojat.notes.niki.shared.data.models.FAQItem
-import ca.hojat.notes.niki.shared.dialogs.ConfirmationAdvancedAlertDialog
-import ca.hojat.notes.niki.shared.dialogs.RateStarsAlertDialog
+import ca.hojat.notes.niki.shared.ui.compose.alert_dialog.rememberAlertDialogState
+import ca.hojat.notes.niki.shared.ui.compose.extensions.enableEdgeToEdgeSimple
+import ca.hojat.notes.niki.shared.ui.compose.extensions.rateStarsRedirectAndThankYou
+import ca.hojat.notes.niki.shared.ui.compose.theme.AppThemeSurface
 
 class AboutActivity : ComponentActivity() {
     private val appName get() = intent.getStringExtra(APP_NAME) ?: ""
@@ -185,8 +179,6 @@ class AboutActivity : ComponentActivity() {
                 ) { success ->
                     if (success) {
                         launchFAQActivity()
-                    } else {
-                        launchEmailIntent()
                     }
                 }
             }
@@ -226,8 +218,6 @@ class AboutActivity : ComponentActivity() {
         ) {
             baseConfig.wasBeforeAskingShown = true
             showConfirmationAdvancedDialog()
-        } else {
-            launchEmailIntent()
         }
     }
 
@@ -241,44 +231,6 @@ class AboutActivity : ComponentActivity() {
             putExtra(APP_LAUNCHER_NAME, intent.getStringExtra(APP_LAUNCHER_NAME) ?: "")
             putExtra(APP_FAQ, faqItems)
             startActivity(this)
-        }
-    }
-
-    @SuppressLint("StringFormatMatches")
-    private fun launchEmailIntent() {
-        val appVersion =
-            String.format(getString(R.string.app_version, intent.getStringExtra(APP_VERSION_NAME)))
-        val deviceOS = String.format(getString(R.string.device_os), Build.VERSION.RELEASE)
-        val newline = "\n"
-        val separator = "------------------------------"
-        val body = "$appVersion$newline$deviceOS$newline$separator$newline$newline"
-
-        val address = if (packageName.startsWith("com.simplemobiletools")) {
-            getString(R.string.my_email)
-        } else {
-            getString(R.string.my_fake_email)
-        }
-
-        val selectorIntent = Intent(ACTION_SENDTO)
-            .setData("mailto:$address".toUri())
-        val emailIntent = Intent(ACTION_SEND).apply {
-            putExtra(EXTRA_EMAIL, arrayOf(address))
-            putExtra(EXTRA_SUBJECT, appName)
-            putExtra(EXTRA_TEXT, body)
-            selector = selectorIntent
-        }
-
-        try {
-            startActivity(emailIntent)
-        } catch (e: ActivityNotFoundException) {
-            val chooser = createChooser(emailIntent, getString(R.string.send_email))
-            try {
-                startActivity(chooser)
-            } catch (e: Exception) {
-                toast(R.string.no_email_client_found)
-            }
-        } catch (e: Exception) {
-            showErrorToast(e)
         }
     }
 

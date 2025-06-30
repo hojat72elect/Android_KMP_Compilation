@@ -31,11 +31,6 @@ fun AboutSection(
                 icon = R.drawable.ic_question_mark_vector
             )
         }
-        TwoLinerTextItem(
-            click = onEmailClick,
-            text = stringResource(id = R.string.my_email),
-            icon = R.drawable.ic_mail_vector
-        )
         SettingsHorizontalDivider()
     }
 }
