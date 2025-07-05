@@ -1,16 +1,12 @@
 package ca.hojat.smart.gallery.feature_about
 
 import android.annotation.SuppressLint
-import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.Intent.ACTION_SEND
-import android.content.Intent.ACTION_SENDTO
-import android.content.Intent.EXTRA_EMAIL
 import android.content.Intent.EXTRA_SUBJECT
 import android.content.Intent.EXTRA_TEXT
 import android.content.Intent.createChooser
 import android.content.res.Resources
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -19,14 +15,8 @@ import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
-import androidx.core.net.toUri
 import ca.hojat.smart.gallery.R
-import ca.hojat.smart.gallery.shared.ui.dialogs.RateStarsAlertDialog
-import ca.hojat.smart.gallery.shared.ui.dialogs.alert_dialog.rememberAlertDialogState
-import ca.hojat.smart.gallery.shared.ui.extensions.enableEdgeToEdgeSimple
-import ca.hojat.smart.gallery.shared.ui.extensions.rateStarsRedirectAndThankYou
-import ca.hojat.smart.gallery.shared.ui.theme.AppThemeSurface
-import ca.hojat.smart.gallery.shared.ui.dialogs.ConfirmationAdvancedAlertDialog
+import ca.hojat.smart.gallery.shared.data.domain.FAQItem
 import ca.hojat.smart.gallery.shared.extensions.baseConfig
 import ca.hojat.smart.gallery.shared.extensions.getStoreUrl
 import ca.hojat.smart.gallery.shared.extensions.launchViewIntent
@@ -37,8 +27,12 @@ import ca.hojat.smart.gallery.shared.helpers.APP_LAUNCHER_NAME
 import ca.hojat.smart.gallery.shared.helpers.APP_LICENSES
 import ca.hojat.smart.gallery.shared.helpers.APP_NAME
 import ca.hojat.smart.gallery.shared.helpers.APP_VERSION_NAME
-import ca.hojat.smart.gallery.shared.helpers.SHOW_FAQ_BEFORE_MAIL
-import ca.hojat.smart.gallery.shared.data.domain.FAQItem
+import ca.hojat.smart.gallery.shared.ui.dialogs.ConfirmationAdvancedAlertDialog
+import ca.hojat.smart.gallery.shared.ui.dialogs.RateStarsAlertDialog
+import ca.hojat.smart.gallery.shared.ui.dialogs.alert_dialog.rememberAlertDialogState
+import ca.hojat.smart.gallery.shared.ui.extensions.enableEdgeToEdgeSimple
+import ca.hojat.smart.gallery.shared.ui.extensions.rateStarsRedirectAndThankYou
+import ca.hojat.smart.gallery.shared.ui.theme.AppThemeSurface
 import ca.hojat.smart.gallery.shared.usecases.ShowToastUseCase
 
 class AboutActivity : ComponentActivity() {
@@ -63,7 +57,7 @@ class AboutActivity : ComponentActivity() {
                     remember { !resources.getBoolean(R.bool.hide_all_external_links) }
                 val showGoogleRelations =
                     remember { !resources.getBoolean(R.bool.hide_google_relations) }
-                val onEmailClickAlertDialogState = getOnEmailClickAlertDialogState()
+
                 val rateStarsAlertDialogState = getRateStarsAlertDialogState()
                 val onRateUsClickAlertDialogState =
                     getOnRateUsClickAlertDialogState(rateStarsAlertDialogState::show)
@@ -92,10 +86,8 @@ class AboutActivity : ComponentActivity() {
                         if (!showExternalLinks || setupFAQ) {
                             AboutSection(
                                 setupFAQ = setupFAQ,
-                                onFAQClick = ::launchFAQActivity,
-                                onEmailClick = {
-                                    onEmailClick(onEmailClickAlertDialogState::show)
-                                })
+                                onFAQClick = ::launchFAQActivity
+                            )
                         }
                     },
                     socialSection = {
@@ -162,30 +154,6 @@ class AboutActivity : ComponentActivity() {
         }
 
     @Composable
-    private fun getOnEmailClickAlertDialogState() =
-        rememberAlertDialogState().apply {
-            DialogMember {
-                ConfirmationAdvancedAlertDialog(
-                    alertDialogState = this,
-                    message = "${getString(R.string.before_asking_question_read_faq)}\n\n${
-                        getString(
-                            R.string.make_sure_latest
-                        )
-                    }",
-                    messageId = null,
-                    positive = R.string.read_faq,
-                    negative = R.string.skip
-                ) { success ->
-                    if (success) {
-                        launchFAQActivity()
-                    } else {
-                        launchEmailIntent()
-                    }
-                }
-            }
-        }
-
-    @Composable
     private fun getOnRateUsClickAlertDialogState(showRateStarsDialog: () -> Unit) =
         rememberAlertDialogState().apply {
             DialogMember {
@@ -209,21 +177,6 @@ class AboutActivity : ComponentActivity() {
             }
         }
 
-    private fun onEmailClick(
-        showConfirmationAdvancedDialog: () -> Unit
-    ) {
-        if (intent.getBooleanExtra(
-                SHOW_FAQ_BEFORE_MAIL,
-                false
-            ) && !baseConfig.wasBeforeAskingShown
-        ) {
-            baseConfig.wasBeforeAskingShown = true
-            showConfirmationAdvancedDialog()
-        } else {
-            launchEmailIntent()
-        }
-    }
-
     private fun launchFAQActivity() {
         val faqItems = intent.getSerializableExtra(APP_FAQ) as ArrayList<FAQItem>
         Intent(applicationContext, FAQActivity::class.java).apply {
@@ -234,44 +187,6 @@ class AboutActivity : ComponentActivity() {
             putExtra(APP_LAUNCHER_NAME, intent.getStringExtra(APP_LAUNCHER_NAME) ?: "")
             putExtra(APP_FAQ, faqItems)
             startActivity(this)
-        }
-    }
-
-    @SuppressLint("StringFormatMatches")
-    private fun launchEmailIntent() {
-        val appVersion =
-            String.format(getString(R.string.app_version, intent.getStringExtra(APP_VERSION_NAME)))
-        val deviceOS = String.format(getString(R.string.device_os), Build.VERSION.RELEASE)
-        val newline = "\n"
-        val separator = "------------------------------"
-        val body = "$appVersion$newline$deviceOS$newline$separator$newline$newline"
-
-        val address = if (packageName.startsWith("ca.hojat.smart.gallery")) {
-            getString(R.string.my_email)
-        } else {
-            getString(R.string.my_fake_email)
-        }
-
-        val selectorIntent = Intent(ACTION_SENDTO)
-            .setData("mailto:$address".toUri())
-        val emailIntent = Intent(ACTION_SEND).apply {
-            putExtra(EXTRA_EMAIL, arrayOf(address))
-            putExtra(EXTRA_SUBJECT, appName)
-            putExtra(EXTRA_TEXT, body)
-            selector = selectorIntent
-        }
-
-        try {
-            startActivity(emailIntent)
-        } catch (e: ActivityNotFoundException) {
-            val chooser = createChooser(emailIntent, getString(R.string.send_email))
-            try {
-                startActivity(chooser)
-            } catch (e: Exception) {
-                ShowToastUseCase(this, R.string.no_email_client_found)
-            }
-        } catch (e: Exception) {
-            ShowToastUseCase(this, "Error : $e")
         }
     }
 

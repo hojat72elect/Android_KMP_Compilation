@@ -71,7 +71,6 @@
     <string name="skip">Skip</string>
     <string name="app_version">App version: %s</string>
     <string name="device_os">Device OS: %s</string>
-    <string name="my_email">hello@simplemobiletools.com</string>
     <string name="my_fake_email">noreply@simplemobiletools.com</string>
     <string name="send_email">Send email</string>
     <string name="no_email_client_found">No email client found</string>

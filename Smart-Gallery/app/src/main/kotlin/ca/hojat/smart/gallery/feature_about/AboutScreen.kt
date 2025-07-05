@@ -123,8 +123,7 @@ internal fun OtherSection(
 @Composable
 internal fun AboutSection(
     setupFAQ: Boolean,
-    onFAQClick: () -> Unit,
-    onEmailClick: () -> Unit
+    onFAQClick: () -> Unit
 ) {
     SettingsGroup(title = {
         SettingsTitleTextComponent(text = stringResource(id = R.string.support), modifier = startingTitlePadding)
@@ -136,11 +135,6 @@ internal fun AboutSection(
                 icon = R.drawable.ic_question_mark_vector
             )
         }
-        TwoLinerTextItem(
-            click = onEmailClick,
-            text = stringResource(id = R.string.my_email),
-            icon = R.drawable.ic_mail_vector
-        )
         SettingsHorizontalDivider()
     }
 }
