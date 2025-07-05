@@ -117,7 +117,6 @@ dependencies {
     implementation(libs.material)
     implementation(libs.recyclerViewFastScroller)
     api(libs.gson)
-    api(libs.reprint)
     api(libs.joda.time)
     implementation(libs.awebp)
     implementation(libs.kotlinx.serialization.json)

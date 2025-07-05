@@ -31,8 +31,6 @@ composeMaterial3 = "1.2.0-alpha09"
 #Glide
 glide = "4.16.0"
 glideCompose = "1.0.0-beta01"
-#reprint
-reprint = "2cb206415d"
 #jodaTime
 jodaTime = "2.12.5"
 #gson
@@ -117,7 +115,6 @@ recyclerViewFastScroller = { module = "com.github.tibbi:RecyclerView-FastScrolle
 rtl-viewpager = { module = "com.github.duolingo:rtl-viewpager", version.ref = "rtlViewpager" }
 patternLockView = { module = "com.github.aritraroy:patternLockView", version.ref = "patternLockView" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
-reprint = { module = "com.github.tibbi:reprint", version.ref = "reprint" }
 joda-time = { module = "joda-time:joda-time", version.ref = "jodaTime" }
 # Kotlin
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
