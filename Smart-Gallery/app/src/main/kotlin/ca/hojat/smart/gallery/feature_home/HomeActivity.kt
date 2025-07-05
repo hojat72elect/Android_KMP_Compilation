@@ -1698,16 +1698,7 @@ class HomeActivity : BaseActivity(), DirectoryOperationsListener {
 
     private fun checkWhatsNewDialog() {
         arrayListOf<Release>().apply {
-            add(Release(213, R.string.release_213))
-            add(Release(217, R.string.release_217))
-            add(Release(220, R.string.release_220))
-            add(Release(221, R.string.release_221))
-            add(Release(225, R.string.release_225))
-            add(Release(258, R.string.release_258))
-            add(Release(277, R.string.release_277))
-            add(Release(295, R.string.release_295))
-            add(Release(327, R.string.release_327))
-            add(Release(369, R.string.release_369))
+            add(Release(1, R.string.release_001))
             checkWhatsNew(this, BuildConfig.VERSION_CODE)
         }
     }
