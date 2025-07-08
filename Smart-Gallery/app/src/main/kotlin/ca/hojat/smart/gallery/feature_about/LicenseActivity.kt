@@ -31,7 +31,6 @@ import ca.hojat.smart.gallery.shared.helpers.LICENSE_M3U_PARSER
 import ca.hojat.smart.gallery.shared.helpers.LICENSE_NUMBER_PICKER
 import ca.hojat.smart.gallery.shared.helpers.LICENSE_OTTO
 import ca.hojat.smart.gallery.shared.helpers.LICENSE_PANORAMA_VIEW
-import ca.hojat.smart.gallery.shared.helpers.LICENSE_PATTERN
 import ca.hojat.smart.gallery.shared.helpers.LICENSE_PDF_VIEWER
 import ca.hojat.smart.gallery.shared.helpers.LICENSE_PDF_VIEW_PAGER
 import ca.hojat.smart.gallery.shared.helpers.LICENSE_PHOTOVIEW
@@ -103,12 +102,6 @@ class LicenseActivity : ComponentActivity() {
             R.string.picasso_title,
             R.string.picasso_text,
             R.string.picasso_url
-        ),
-        License(
-            LICENSE_PATTERN,
-            R.string.pattern_title,
-            R.string.pattern_text,
-            R.string.pattern_url
         ),
         License(
             LICENSE_GIF_DRAWABLE,
