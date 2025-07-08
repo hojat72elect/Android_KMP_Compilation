@@ -60,8 +60,6 @@ abstract class MyRecyclerViewAdapter(
 
     abstract fun getItemKeyPosition(key: Int): Int
 
-    abstract fun onActionModeCreated()
-
     abstract fun onActionModeDestroyed()
 
     protected fun isOneItemSelected() = selectedKeys.size == 1
@@ -104,7 +102,6 @@ abstract class MyRecyclerViewAdapter(
 
                 actBarTextView!!.setTextColor(bgColor.getContrastColor())
                 activity.updateMenuItemColors(menu, baseColor = bgColor)
-                onActionModeCreated()
 
                 if (baseConfig.isUsingSystemTheme) {
                     actBarTextView?.onGlobalLayout {

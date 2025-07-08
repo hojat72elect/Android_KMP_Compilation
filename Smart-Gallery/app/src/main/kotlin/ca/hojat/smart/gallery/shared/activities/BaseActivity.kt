@@ -120,7 +120,6 @@ import ca.hojat.smart.gallery.shared.extensions.hasProperStoredFirstParentUri
 import ca.hojat.smart.gallery.shared.extensions.hideKeyboard
 import ca.hojat.smart.gallery.shared.extensions.humanizePath
 import ca.hojat.smart.gallery.shared.extensions.isAccessibleWithSAFSdk30
-import ca.hojat.smart.gallery.shared.extensions.isAppInstalledOnSDCard
 import ca.hojat.smart.gallery.shared.extensions.isExternalStorageManager
 import ca.hojat.smart.gallery.shared.extensions.isInDownloadDir
 import ca.hojat.smart.gallery.shared.extensions.isJpg
@@ -1598,14 +1597,6 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
-    fun checkAppOnSDCard() {
-        if (!baseConfig.wasAppOnSDShown && isAppInstalledOnSDCard()) {
-            baseConfig.wasAppOnSDShown = true
-            ConfirmationDialog(this, "", R.string.app_on_sd_card, R.string.ok, 0) {}
-        }
-    }
-
-
     fun exportSettings(configItems: LinkedHashMap<String, Any>) {
         configItemsToExport = configItems
         ExportSettingsDialog(this, getExportSettingsFilename(), true) { _, filename ->
@@ -1719,59 +1710,6 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
-
-    fun addNoMedia(path: String, callback: () -> Unit) {
-        val file = File(path, NOMEDIA)
-        if (getDoesFilePathExist(file.absolutePath)) {
-            callback()
-            return
-        }
-
-        if (needsStupidWritePermissions(path)) {
-            handleSAFDialog {
-                if (!it) {
-                    return@handleSAFDialog
-                }
-
-                val fileDocument = getDocumentFile(path)
-                if (fileDocument?.exists() == true && fileDocument.isDirectory) {
-                    fileDocument.createFile("", NOMEDIA)
-                    addNoMediaIntoMediaStore(file.absolutePath)
-                    callback()
-                } else {
-                    ShowToastUseCase(this, R.string.unknown_error_occurred)
-                    callback()
-                }
-            }
-        } else {
-            try {
-                if (file.createNewFile()) {
-                    ensureBackgroundThread {
-                        addNoMediaIntoMediaStore(file.absolutePath)
-                    }
-                } else {
-                    ShowToastUseCase(this, R.string.unknown_error_occurred)
-                }
-            } catch (e: Exception) {
-                ShowToastUseCase(this, "Error : $e")
-            }
-            callback()
-        }
-    }
-
-    private fun addNoMediaIntoMediaStore(path: String) {
-        try {
-            val content = ContentValues().apply {
-                put(Files.FileColumns.TITLE, NOMEDIA)
-                put(Files.FileColumns.DATA, path)
-                put(Files.FileColumns.MEDIA_TYPE, Files.FileColumns.MEDIA_TYPE_NONE)
-            }
-            contentResolver.insert(Files.getContentUri("external"), content)
-        } catch (e: Exception) {
-            ShowToastUseCase(this, "Error : $e")
-        }
-    }
-
     fun removeNoMedia(path: String, callback: (() -> Unit)? = null) {
         val file = File(path, NOMEDIA)
         if (!getDoesFilePathExist(file.absolutePath)) {
@@ -1796,7 +1734,6 @@ open class BaseActivity : AppCompatActivity() {
             }
         }
     }
-
 
     fun toggleFileVisibility(
         oldPath: String,

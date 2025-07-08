@@ -46,7 +46,6 @@ const val MEDIA_HORIZONTAL_COLUMN_CNT = "media_horizontal_column_cnt"
 const val MEDIA_LANDSCAPE_HORIZONTAL_COLUMN_CNT = "media_landscape_horizontal_column_cnt"
 const val SHOW_ALL =
     "show_all"                           // display images and videos from all folders together
-const val HIDE_FOLDER_TOOLTIP_SHOWN = "hide_folder_tooltip_shown"
 const val EXCLUDED_FOLDERS = "excluded_folders"
 const val INCLUDED_FOLDERS = "included_folders"
 const val ALBUM_COVERS = "album_covers"
@@ -309,14 +308,7 @@ const val CUSTOM_ACCENT_COLOR = "custom_accent_color"
 const val CUSTOM_APP_ICON_COLOR = "custom_app_icon_color"
 const val WIDGET_BG_COLOR = "widget_bg_color"
 const val WIDGET_TEXT_COLOR = "widget_text_color"
-const val PASSWORD_PROTECTION = "password_protection"
 
-const val APP_PASSWORD_PROTECTION = "app_password_protection"
-
-const val DELETE_PASSWORD_PROTECTION = "delete_password_protection"
-
-
-const val PROTECTED_FOLDER_TYPE = "protected_folder_type_"
 const val KEEP_LAST_MODIFIED = "keep_last_modified"
 const val USE_ENGLISH = "use_english"
 const val WAS_USE_ENGLISH_TOGGLED = "was_use_english_toggled"
@@ -433,7 +425,6 @@ const val SORT_BY_CUSTOM = 131072
 
 // security
 const val WAS_PROTECTION_HANDLED = "was_protection_handled"
-const val PROTECTION_NONE = -1
 
 // renaming
 const val RENAME_SIMPLE = 0

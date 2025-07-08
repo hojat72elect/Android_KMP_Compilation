@@ -82,8 +82,6 @@ class FilepickerItemsAdapter(
 
     override fun getItemSelectionKey(position: Int) = fileDirItems[position].path.hashCode()
 
-    override fun onActionModeCreated() {}
-
     override fun onActionModeDestroyed() {}
 
     override fun onViewRecycled(holder: ViewHolder) {

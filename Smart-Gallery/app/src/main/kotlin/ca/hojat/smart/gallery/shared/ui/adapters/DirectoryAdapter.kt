@@ -203,8 +203,6 @@ class DirectoryAdapter(
 
     override fun getItemKeyPosition(key: Int) = dirs.indexOfFirst { it.path.hashCode() == key }
 
-    override fun onActionModeCreated() {}
-
     @SuppressLint("NotifyDataSetChanged")
     override fun onActionModeDestroyed() {
         if (isDragAndDropping) {

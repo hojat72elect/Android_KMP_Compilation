@@ -37,14 +37,11 @@ import ca.hojat.smart.gallery.shared.usecases.ShowToastUseCase
 
 class AboutActivity : ComponentActivity() {
     private val appName get() = intent.getStringExtra(APP_NAME) ?: ""
+    private val easterEggTimeLimit = 3_000L
+    private val easterEggRequiredClicks = 7
 
     private var firstVersionClickTS = 0L
     private var clicksSinceFirstClick = 0
-
-    companion object {
-        private const val EASTER_EGG_TIME_LIMIT = 3000L
-        private const val EASTER_EGG_REQUIRED_CLICKS = 7
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,7 +73,7 @@ class AboutActivity : ComponentActivity() {
                             onInviteClick = ::onInviteClick,
                             onContributorsClick = ::onContributorsClick,
                             showDonate = resources.getBoolean(R.bool.show_donate_in_about) && showExternalLinks,
-                            onDonateClick = ::onDonateClick,
+                            onDonateClick = {},
                             showInvite = showHelpUsSection,
                             showRateUs = showHelpUsSection
                         )
@@ -93,9 +90,9 @@ class AboutActivity : ComponentActivity() {
                     socialSection = {
                         if (showExternalLinks) {
                             SocialSection(
-                                onFacebookClick = ::onFacebookClick,
+                                onFacebookClick = {},
                                 onGithubClick = ::onGithubClick,
-                                onRedditClick = ::onRedditClick,
+                                onRedditClick = {},
                                 onTelegramClick = ::onTelegramClick
                             )
                         }
@@ -111,7 +108,7 @@ class AboutActivity : ComponentActivity() {
                         showWebsite = showWebsite,
                         onWebsiteClick = ::onWebsiteClick,
                         showPrivacyPolicy = showExternalLinks,
-                        onPrivacyPolicyClick = ::onPrivacyPolicyClick,
+                        onPrivacyPolicyClick = {},
                         onLicenseClick = ::onLicenseClick,
                         version = fullVersion,
                         onVersionClick = ::onVersionClick
@@ -228,35 +225,16 @@ class AboutActivity : ComponentActivity() {
         startActivity(intent)
     }
 
-
-    private fun onDonateClick() {
-       // User wants to donate to us
-    }
-
-    private fun onFacebookClick() {
-       // user wants to follow us on FB.
-    }
-
     private fun onGithubClick() {
         launchViewIntent("https://github.com/hojat72elect")
     }
-
-    private fun onRedditClick() {
-       // user wants to follow us on reddit
-    }
-
 
     private fun onTelegramClick() {
         launchViewIntent("https://t.me/hojat72elect")
     }
 
-
     private fun onWebsiteClick() {
         launchViewIntent("https://hojat72elect.github.io/")
-    }
-
-    private fun onPrivacyPolicyClick() {
-       // User wants to see our privacy policy
     }
 
     private fun onLicenseClick() {
@@ -277,11 +255,11 @@ class AboutActivity : ComponentActivity() {
             Handler(Looper.getMainLooper()).postDelayed({
                 firstVersionClickTS = 0L
                 clicksSinceFirstClick = 0
-            }, EASTER_EGG_TIME_LIMIT)
+            }, easterEggTimeLimit)
         }
 
         clicksSinceFirstClick++
-        if (clicksSinceFirstClick >= EASTER_EGG_REQUIRED_CLICKS) {
+        if (clicksSinceFirstClick >= easterEggRequiredClicks) {
             ShowToastUseCase(this, R.string.hello)
             firstVersionClickTS = 0L
             clicksSinceFirstClick = 0

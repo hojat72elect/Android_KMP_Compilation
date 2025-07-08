@@ -1,12 +1,11 @@
 package ca.hojat.smart.gallery.shared.extensions
 
 import android.content.Context
-import ca.hojat.smart.gallery.shared.helpers.MD5
+import ca.hojat.smart.gallery.shared.data.domain.FileDirItem
 import ca.hojat.smart.gallery.shared.helpers.NOMEDIA
 import ca.hojat.smart.gallery.shared.helpers.photoExtensions
 import ca.hojat.smart.gallery.shared.helpers.rawExtensions
 import ca.hojat.smart.gallery.shared.helpers.videoExtensions
-import ca.hojat.smart.gallery.shared.data.domain.FileDirItem
 import java.io.File
 
 fun File.isVideoFast() = videoExtensions.any { absolutePath.endsWith(it, true) }
