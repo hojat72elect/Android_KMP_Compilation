@@ -3713,5 +3713,3 @@ fun Context.getActivity(): Activity {
 }
 
 fun Context.getAppIconIds(): List<Int> = getActivity().getAppIconIds()
-
-fun Context.getAppLauncherName(): String = getActivity().getAppLauncherName()

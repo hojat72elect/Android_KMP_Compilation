@@ -159,9 +159,7 @@ import ca.hojat.smart.gallery.shared.extensions.updateLastModified
 import ca.hojat.smart.gallery.shared.extensions.updateOTGPathFromPartition
 import ca.hojat.smart.gallery.shared.helpers.APP_FAQ
 import ca.hojat.smart.gallery.shared.helpers.APP_ICON_IDS
-import ca.hojat.smart.gallery.shared.helpers.APP_LAUNCHER_NAME
 import ca.hojat.smart.gallery.shared.helpers.APP_LICENSES
-import ca.hojat.smart.gallery.shared.helpers.APP_NAME
 import ca.hojat.smart.gallery.shared.helpers.APP_VERSION_NAME
 import ca.hojat.smart.gallery.shared.helpers.CONFLICT_KEEP_BOTH
 import ca.hojat.smart.gallery.shared.helpers.CONFLICT_SKIP
@@ -294,8 +292,6 @@ open class BaseActivity : AppCompatActivity() {
         R.mipmap.ic_launcher_blue_grey,
         R.mipmap.ic_launcher_grey_black
     )
-
-    private fun getAppLauncherName(): String = getString(R.string.app_launcher_name)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         if (useDynamicTheme) {
@@ -501,7 +497,7 @@ open class BaseActivity : AppCompatActivity() {
             faqItems.removeIf { it.text == R.string.faq_8_text }
         }
 
-        startAboutActivity(R.string.app_name, licenses, BuildConfig.VERSION_NAME, faqItems, true)
+        startAboutActivity(licenses, BuildConfig.VERSION_NAME, faqItems, true)
     }
 
 
@@ -741,7 +737,7 @@ open class BaseActivity : AppCompatActivity() {
 
             val recentsIcon =
                 BitmapFactory.decodeResource(resources, appIconIDs[currentAppIconColorIndex])
-            val title = getAppLauncherName()
+            val title = getString(R.string.app_name)
             val color = baseConfig.primaryColor
 
             val description = ActivityManager.TaskDescription(title, recentsIcon, color)
@@ -1015,7 +1011,6 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     private fun startAboutActivity(
-        appNameId: Int,
         licenseMask: Long,
         versionName: String,
         faqItems: ArrayList<FAQItem>,
@@ -1024,8 +1019,6 @@ open class BaseActivity : AppCompatActivity() {
         hideKeyboard()
         Intent(applicationContext, AboutActivity::class.java).apply {
             putExtra(APP_ICON_IDS, getAppIconIDs())
-            putExtra(APP_LAUNCHER_NAME, getAppLauncherName())
-            putExtra(APP_NAME, getString(appNameId))
             putExtra(APP_LICENSES, licenseMask)
             putExtra(APP_VERSION_NAME, versionName)
             putExtra(APP_FAQ, faqItems)

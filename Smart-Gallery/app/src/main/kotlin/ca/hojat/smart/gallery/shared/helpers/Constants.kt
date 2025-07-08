@@ -251,13 +251,11 @@ enum class NavigationIcon(@StringRes val accessibilityResId: Int) {
 const val EXTERNAL_STORAGE_PROVIDER_AUTHORITY = "com.android.externalstorage.documents"
 const val EXTRA_SHOW_ADVANCED = "android.content.extra.SHOW_ADVANCED"
 
-const val APP_NAME = "app_name"
 const val APP_LICENSES = "app_licenses"
 const val APP_FAQ = "app_faq"
 const val APP_VERSION_NAME = "app_version_name"
 const val APP_ICON_IDS = "app_icon_ids"
 const val APP_ID = "app_id"
-const val APP_LAUNCHER_NAME = "app_launcher_name"
 const val REAL_FILE_PATH = "real_file_path_2"
 const val IS_FROM_GALLERY = "is_from_gallery"
 
@@ -267,7 +265,6 @@ const val NOMEDIA = ".nomedia"
 
 const val SHOW_FAQ_BEFORE_MAIL = "show_faq_before_mail"
 
-const val SAVE_DISCARD_PROMPT_INTERVAL = 1000L
 const val SD_OTG_PATTERN = "^/storage/[A-Za-z0-9]{4}-[A-Za-z0-9]{4}$"
 const val SD_OTG_SHORT = "^[A-Za-z0-9]{4}-[A-Za-z0-9]{4}$"
 
@@ -329,13 +326,10 @@ const val SCROLL_HORIZONTALLY = "scroll_horizontally"
 
 const val USE_24_HOUR_FORMAT = "use_24_hour_format"
 
-
 const val OTG_PARTITION = "otg_partition_2"
 const val IS_USING_MODIFIED_APP_ICON = "is_using_modified_app_icon"
 
 const val WAS_ORANGE_ICON_CHECKED = "was_orange_icon_checked"
-const val WAS_APP_ON_SD_SHOWN = "was_app_on_sd_shown"
-const val WAS_BEFORE_ASKING_SHOWN = "was_before_asking_shown"
 const val WAS_BEFORE_RATE_SHOWN = "was_before_rate_shown"
 
 const val WAS_APP_ICON_CUSTOMIZATION_WARNING_SHOWN = "was_app_icon_customization_warning_shown"

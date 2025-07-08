@@ -36,7 +36,6 @@ import ca.hojat.smart.gallery.databinding.DialogTitleBinding
 import ca.hojat.smart.gallery.feature_media_viewer.MediaActivity
 import ca.hojat.smart.gallery.shared.data.domain.DateTaken
 import ca.hojat.smart.gallery.shared.helpers.APP_ICON_IDS
-import ca.hojat.smart.gallery.shared.helpers.APP_LAUNCHER_NAME
 import ca.hojat.smart.gallery.shared.helpers.DARK_GREY
 import ca.hojat.smart.gallery.shared.helpers.DIRECTORY
 import ca.hojat.smart.gallery.shared.helpers.IS_FROM_GALLERY
@@ -1085,5 +1084,3 @@ fun Activity.getThemeId(color: Int = baseConfig.primaryColor, showTransparentTop
 
 fun Activity.getAppIconIds(): ArrayList<Int> =
     ArrayList(intent.getIntegerArrayListExtra(APP_ICON_IDS).orEmpty())
-
-fun Activity.getAppLauncherName(): String = intent.getStringExtra(APP_LAUNCHER_NAME).orEmpty()

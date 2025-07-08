@@ -18,13 +18,13 @@ import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
+import ca.hojat.smart.gallery.R
+import ca.hojat.smart.gallery.shared.extensions.getActivity
+import ca.hojat.smart.gallery.shared.extensions.getAppIconIds
+import ca.hojat.smart.gallery.shared.helpers.BaseConfig
 import ca.hojat.smart.gallery.shared.ui.extensions.config
 import ca.hojat.smart.gallery.shared.ui.theme.model.Theme
 import ca.hojat.smart.gallery.shared.ui.theme.model.Theme.Companion.systemDefaultMaterialYou
-import ca.hojat.smart.gallery.shared.extensions.getActivity
-import ca.hojat.smart.gallery.shared.extensions.getAppIconIds
-import ca.hojat.smart.gallery.shared.extensions.getAppLauncherName
-import ca.hojat.smart.gallery.shared.helpers.BaseConfig
 
 @Composable
 internal fun Theme(
@@ -113,7 +113,7 @@ private fun updateRecentsAppIcon(baseConfig: BaseConfig, context: Context) {
 
         val recentsIcon =
             BitmapFactory.decodeResource(context.resources, appIconIDs[currentAppIconColorIndex])
-        val title = context.getAppLauncherName()
+        val title = context.getString(R.string.app_name)
         val color = baseConfig.primaryColor
 
         val description = ActivityManager.TaskDescription(title, recentsIcon, color)

@@ -23,9 +23,7 @@ import ca.hojat.smart.gallery.shared.extensions.launchViewIntent
 import ca.hojat.smart.gallery.shared.extensions.redirectToRateUs
 import ca.hojat.smart.gallery.shared.helpers.APP_FAQ
 import ca.hojat.smart.gallery.shared.helpers.APP_ICON_IDS
-import ca.hojat.smart.gallery.shared.helpers.APP_LAUNCHER_NAME
 import ca.hojat.smart.gallery.shared.helpers.APP_LICENSES
-import ca.hojat.smart.gallery.shared.helpers.APP_NAME
 import ca.hojat.smart.gallery.shared.helpers.APP_VERSION_NAME
 import ca.hojat.smart.gallery.shared.ui.dialogs.ConfirmationAdvancedAlertDialog
 import ca.hojat.smart.gallery.shared.ui.dialogs.RateStarsAlertDialog
@@ -36,7 +34,9 @@ import ca.hojat.smart.gallery.shared.ui.theme.AppThemeSurface
 import ca.hojat.smart.gallery.shared.usecases.ShowToastUseCase
 
 class AboutActivity : ComponentActivity() {
-    private val appName get() = intent.getStringExtra(APP_NAME) ?: ""
+
+    private lateinit var appName: String
+
     private val easterEggTimeLimit = 3_000L
     private val easterEggRequiredClicks = 7
 
@@ -45,6 +45,7 @@ class AboutActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        appName = getString(R.string.app_name)
         enableEdgeToEdgeSimple()
         setContent {
             val context = LocalContext.current
@@ -181,7 +182,6 @@ class AboutActivity : ComponentActivity() {
                 APP_ICON_IDS,
                 intent.getIntegerArrayListExtra(APP_ICON_IDS) ?: ArrayList<String>()
             )
-            putExtra(APP_LAUNCHER_NAME, intent.getStringExtra(APP_LAUNCHER_NAME) ?: "")
             putExtra(APP_FAQ, faqItems)
             startActivity(this)
         }
@@ -211,6 +211,7 @@ class AboutActivity : ComponentActivity() {
 
     private fun onInviteClick() {
         val text = String.format(getString(R.string.share_text), appName, getStoreUrl())
+
         Intent().apply {
             action = ACTION_SEND
             putExtra(EXTRA_SUBJECT, appName)
@@ -243,7 +244,6 @@ class AboutActivity : ComponentActivity() {
                 APP_ICON_IDS,
                 intent.getIntegerArrayListExtra(APP_ICON_IDS) ?: ArrayList<String>()
             )
-            putExtra(APP_LAUNCHER_NAME, intent.getStringExtra(APP_LAUNCHER_NAME) ?: "")
             putExtra(APP_LICENSES, intent.getLongExtra(APP_LICENSES, 0))
             startActivity(this)
         }
