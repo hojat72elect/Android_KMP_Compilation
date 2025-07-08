@@ -7,7 +7,6 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.Matrix
-import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.PictureDrawable
 import android.net.Uri
@@ -20,6 +19,8 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
+import androidx.core.graphics.drawable.toDrawable
+import androidx.core.net.toUri
 import androidx.exifinterface.media.ExifInterface.ORIENTATION_ROTATE_180
 import androidx.exifinterface.media.ExifInterface.ORIENTATION_ROTATE_270
 import androidx.exifinterface.media.ExifInterface.ORIENTATION_ROTATE_90
@@ -203,7 +204,7 @@ class PhotoFragment : ViewPagerFragment() {
 
         if (mMedium.path.startsWith("content://") && !mMedium.path.startsWith("content://mms/")) {
             mMedium.path =
-                requireContext().getRealPathFromURI(Uri.parse(mOriginalPath)) ?: mMedium.path
+                requireContext().getRealPathFromURI(mOriginalPath.toUri()) ?: mMedium.path
             if (!isExternalStorageManager() && mMedium.path.startsWith("/storage/") && mMedium.isHidden()) {
                 mMedium.path = mOriginalPath
             }
@@ -212,13 +213,13 @@ class PhotoFragment : ViewPagerFragment() {
                 var out: FileOutputStream? = null
                 try {
                     var inputStream =
-                        requireContext().contentResolver.openInputStream(Uri.parse(mOriginalPath))
+                        requireContext().contentResolver.openInputStream(mOriginalPath.toUri())
                     val exif = ExifInterface()
                     exif.readExif(inputStream, ExifInterface.Options.OPTION_ALL)
                     val tag = exif.getTag(ExifInterface.TAG_ORIENTATION)
                     val orientation = tag?.getValueAsInt(-1) ?: -1
                     inputStream =
-                        requireContext().contentResolver.openInputStream(Uri.parse(mOriginalPath))
+                        requireContext().contentResolver.openInputStream(mOriginalPath.toUri())
                     val original = BitmapFactory.decodeStream(inputStream)
                     val rotated = rotateViaMatrix(original, orientation)
                     exif.setTagValue(ExifInterface.TAG_ORIENTATION, 1)
@@ -226,7 +227,7 @@ class PhotoFragment : ViewPagerFragment() {
 
                     val file = File(
                         requireContext().externalCacheDir,
-                        Uri.parse(mOriginalPath).lastPathSegment!!
+                        mOriginalPath.toUri().lastPathSegment!!
                     )
                     out = FileOutputStream(file)
                     rotated.compress(Bitmap.CompressFormat.JPEG, 100, out)
@@ -432,7 +433,7 @@ class PhotoFragment : ViewPagerFragment() {
             val pathToLoad = getPathToLoad(mMedium)
             val source =
                 if (pathToLoad.startsWith("content://") || pathToLoad.startsWith("file://")) {
-                    InputSource.UriSource(requireContext().contentResolver, Uri.parse(pathToLoad))
+                    InputSource.UriSource(requireContext().contentResolver, pathToLoad.toUri())
                 } else {
                     InputSource.FileSource(pathToLoad)
                 }
@@ -744,7 +745,7 @@ class PhotoFragment : ViewPagerFragment() {
         binding.subsamplingView.apply {
             setMaxTileSize(if (showHighestQuality) Integer.MAX_VALUE else 4096)
             setMinimumTileDpi(minTileDpi)
-            background = ColorDrawable(Color.TRANSPARENT)
+            background = Color.TRANSPARENT.toDrawable()
             bitmapDecoderFactory = bitmapDecoder
             regionDecoderFactory = regionDecoder
             maxScale = 10f
@@ -756,13 +757,11 @@ class PhotoFragment : ViewPagerFragment() {
 
             onImageEventListener = object : SubsamplingScaleImageView.OnImageEventListener {
                 override fun onReady() {
-                    background = ColorDrawable(
-                        if (config.blackBackground) {
-                            Color.BLACK
-                        } else {
-                            context.getProperBackgroundColor()
-                        }
-                    )
+                    background = if (config.blackBackground) {
+                        Color.BLACK
+                    } else {
+                        context.getProperBackgroundColor()
+                    }.toDrawable()
 
                     val useWidth =
                         if (mImageOrientation == ORIENTATION_ROTATE_90 || mImageOrientation == ORIENTATION_ROTATE_270) sHeight else sWidth
@@ -773,7 +772,7 @@ class PhotoFragment : ViewPagerFragment() {
 
                 override fun onImageLoadError(e: Exception) {
                     binding.gesturesView.controller.settings.isZoomEnabled = true
-                    background = ColorDrawable(Color.TRANSPARENT)
+                    background = Color.TRANSPARENT.toDrawable()
                     mIsSubsamplingVisible = false
                     beGone()
                 }
@@ -816,7 +815,7 @@ class PhotoFragment : ViewPagerFragment() {
     private fun checkIfPanorama() {
         mIsPanorama = try {
             if (mMedium.path.startsWith("content:/")) {
-                requireContext().contentResolver.openInputStream(Uri.parse(mMedium.path))
+                requireContext().contentResolver.openInputStream(mMedium.path.toUri())
             } else {
                 File(mMedium.path).inputStream()
             }.use {
@@ -853,7 +852,7 @@ class PhotoFragment : ViewPagerFragment() {
         try {
             val path = getFilePathToShow()
             orient = if (path.startsWith("content:/")) {
-                val inputStream = requireContext().contentResolver.openInputStream(Uri.parse(path))
+                val inputStream = requireContext().contentResolver.openInputStream(path.toUri())
                 val exif = ExifInterface()
                 exif.readExif(inputStream, ExifInterface.Options.OPTION_ALL)
                 val tag = exif.getTag(ExifInterface.TAG_ORIENTATION)
@@ -865,7 +864,7 @@ class PhotoFragment : ViewPagerFragment() {
 
             if (orient == defaultOrientation || requireContext().isPathOnOTG(getFilePathToShow())) {
                 val uri =
-                    if (path.startsWith("content:/")) Uri.parse(path) else Uri.fromFile(File(path))
+                    if (path.startsWith("content:/")) path.toUri() else Uri.fromFile(File(path))
                 val inputStream = requireContext().contentResolver.openInputStream(uri)
                 val exif2 = ExifInterface()
                 exif2.readExif(inputStream, ExifInterface.Options.OPTION_ALL)

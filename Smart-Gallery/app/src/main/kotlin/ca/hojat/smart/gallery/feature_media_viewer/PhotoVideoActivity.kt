@@ -4,13 +4,13 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.text.Html
 import android.view.View
 import android.widget.RelativeLayout
+import androidx.core.graphics.drawable.toDrawable
 import androidx.media3.common.util.UnstableApi
 import ca.hojat.smart.gallery.BuildConfig
 import ca.hojat.smart.gallery.R
@@ -333,7 +333,7 @@ open class PhotoVideoActivity : BaseActivity(), ViewPagerFragment.FragmentListen
         }
 
         if (config.blackBackground) {
-            binding.fragmentHolder.background = ColorDrawable(Color.BLACK)
+            binding.fragmentHolder.background = Color.BLACK.toDrawable()
         }
 
         if (config.maxBrightness) {

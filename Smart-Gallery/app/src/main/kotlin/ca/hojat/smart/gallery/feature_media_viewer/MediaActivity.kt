@@ -4,12 +4,12 @@ import android.app.Activity
 import android.app.WallpaperManager
 import android.content.Intent
 import android.graphics.Bitmap
-import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.view.ViewGroup
 import android.widget.RelativeLayout
 import androidx.annotation.OptIn
+import androidx.core.net.toUri
 import androidx.media3.common.util.UnstableApi
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -291,6 +291,7 @@ class MediaActivity : BaseActivity(), MediaOperationsListener {
         mTempShowHiddenHandler.removeCallbacksAndMessages(null)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         if (binding.mediaMenu.isSearchOpen) {
             binding.mediaMenu.closeSearch()
@@ -943,7 +944,7 @@ class MediaActivity : BaseActivity(), MediaOperationsListener {
                 })
         } else if (mIsGetImageIntent || mIsGetVideoIntent || mIsGetAnyIntent) {
             Intent().apply {
-                data = Uri.parse(path)
+                data = path.toUri()
                 setResult(Activity.RESULT_OK, this)
             }
             finish()

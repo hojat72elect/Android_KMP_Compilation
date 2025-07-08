@@ -21,6 +21,7 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.SeekBar
 import android.widget.TextView
+import androidx.core.net.toUri
 import androidx.media3.common.AudioAttributes
 import androidx.media3.common.C
 import androidx.media3.common.MediaItem
@@ -408,7 +409,7 @@ class VideoFragment : ViewPagerFragment(),
         }
 
         val isContentUri = mMedium.path.startsWith("content://")
-        val uri = if (isContentUri) Uri.parse(mMedium.path) else Uri.fromFile(File(mMedium.path))
+        val uri = if (isContentUri) mMedium.path.toUri() else Uri.fromFile(File(mMedium.path))
         val dataSpec = DataSpec(uri)
         val fileDataSource = if (isContentUri) {
             ContentDataSource(requireContext())
