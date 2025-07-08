@@ -182,7 +182,6 @@ import ca.hojat.smart.gallery.shared.helpers.LICENSE_GLIDE
 import ca.hojat.smart.gallery.shared.helpers.LICENSE_PANORAMA_VIEW
 import ca.hojat.smart.gallery.shared.helpers.LICENSE_PATTERN
 import ca.hojat.smart.gallery.shared.helpers.LICENSE_PICASSO
-import ca.hojat.smart.gallery.shared.helpers.LICENSE_REPRINT
 import ca.hojat.smart.gallery.shared.helpers.LICENSE_RTL
 import ca.hojat.smart.gallery.shared.helpers.LICENSE_SANSELAN
 import ca.hojat.smart.gallery.shared.helpers.LICENSE_SUBSAMPLING
@@ -436,7 +435,7 @@ open class BaseActivity : AppCompatActivity() {
 
     fun launchAbout() {
         val licenses =
-            LICENSE_GLIDE or LICENSE_CROPPER or LICENSE_RTL or LICENSE_SUBSAMPLING or LICENSE_PATTERN or LICENSE_REPRINT or LICENSE_GIF_DRAWABLE or
+            LICENSE_GLIDE or LICENSE_CROPPER or LICENSE_RTL or LICENSE_SUBSAMPLING or LICENSE_PATTERN or LICENSE_GIF_DRAWABLE or
                     LICENSE_PICASSO or LICENSE_EXOPLAYER or LICENSE_PANORAMA_VIEW or LICENSE_SANSELAN or LICENSE_FILTERS or LICENSE_GESTURE_VIEWS or LICENSE_APNG
 
         val faqItems = arrayListOf(

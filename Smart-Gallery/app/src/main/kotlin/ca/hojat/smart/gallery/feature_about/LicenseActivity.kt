@@ -7,8 +7,7 @@ import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import ca.hojat.smart.gallery.R
-import ca.hojat.smart.gallery.shared.ui.extensions.enableEdgeToEdgeSimple
-import ca.hojat.smart.gallery.shared.ui.theme.AppThemeSurface
+import ca.hojat.smart.gallery.shared.data.domain.License
 import ca.hojat.smart.gallery.shared.extensions.launchViewIntent
 import ca.hojat.smart.gallery.shared.helpers.APP_LICENSES
 import ca.hojat.smart.gallery.shared.helpers.LICENSE_ANDROID_LAME
@@ -26,6 +25,7 @@ import ca.hojat.smart.gallery.shared.helpers.LICENSE_GLIDE
 import ca.hojat.smart.gallery.shared.helpers.LICENSE_GSON
 import ca.hojat.smart.gallery.shared.helpers.LICENSE_INDICATOR_FAST_SCROLL
 import ca.hojat.smart.gallery.shared.helpers.LICENSE_JODA
+import ca.hojat.smart.gallery.shared.helpers.LICENSE_KOTLIN
 import ca.hojat.smart.gallery.shared.helpers.LICENSE_LEAK_CANARY
 import ca.hojat.smart.gallery.shared.helpers.LICENSE_M3U_PARSER
 import ca.hojat.smart.gallery.shared.helpers.LICENSE_NUMBER_PICKER
@@ -36,7 +36,6 @@ import ca.hojat.smart.gallery.shared.helpers.LICENSE_PDF_VIEWER
 import ca.hojat.smart.gallery.shared.helpers.LICENSE_PDF_VIEW_PAGER
 import ca.hojat.smart.gallery.shared.helpers.LICENSE_PHOTOVIEW
 import ca.hojat.smart.gallery.shared.helpers.LICENSE_PICASSO
-import ca.hojat.smart.gallery.shared.helpers.LICENSE_REPRINT
 import ca.hojat.smart.gallery.shared.helpers.LICENSE_ROBOLECTRIC
 import ca.hojat.smart.gallery.shared.helpers.LICENSE_RTL
 import ca.hojat.smart.gallery.shared.helpers.LICENSE_SANSELAN
@@ -44,8 +43,8 @@ import ca.hojat.smart.gallery.shared.helpers.LICENSE_SMS_MMS
 import ca.hojat.smart.gallery.shared.helpers.LICENSE_STETHO
 import ca.hojat.smart.gallery.shared.helpers.LICENSE_SUBSAMPLING
 import ca.hojat.smart.gallery.shared.helpers.LICENSE_ZIP4J
-import ca.hojat.smart.gallery.shared.data.domain.License
-import ca.hojat.smart.gallery.shared.helpers.LICENSE_KOTLIN
+import ca.hojat.smart.gallery.shared.ui.extensions.enableEdgeToEdgeSimple
+import ca.hojat.smart.gallery.shared.ui.theme.AppThemeSurface
 import kotlinx.collections.immutable.toImmutableList
 
 class LicenseActivity : ComponentActivity() {
@@ -110,12 +109,6 @@ class LicenseActivity : ComponentActivity() {
             R.string.pattern_title,
             R.string.pattern_text,
             R.string.pattern_url
-        ),
-        License(
-            LICENSE_REPRINT,
-            R.string.reprint_title,
-            R.string.reprint_text,
-            R.string.reprint_url
         ),
         License(
             LICENSE_GIF_DRAWABLE,
