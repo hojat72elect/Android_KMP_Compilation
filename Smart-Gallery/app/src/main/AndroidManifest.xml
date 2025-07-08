@@ -154,15 +154,6 @@
             android:name="ca.hojat.smart.gallery.feature_about.ContributorsActivity"
             android:configChanges="orientation" />
 
-
-        <activity
-            android:name="ca.hojat.smart.gallery.feature_settings.CustomizationActivity"
-            android:configChanges="orientation"
-            android:exported="false"
-            android:label="@string/customize_colors"
-            android:parentActivityName="ca.hojat.smart.gallery.feature_settings.SettingsActivity"
-            tools:ignore="NewApi" />
-
         <activity
             android:name="ca.hojat.smart.gallery.feature_settings.SettingsActivity"
             android:configChanges="orientation"

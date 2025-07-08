@@ -47,7 +47,6 @@ import androidx.recyclerview.widget.RecyclerView
 import ca.hojat.smart.gallery.BuildConfig
 import ca.hojat.smart.gallery.R
 import ca.hojat.smart.gallery.feature_about.AboutActivity
-import ca.hojat.smart.gallery.feature_settings.CustomizationActivity
 import ca.hojat.smart.gallery.feature_settings.SettingsActivity
 import ca.hojat.smart.gallery.shared.data.domain.Android30RenameFormat
 import ca.hojat.smart.gallery.shared.data.domain.FAQItem
@@ -1033,19 +1032,6 @@ open class BaseActivity : AppCompatActivity() {
             putExtra(SHOW_FAQ_BEFORE_MAIL, showFAQBeforeMail)
             startActivity(this)
         }
-    }
-
-    fun startCustomizationActivity() {
-
-        Intent(applicationContext, CustomizationActivity::class.java).apply {
-            putExtra(APP_ICON_IDS, getAppIconIDs())
-            putExtra(APP_LAUNCHER_NAME, getAppLauncherName())
-            startActivity(this)
-        }
-    }
-
-    fun handleCustomizeColorsClick() {
-        startCustomizationActivity()
     }
 
 

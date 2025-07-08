@@ -571,7 +571,6 @@
     <string name="at_start">At start</string>
     <string name="during_day_at">During the day at %02d:%02d</string>
     <string name="could_not_create_folder">Could not create folder %s</string>
-    <string name="customize_colors">Customize colors</string>
     <string name="customize_colors_locked">Customize colors (Locked)</string>
     <string name="feature_locked">Locked</string>
     <string name="small">Small</string>
@@ -1027,7 +1026,7 @@
     <string name="manage_excluded_folders">Manage excluded folders</string>
     <string name="change_date_and_time_format">Change date and time format</string>
     <string name="use_english_language">Use English language</string>
-    <string name="color_customization">Color customization</string>
+
     <string name="general_settings">General</string>
     <string name="filter">Filter</string>
     <string name="add_folder">Add a folder</string>

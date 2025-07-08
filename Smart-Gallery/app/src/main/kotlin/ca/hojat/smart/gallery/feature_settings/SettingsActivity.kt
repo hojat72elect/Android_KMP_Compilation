@@ -176,7 +176,6 @@ class SettingsActivity : BaseActivity() {
     }
 
     private fun setupSettingItems() {
-        setupCustomizeColors()
         setupLanguage()
         setupChangeDateTimeFormat()
         setupFileLoadingPriority()
@@ -225,7 +224,6 @@ class SettingsActivity : BaseActivity() {
         setupImportSettings()
 
         arrayOf(
-            binding.settingsColorCustomizationSectionLabel,
             binding.settingsGeneralSettingsLabel,
             binding.settingsVideosLabel,
             binding.settingsThumbnailsLabel,
@@ -254,12 +252,6 @@ class SettingsActivity : BaseActivity() {
         } else if (requestCode == SELECT_IMPORT_FAVORITES_FILE_INTENT && resultCode == Activity.RESULT_OK && resultData != null && resultData.data != null) {
             val inputStream = contentResolver.openInputStream(resultData.data!!)
             importFavorites(inputStream)
-        }
-    }
-
-    private fun setupCustomizeColors() {
-        binding.settingsColorCustomizationHolder.setOnClickListener {
-            startCustomizationActivity()
         }
     }
 
