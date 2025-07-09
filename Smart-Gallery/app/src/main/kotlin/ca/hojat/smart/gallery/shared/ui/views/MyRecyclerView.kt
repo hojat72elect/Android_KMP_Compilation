@@ -5,6 +5,7 @@ import android.os.Handler
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.ScaleGestureDetector
+import androidx.core.view.isNotEmpty
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ca.hojat.smart.gallery.R
@@ -260,7 +261,7 @@ open class MyRecyclerView : RecyclerView {
     override fun onScrollChanged(l: Int, t: Int, oldl: Int, oldt: Int) {
         super.onScrollChanged(l, t, oldl, oldt)
         if (recyclerScrollCallback != null) {
-            if (childCount > 0) {
+            if (isNotEmpty()) {
                 val firstVisiblePosition = getChildAdapterPosition(getChildAt(0))
                 val firstVisibleChild = getChildAt(0)
                 if (firstVisibleChild != null) {

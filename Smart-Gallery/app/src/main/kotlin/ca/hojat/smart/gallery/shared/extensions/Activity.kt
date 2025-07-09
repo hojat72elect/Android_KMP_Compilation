@@ -7,7 +7,6 @@ import android.content.ActivityNotFoundException
 import android.content.ContentProviderOperation
 import android.content.Context
 import android.content.Intent
-import android.content.pm.ApplicationInfo
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.Matrix
@@ -28,6 +27,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 import androidx.exifinterface.media.ExifInterface
 import androidx.media3.common.util.UnstableApi
 import ca.hojat.smart.gallery.BuildConfig
@@ -208,7 +208,7 @@ fun AppCompatActivity.fixDateTaken(
     hasRescanned: Boolean = false,
     callback: (() -> Unit)? = null
 ) {
-    val BATCH_SIZE = 50
+    val batchSize = 50
     if (showToasts && !hasRescanned) {
         ShowToastUseCase(this, R.string.fixing)
     }
@@ -245,7 +245,7 @@ fun AppCompatActivity.fixDateTaken(
                         operations.add(build())
                     }
 
-                    if (operations.size % BATCH_SIZE == 0) {
+                    if (operations.size % batchSize == 0) {
                         contentResolver.applyBatch(MediaStore.AUTHORITY, operations)
                         operations.clear()
                     }
@@ -350,7 +350,7 @@ fun Activity.getShortcutImage(tmb: String, drawable: Drawable, callback: () -> U
 fun Activity.showFileOnMap(path: String) {
     val exif = try {
         if (path.startsWith("content://")) {
-            ExifInterface(contentResolver.openInputStream(Uri.parse(path))!!)
+            ExifInterface(contentResolver.openInputStream(path.toUri())!!)
         } else {
             ExifInterface(path)
         }
@@ -408,7 +408,7 @@ fun Activity.showSideloadingDialog() {
 
 fun Activity.showLocationOnMap(coordinates: String) {
     try {
-        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("${"geo:${coordinates.replace(" ", "")}"}?q=${Uri.encode(coordinates)}&z=16")))
+        startActivity(Intent(Intent.ACTION_VIEW, "${"geo:${coordinates.replace(" ", "")}"}?q=${Uri.encode(coordinates)}&z=16".toUri()))
     } catch (e: ActivityNotFoundException) {
         ShowToastUseCase(this,R.string.no_app_found)
     } catch (e: Exception) {
@@ -419,7 +419,7 @@ fun Activity.showLocationOnMap(coordinates: String) {
 fun Activity.launchViewIntent(url: String) {
     hideKeyboard()
     ensureBackgroundThread {
-        Intent(Intent.ACTION_VIEW, Uri.parse(url)).apply {
+        Intent(Intent.ACTION_VIEW, url.toUri()).apply {
             try {
                 startActivity(this)
             } catch (e: ActivityNotFoundException) {
@@ -429,13 +429,6 @@ fun Activity.launchViewIntent(url: String) {
             }
         }
     }
-}
-
-fun Activity.isAppInstalledOnSDCard(): Boolean = try {
-    val applicationInfo = packageManager.getPackageInfo(packageName, 0).applicationInfo
-    (applicationInfo.flags and ApplicationInfo.FLAG_EXTERNAL_STORAGE) == ApplicationInfo.FLAG_EXTERNAL_STORAGE
-} catch (e: Exception) {
-    false
 }
 
 fun Activity.launchViewIntent(id: Int) = launchViewIntent(getString(id))

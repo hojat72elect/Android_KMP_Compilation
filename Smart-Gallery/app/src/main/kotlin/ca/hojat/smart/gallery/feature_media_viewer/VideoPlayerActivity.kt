@@ -8,7 +8,6 @@ import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.Point
 import android.graphics.SurfaceTexture
-import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
@@ -21,6 +20,7 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.RelativeLayout
 import android.widget.SeekBar
+import androidx.core.graphics.drawable.toDrawable
 import androidx.media3.common.AudioAttributes
 import androidx.media3.common.C
 import androidx.media3.common.MediaItem
@@ -71,7 +71,6 @@ import ca.hojat.smart.gallery.shared.helpers.ROTATE_BY_SYSTEM_SETTING
 import ca.hojat.smart.gallery.shared.helpers.SHOW_NEXT_ITEM
 import ca.hojat.smart.gallery.shared.helpers.SHOW_PREV_ITEM
 import ca.hojat.smart.gallery.shared.usecases.ShowToastUseCase
-import ca.hojat.smart.gallery.shared.usecases.ShowToastUseCase.invoke
 import kotlin.math.abs
 
 @UnstableApi
@@ -120,7 +119,7 @@ open class VideoPlayerActivity : BaseActivity(), SeekBar.OnSeekBarChangeListener
         window.statusBarColor = Color.TRANSPARENT
         window.navigationBarColor = Color.TRANSPARENT
         if (config.blackBackground) {
-            binding.videoPlayerHolder.background = ColorDrawable(Color.BLACK)
+            binding.videoPlayerHolder.background = Color.BLACK.toDrawable()
         }
 
         if (config.maxBrightness) {

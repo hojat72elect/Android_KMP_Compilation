@@ -546,7 +546,7 @@ class HomeActivity : BaseActivity(), DirectoryOperationsListener {
     }
 
     private fun startNewPhotoFetcher() {
-        val photoFetcher = NewPhotoFetcher()
+        val photoFetcher = PhotoFetcher()
         if (!photoFetcher.isScheduled(applicationContext)) {
             photoFetcher.scheduleJob(applicationContext)
         }

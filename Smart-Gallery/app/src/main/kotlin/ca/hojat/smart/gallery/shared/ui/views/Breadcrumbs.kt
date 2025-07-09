@@ -2,7 +2,6 @@ package ca.hojat.smart.gallery.shared.ui.views
 
 import android.content.Context
 import android.content.res.ColorStateList
-import android.graphics.drawable.ColorDrawable
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.LayoutInflater
@@ -10,10 +9,14 @@ import android.view.View
 import android.widget.HorizontalScrollView
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toDrawable
 import androidx.core.view.ViewCompat
+import androidx.core.view.isEmpty
+import androidx.core.view.isNotEmpty
 import ca.hojat.smart.gallery.R
 import ca.hojat.smart.gallery.databinding.ItemBreadcrumbBinding
 import ca.hojat.smart.gallery.databinding.ItemBreadcrumbFirstBinding
+import ca.hojat.smart.gallery.shared.data.domain.FileDirItem
 import ca.hojat.smart.gallery.shared.extensions.adjustAlpha
 import ca.hojat.smart.gallery.shared.extensions.applyColorFilter
 import ca.hojat.smart.gallery.shared.extensions.baseConfig
@@ -22,7 +25,6 @@ import ca.hojat.smart.gallery.shared.extensions.getProperBackgroundColor
 import ca.hojat.smart.gallery.shared.extensions.getProperTextColor
 import ca.hojat.smart.gallery.shared.extensions.humanizePath
 import ca.hojat.smart.gallery.shared.extensions.onGlobalLayout
-import ca.hojat.smart.gallery.shared.data.domain.FileDirItem
 
 class Breadcrumbs(context: Context, attrs: AttributeSet) : HorizontalScrollView(context, attrs) {
     private val inflater =
@@ -58,7 +60,7 @@ class Breadcrumbs(context: Context, attrs: AttributeSet) : HorizontalScrollView(
         setPaddingRelative(0, 0, 0, 0)
         addView(itemsLayout, LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT))
         onGlobalLayout {
-            stickyRootInitialLeft = if (itemsLayout.childCount > 0) {
+            stickyRootInitialLeft = if (itemsLayout.isNotEmpty()) {
                 itemsLayout.getChildAt(0).left
             } else {
                 0
@@ -80,13 +82,13 @@ class Breadcrumbs(context: Context, attrs: AttributeSet) : HorizontalScrollView(
     }
 
     private fun freeRoot() {
-        if (itemsLayout.childCount > 0) {
+        if (itemsLayout.isNotEmpty()) {
             itemsLayout.getChildAt(0).translationX = 0f
         }
     }
 
     private fun stickRoot(translationX: Int) {
-        if (itemsLayout.childCount > 0) {
+        if (itemsLayout.isNotEmpty()) {
             val root = itemsLayout.getChildAt(0)
             root.translationX = translationX.toFloat()
             ViewCompat.setTranslationZ(root, translationZ)
@@ -173,7 +175,7 @@ class Breadcrumbs(context: Context, attrs: AttributeSet) : HorizontalScrollView(
     }
 
     private fun addBreadcrumb(item: FileDirItem, index: Int, addPrefix: Boolean) {
-        if (itemsLayout.childCount == 0) {
+        if (itemsLayout.isEmpty()) {
             val firstItemBgColor = if (isShownInDialog && context.baseConfig.isUsingSystemTheme) {
                 resources.getColor(R.color.you_dialog_background_color, context.theme)
             } else {
@@ -187,7 +189,7 @@ class Breadcrumbs(context: Context, attrs: AttributeSet) : HorizontalScrollView(
                         ContextCompat.getDrawable(context, R.drawable.button_background)
                     breadcrumbText.background.applyColorFilter(textColor)
                     elevation = 1f
-                    background = ColorDrawable(firstItemBgColor)
+                    background = firstItemBgColor.toDrawable()
                     val medium = getDimension(R.dimen.medium_margin).toInt()
                     breadcrumbText.setPadding(medium, medium, medium, medium)
                     setPadding(rootStartPadding, 0, 0, 0)

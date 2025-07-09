@@ -25,7 +25,7 @@ import ca.hojat.smart.gallery.shared.helpers.ensureBackgroundThread
  *
  * based on https://developer.android.com/reference/android/app/job/JobInfo.Builder.html#addTriggerContentUri(android.app.job.JobInfo.TriggerContentUri)
  */
-class NewPhotoFetcher : JobService() {
+class PhotoFetcher : JobService() {
     companion object {
         const val PHOTO_VIDEO_CONTENT_JOB = 1
         private val MEDIA_URI = "content://${MediaStore.AUTHORITY}/".toUri()
@@ -35,14 +35,14 @@ class NewPhotoFetcher : JobService() {
 
     private val mHandler = Handler()
     private val mWorker = Runnable {
-        scheduleJob(this@NewPhotoFetcher)
+        scheduleJob(this@PhotoFetcher)
         jobFinished(mRunningParams, false)
     }
 
     private var mRunningParams: JobParameters? = null
 
     fun scheduleJob(context: Context) {
-        val componentName = ComponentName(context, NewPhotoFetcher::class.java)
+        val componentName = ComponentName(context, PhotoFetcher::class.java)
         val photoUri = Images.Media.EXTERNAL_CONTENT_URI
         val videoUri = Video.Media.EXTERNAL_CONTENT_URI
         JobInfo.Builder(PHOTO_VIDEO_CONTENT_JOB, componentName).apply {

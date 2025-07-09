@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.ShortcutInfo
 import android.content.pm.ShortcutManager
-import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Icon
 import android.text.TextUtils
 import android.view.Menu
@@ -12,6 +11,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
+import androidx.core.graphics.drawable.toDrawable
 import androidx.media3.common.util.UnstableApi
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -666,7 +666,7 @@ class DirectoryAdapter(
 
             if (lockedFolderPaths.contains(directory.path)) {
                 dirLock.beVisible()
-                dirLock.background = ColorDrawable(root.context.getProperBackgroundColor())
+                dirLock.background = root.context.getProperBackgroundColor().toDrawable()
                 dirLock.applyColorFilter(root.context.getProperBackgroundColor().getContrastColor())
             } else {
                 dirLock.beGone()

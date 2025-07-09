@@ -8,8 +8,6 @@ val color_accent = color_primary
 
 val divider_grey = Color(0x55808080)
 
-val dark_grey = Color(0xFF333333)
-
 val light_grey_stroke = Color(0x40FFFFFF)
 
 val md_amber_100 = Color(0xFFFFECB3)

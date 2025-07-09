@@ -58,24 +58,6 @@ class LineColorPicker @JvmOverloads constructor(
         }
     }
 
-    fun updateColors(colors: ArrayList<Int>, selectColorIndex: Int = -1) {
-        this.colors = colors
-        colorsCount = colors.size
-        if (pickerWidth != 0) {
-            stripeWidth = pickerWidth / colorsCount
-        }
-
-        if (selectColorIndex != -1) {
-            lastColorIndex = selectColorIndex
-        }
-
-        initColorPicker()
-        updateItemMargin(lastColorIndex, false)
-    }
-
-    // do not remove ": Int", it causes "NoSuchMethodError" for some reason
-    fun getCurrentColor(): Int = colors[lastColorIndex]
-
     private fun initColorPicker() {
         removeAllViews()
         val inflater = LayoutInflater.from(context)

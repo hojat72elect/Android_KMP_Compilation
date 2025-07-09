@@ -1598,7 +1598,7 @@ fun Context.getRealPathFromURI(uri: Uri): String? {
         val id = DocumentsContract.getDocumentId(uri)
         if (id.areDigitsOnly()) {
             val newUri = ContentUris.withAppendedId(
-                Uri.parse("content://downloads/public_downloads"),
+                "content://downloads/public_downloads".toUri(),
                 id.toLong()
             )
             val path = getDataColumn(newUri)
@@ -1798,7 +1798,7 @@ fun Context.ensurePublicUri(path: String, applicationId: String): Uri? {
         }
 
         else -> {
-            val uri = Uri.parse(path)
+            val uri = path.toUri()
             if (uri.scheme == "content") {
                 uri
             } else {
@@ -1949,7 +1949,7 @@ fun Context.getVideoResolution(path: String): Point? {
 
     if (point == null && path.startsWith("content://", true)) {
         try {
-            val fd = contentResolver.openFileDescriptor(Uri.parse(path), "r")?.fileDescriptor
+            val fd = contentResolver.openFileDescriptor(path.toUri(), "r")?.fileDescriptor
             val retriever = MediaMetadataRetriever()
             retriever.setDataSource(fd)
             val width =
@@ -2436,7 +2436,7 @@ fun Context.getFastDocumentFile(path: String): DocumentFile? {
     val externalPathPart =
         baseConfig.sdCardPath.split("/").lastOrNull(String::isNotEmpty)?.trim('/') ?: return null
     val fullUri = "${baseConfig.sdTreeUri}/document/$externalPathPart%3A$relativePath"
-    return DocumentFile.fromSingleUri(this, Uri.parse(fullUri))
+    return DocumentFile.fromSingleUri(this, fullUri.toUri())
 }
 
 fun Context.getOTGFastDocumentFile(path: String, otgPathToUse: String? = null): DocumentFile? {
@@ -2453,7 +2453,7 @@ fun Context.getOTGFastDocumentFile(path: String, otgPathToUse: String? = null): 
 
     val relativePath = Uri.encode(path.substring(otgPath.length).trim('/'))
     val fullUri = "${baseConfig.otgTreeUri}/document/${baseConfig.otgPartition}%3A$relativePath"
-    return DocumentFile.fromSingleUri(this, Uri.parse(fullUri))
+    return DocumentFile.fromSingleUri(this, fullUri.toUri())
 }
 
 fun Context.getDocumentFile(path: String): DocumentFile? {
@@ -2464,8 +2464,8 @@ fun Context.getDocumentFile(path: String): DocumentFile? {
     }
 
     return try {
-        val treeUri = Uri.parse(if (isOTG) baseConfig.otgTreeUri else baseConfig.sdTreeUri)
-        var document = DocumentFile.fromTreeUri(applicationContext, treeUri)
+        val treeUri = if (isOTG) baseConfig.otgTreeUri else baseConfig.sdTreeUri.toUri()
+        var document = DocumentFile.fromTreeUri(applicationContext, treeUri as Uri)
         val parts = relativePath.split("/").filter { it.isNotEmpty() }
         for (part in parts) {
             document = document?.findFile(part)
@@ -2573,7 +2573,7 @@ fun Context.getOTGItems(
     val items = java.util.ArrayList<FileDirItem>()
     val otgTreeUri = baseConfig.otgTreeUri
     var rootUri = try {
-        DocumentFile.fromTreeUri(applicationContext, Uri.parse(otgTreeUri))
+        DocumentFile.fromTreeUri(applicationContext, otgTreeUri.toUri())
     } catch (e: Exception) {
         ShowToastUseCase(this, "Error : $e")
         baseConfig.otgPath = ""

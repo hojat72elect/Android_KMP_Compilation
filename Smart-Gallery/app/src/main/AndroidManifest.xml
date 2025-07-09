@@ -300,7 +300,7 @@
         </receiver>
 
         <service
-            android:name="ca.hojat.smart.gallery.feature_home.NewPhotoFetcher"
+            android:name="ca.hojat.smart.gallery.feature_home.PhotoFetcher"
             android:exported="true"
             android:permission="android.permission.BIND_JOB_SERVICE" />
 

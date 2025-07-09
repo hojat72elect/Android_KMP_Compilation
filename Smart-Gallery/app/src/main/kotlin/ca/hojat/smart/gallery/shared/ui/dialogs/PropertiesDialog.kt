@@ -1,12 +1,12 @@
 package ca.hojat.smart.gallery.shared.ui.dialogs
 
 import android.app.Activity
-import android.net.Uri
 import android.os.Environment
 import android.provider.MediaStore
 import android.view.View
 import android.widget.LinearLayout
 import androidx.appcompat.app.AlertDialog
+import androidx.core.net.toUri
 import androidx.exifinterface.media.ExifInterface
 import ca.hojat.smart.gallery.R
 import ca.hojat.smart.gallery.shared.activities.BaseActivity
@@ -42,7 +42,6 @@ import ca.hojat.smart.gallery.shared.helpers.sumByInt
 import ca.hojat.smart.gallery.shared.helpers.sumByLong
 import ca.hojat.smart.gallery.shared.ui.views.MyTextView
 import ca.hojat.smart.gallery.shared.usecases.ShowToastUseCase
-import ca.hojat.smart.gallery.shared.usecases.ShowToastUseCase.invoke
 import java.io.File
 
 class PropertiesDialog : BasePropertiesDialog {
@@ -154,9 +153,7 @@ class PropertiesDialog : BasePropertiesDialog {
                     try {
                         ExifInterface(
                             mActivity.contentResolver.openInputStream(
-                                Uri.parse(
-                                    fileDirItem.path
-                                )
+                                fileDirItem.path.toUri()
                             )!!
                         )
                     } catch (e: Exception) {
@@ -344,7 +341,7 @@ class PropertiesDialog : BasePropertiesDialog {
             ExifInterface((activity as BaseActivity).getFileInputStreamSync(path)!!)
         } else if (path.startsWith("content://")) {
             try {
-                ExifInterface(activity.contentResolver.openInputStream(Uri.parse(path))!!)
+                ExifInterface(activity.contentResolver.openInputStream(path.toUri())!!)
             } catch (e: Exception) {
                 return
             }

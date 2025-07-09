@@ -201,9 +201,9 @@ fun String.getFirstParentPath(context: Context, level: Int): String {
 }
 
 fun String.isAValidFilename(): Boolean {
-    val ILLEGAL_CHARACTERS =
+    val illegalCharacters =
         charArrayOf('/', '\n', '\r', '\t', '\u0000', '`', '?', '*', '\\', '<', '>', '|', '\"', ':')
-    ILLEGAL_CHARACTERS.forEach {
+    illegalCharacters.forEach {
         if (contains(it))
             return false
     }

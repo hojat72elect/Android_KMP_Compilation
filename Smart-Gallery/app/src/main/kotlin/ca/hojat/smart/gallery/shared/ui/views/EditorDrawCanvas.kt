@@ -9,6 +9,7 @@ import android.graphics.Path
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
+import androidx.core.graphics.withSave
 import ca.hojat.smart.gallery.shared.data.domain.PaintOptions
 import ca.hojat.smart.gallery.shared.extensions.getProperPrimaryColor
 
@@ -41,20 +42,20 @@ class EditorDrawCanvas(context: Context, attrs: AttributeSet) : View(context, at
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        canvas.save()
+        canvas.withSave {
 
-        if (backgroundBitmap != null) {
-            canvas.drawBitmap(backgroundBitmap!!, 0f, 0f, null)
+            if (backgroundBitmap != null) {
+                drawBitmap(backgroundBitmap!!, 0f, 0f, null)
+            }
+
+            for ((key, value) in mPaths) {
+                changePaint(value)
+                drawPath(key, mPaint)
+            }
+
+            changePaint(mPaintOptions)
+            drawPath(mPath, mPaint)
         }
-
-        for ((key, value) in mPaths) {
-            changePaint(value)
-            canvas.drawPath(key, mPaint)
-        }
-
-        changePaint(mPaintOptions)
-        canvas.drawPath(mPath, mPaint)
-        canvas.restore()
     }
 
     @SuppressLint("ClickableViewAccessibility")

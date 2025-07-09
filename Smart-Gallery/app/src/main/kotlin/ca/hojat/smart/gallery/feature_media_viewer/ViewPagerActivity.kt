@@ -13,7 +13,6 @@ import android.content.res.Configuration
 import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Icon
 import android.os.Bundle
 import android.os.Handler
@@ -24,6 +23,7 @@ import android.view.WindowManager
 import android.view.animation.DecelerateInterpolator
 import android.widget.RelativeLayout
 import android.widget.Toast
+import androidx.core.graphics.drawable.toDrawable
 import androidx.exifinterface.media.ExifInterface
 import androidx.media3.common.util.UnstableApi
 import androidx.print.PrintHelper
@@ -524,7 +524,7 @@ class ViewPagerActivity : BaseActivity(), ViewPager.OnPageChangeListener,
         binding.viewPager.offscreenPageLimit = 2
 
         if (config.blackBackground) {
-            binding.viewPager.background = ColorDrawable(Color.BLACK)
+            binding.viewPager.background = Color.BLACK.toDrawable()
         }
 
         if (config.hideSystemUI) {

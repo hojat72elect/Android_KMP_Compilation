@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.net.Uri
 import android.provider.MediaStore
+import androidx.core.net.toUri
 import ca.hojat.smart.gallery.shared.extensions.formatDate
 import ca.hojat.smart.gallery.shared.extensions.formatSize
 import ca.hojat.smart.gallery.shared.extensions.getAlbum
@@ -127,10 +128,10 @@ open class FileDirItem(
 
             path.startsWith("content://") -> {
                 try {
-                    context.contentResolver.openInputStream(Uri.parse(path))?.available()?.toLong()
+                    context.contentResolver.openInputStream(path.toUri())?.available()?.toLong()
                         ?: 0L
                 } catch (e: Exception) {
-                    context.getSizeFromContentUri(Uri.parse(path))
+                    context.getSizeFromContentUri(path.toUri())
                 }
             }
 

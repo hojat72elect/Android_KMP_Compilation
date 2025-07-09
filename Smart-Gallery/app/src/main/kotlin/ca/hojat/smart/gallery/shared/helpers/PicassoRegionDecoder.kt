@@ -7,6 +7,7 @@ import android.graphics.BitmapRegionDecoder
 import android.graphics.Point
 import android.graphics.Rect
 import android.net.Uri
+import androidx.core.net.toUri
 import com.davemorrissey.labs.subscaleview.ImageRegionDecoder
 
 class PicassoRegionDecoder(
@@ -19,7 +20,7 @@ class PicassoRegionDecoder(
     private val decoderLock = Any()
 
     override fun init(context: Context, uri: Uri): Point {
-        val newUri = Uri.parse(uri.toString().replace("%", "%25").replace("#", "%23"))
+        val newUri = uri.toString().replace("%", "%25").replace("#", "%23").toUri()
         val inputStream = context.contentResolver.openInputStream(newUri)
         decoder = BitmapRegionDecoder.newInstance(inputStream!!, false)
         return Point(decoder!!.width, decoder!!.height)

@@ -1,11 +1,11 @@
 package ca.hojat.smart.gallery.shared.ui.adapters
 
 import android.content.Context
-import android.graphics.drawable.ColorDrawable
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import androidx.core.graphics.drawable.toDrawable
 
 class MyArrayAdapter<T>(context: Context, res: Int, items: Array<T>, val textColor: Int, val backgroundColor: Int, val padding: Int) :
         ArrayAdapter<T>(context, res, items) {
@@ -15,7 +15,7 @@ class MyArrayAdapter<T>(context: Context, res: Int, items: Array<T>, val textCol
         view.findViewById<TextView>(android.R.id.text1).apply {
             setTextColor(textColor)
             setPadding(padding, padding, padding, padding)
-            background = ColorDrawable(backgroundColor)
+            background = backgroundColor.toDrawable()
         }
 
         return view

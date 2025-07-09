@@ -3,10 +3,10 @@ package ca.hojat.smart.gallery.feature_wallpaper
 import android.app.Activity
 import android.app.WallpaperManager
 import android.content.Intent
-import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import androidx.annotation.OptIn
+import androidx.core.graphics.scale
 import androidx.media3.common.util.UnstableApi
 import ca.hojat.smart.gallery.R
 import ca.hojat.smart.gallery.databinding.ActivitySetWallpaperBinding
@@ -156,7 +156,7 @@ class SetWallpaperActivity : BaseActivity(), CropImageView.OnCropImageCompleteLi
                 val ratio = wantedHeight / bitmap.height.toFloat()
                 val wantedWidth = (bitmap.width * ratio).toInt()
                 try {
-                    val scaledBitmap = Bitmap.createScaledBitmap(bitmap, wantedWidth, wantedHeight, true)
+                    val scaledBitmap = bitmap.scale(wantedWidth, wantedHeight)
                     wallpaperManager.setBitmap(scaledBitmap, null, true, wallpaperFlag)
                     setResult(RESULT_OK)
                 } catch (e: OutOfMemoryError) {

@@ -38,9 +38,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.app.ActivityCompat
+import androidx.core.net.toUri
 import androidx.core.util.Pair
 import androidx.core.view.ScrollingView
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.get
+import androidx.core.view.size
 import androidx.core.widget.NestedScrollView
 import androidx.exifinterface.media.ExifInterface
 import androidx.recyclerview.widget.RecyclerView
@@ -271,7 +274,7 @@ open class BaseActivity : AppCompatActivity() {
         private const val TRASH_FILE_SDK_30_HANDLER = 304
     }
 
-    fun getAppIconIDs(): ArrayList<Int> = arrayListOf(
+    private fun getAppIconIDs(): ArrayList<Int> = arrayListOf(
         R.mipmap.ic_launcher_red,
         R.mipmap.ic_launcher_pink,
         R.mipmap.ic_launcher_purple,
@@ -501,7 +504,7 @@ open class BaseActivity : AppCompatActivity() {
     }
 
 
-    fun updateBackgroundColor(color: Int = baseConfig.backgroundColor) {
+    private fun updateBackgroundColor(color: Int = baseConfig.backgroundColor) {
         window.decorView.setBackgroundColor(color)
     }
 
@@ -517,7 +520,7 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
-    fun updateActionbarColor(color: Int = getProperStatusBarColor()) {
+    private fun updateActionbarColor(color: Int = getProperStatusBarColor()) {
         updateStatusbarColor(color)
         setTaskDescription(ActivityManager.TaskDescription(null, null, color))
     }
@@ -658,9 +661,9 @@ open class BaseActivity : AppCompatActivity() {
             resources.getColoredDrawableWithColor(R.drawable.ic_three_dots_vector, contrastColor)
 
         val menu = toolbar.menu
-        for (i in 0 until menu.size()) {
+        for (i in 0 until menu.size) {
             try {
-                menu.getItem(i)?.icon?.setTint(contrastColor)
+                menu[i].icon?.setTint(contrastColor)
             } catch (ignored: Exception) {
             }
         }
@@ -759,9 +762,9 @@ open class BaseActivity : AppCompatActivity() {
             color = Color.WHITE
         }
 
-        for (i in 0 until menu.size()) {
+        for (i in 0 until menu.size) {
             try {
-                menu.getItem(i)?.icon?.setTint(color)
+                menu[i].icon?.setTint(color)
             } catch (ignored: Exception) {
             }
         }
@@ -1204,9 +1207,9 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
-    fun launchMediaManagementIntent(callback: () -> Unit) {
+    private fun launchMediaManagementIntent(callback: () -> Unit) {
         Intent(Settings.ACTION_REQUEST_MANAGE_MEDIA).apply {
-            data = Uri.parse("package:$packageName")
+            data = "package:$packageName".toUri()
             try {
                 startActivityForResult(this, MANAGE_MEDIA_RC)
             } catch (e: Exception) {
@@ -1676,7 +1679,7 @@ open class BaseActivity : AppCompatActivity() {
         try {
             val intent = Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION)
             intent.addCategory("android.intent.category.DEFAULT")
-            intent.data = Uri.parse("package:$packageName")
+            intent.data = "package:$packageName".toUri()
             startActivity(intent)
         } catch (e: Exception) {
             val intent = Intent()
