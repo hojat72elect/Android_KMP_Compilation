@@ -1,3 +1,0 @@
-• Account deletion
-• Fix "Log in with Proton" button not working on Firefox
-• Improve local authentication process

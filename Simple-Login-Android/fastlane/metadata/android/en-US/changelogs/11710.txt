@@ -1,1 +1,0 @@
-You can now use "Login with Proton" from the app. Also some bugs related to the login process have been fixed.

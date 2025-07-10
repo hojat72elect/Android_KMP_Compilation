@@ -1,2 +1,0 @@
-Add pinning feature to Android app.
-Remove unnecessary storage permission.

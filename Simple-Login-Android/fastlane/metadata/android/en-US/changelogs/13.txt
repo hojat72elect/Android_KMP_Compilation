@@ -1,2 +1,0 @@
-• Some of the account settings are now available.
-• Restrict access to SimpleLogin with biometric authentication or passcode.

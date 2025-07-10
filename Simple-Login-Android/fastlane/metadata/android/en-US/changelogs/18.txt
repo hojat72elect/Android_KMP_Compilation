@@ -1,2 +1,0 @@
-• New design (by @the-weird-aquarian).
-• Able to use dot character in alias prefix (by @coelhopsi).
