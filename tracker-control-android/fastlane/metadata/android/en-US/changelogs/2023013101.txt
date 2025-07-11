@@ -1,2 +1,0 @@
-- fix bugs in settings
-- update translations and dependencies

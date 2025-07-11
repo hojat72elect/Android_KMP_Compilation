@@ -1,4 +1,0 @@
-- Add install notifications
-- Update tracker signatures
-- Update translations
-- Performance improvements

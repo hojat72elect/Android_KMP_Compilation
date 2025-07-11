@@ -1,1 +1,0 @@
-TrackerControl lader dig overvåge og kontrollere skjult dataindsamling i apps.

@@ -1,1 +1,0 @@
-TrackerControl giúp kiểm soát luồng dữ liệu của ứng dụng.

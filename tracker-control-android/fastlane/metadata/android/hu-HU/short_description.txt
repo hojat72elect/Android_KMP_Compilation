@@ -1,1 +1,0 @@
-A TrackerControllal láthatja és tilthatja az alkalmazások adatgyüjtését.

@@ -1,2 +1,0 @@
-- UI fixes
-- Disable adblocking by default

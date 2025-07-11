@@ -1,1 +1,0 @@
-TrackerControl omogoča nadzor nad skritim zbiranjem podatkov v programih.

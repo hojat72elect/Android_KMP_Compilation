@@ -1,3 +1,0 @@
-- Add Spanish translation (thanks to @sguinetti)
-- Remove default unblocking of certain apps again
-- Fix various bugs

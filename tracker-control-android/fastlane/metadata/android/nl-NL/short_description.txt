@@ -1,1 +1,0 @@
-TrackerControl maakt het mogelijk om gegevensverzameling in apps te controleren.

@@ -1,2 +1,0 @@
-- Fix crash when analysing trackers in app code and not enough RAM
-- Update translations

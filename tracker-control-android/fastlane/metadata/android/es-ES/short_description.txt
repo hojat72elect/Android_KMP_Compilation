@@ -1,1 +1,0 @@
-Monitoriza y controla la recolección de datos oculta en apps.

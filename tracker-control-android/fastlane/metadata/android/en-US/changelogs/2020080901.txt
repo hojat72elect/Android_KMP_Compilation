@@ -1,2 +1,0 @@
-- updated Disconnect.me blocklist
-- updated translations

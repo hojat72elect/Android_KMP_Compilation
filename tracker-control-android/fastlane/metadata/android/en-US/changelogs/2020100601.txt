@@ -1,2 +1,0 @@
-- TrackerControl is now available in 8 languages.
-- Remove unnecessary BILLING permission. There will never be billing.

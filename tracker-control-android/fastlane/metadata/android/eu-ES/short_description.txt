@@ -1,1 +1,0 @@
-TrackerControl-ek app-en ezkutuko informazio bilketa kontrolatzea baimentzen du.

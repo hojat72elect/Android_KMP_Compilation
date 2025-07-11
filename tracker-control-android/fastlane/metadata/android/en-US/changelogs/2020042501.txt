@@ -1,2 +1,0 @@
-- Disable optional PlayStore crawling feature in F-Droid version, for GDPR requests
-- Fix bugs on Android 6

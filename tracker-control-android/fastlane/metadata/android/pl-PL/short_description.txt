@@ -1,1 +1,0 @@
-TrackerControl pomaga kontrolować zbieranie danych przez aplikacje.
