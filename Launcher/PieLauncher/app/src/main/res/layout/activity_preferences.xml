@@ -1,0 +1,147 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+	<de.markusfisch.android.pielauncher.widget.ScrollWithListenerView
+		android:id="@+id/content"
+		android:background="@color/bg_ui"
+		android:clipToPadding="false"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:fillViewport="true">
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
+			<de.markusfisch.android.pielauncher.widget.PreferenceView
+				android:id="@+id/welcome"
+				android:drawablePadding="8dp"
+				android:drawableLeft="@drawable/ic_info"
+				android:drawableStart="@drawable/ic_info"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:padding="16dp"
+				android:layout_marginBottom="1dp"
+				android:textAppearance="@android:style/TextAppearance.Medium"
+				android:textColor="@color/text_color"
+				android:textStyle="bold"
+				android:text="@string/check_these_settings" />
+			<de.markusfisch.android.pielauncher.widget.PreferenceView
+				style="@style/PreferenceWithSeparator"
+				android:id="@+id/disable_battery_optimization"
+				android:text="@string/disable_battery_optimization" />
+			<de.markusfisch.android.pielauncher.widget.PreferenceView
+				style="@style/Preference"
+				android:id="@+id/make_default_launcher"
+				android:text="@string/make_default_launcher" />
+			<LinearLayout
+				android:id="@+id/hide_in_welcome_mode"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical">
+				<TextView
+					style="@style/CategoryHeader"
+					android:text="@string/category_home" />
+				<de.markusfisch.android.pielauncher.widget.PreferenceView
+					style="@style/PreferenceWithSeparator"
+					android:id="@+id/orientation"
+					android:text="@string/orientation_portrait" />
+				<de.markusfisch.android.pielauncher.widget.PreferenceView
+					style="@style/PreferenceWithSeparator"
+					android:id="@+id/darken_background"
+					android:text="@string/darken_background_no" />
+				<de.markusfisch.android.pielauncher.widget.PreferenceView
+					style="@style/PreferenceWithSeparator"
+					android:id="@+id/blur_background"
+					android:text="@string/background_blur_radius_none" />
+				<de.markusfisch.android.pielauncher.widget.PreferenceView
+					style="@style/PreferenceWithSeparator"
+					android:id="@+id/dead_zone"
+					android:text="@string/dead_zone_top_bottom" />
+				<de.markusfisch.android.pielauncher.widget.PreferenceView
+					style="@style/PreferenceWithSeparator"
+					android:id="@+id/immersive_mode"
+					android:text="@string/immersive_mode_disabled" />
+				<de.markusfisch.android.pielauncher.widget.PreferenceView
+					style="@style/Preference"
+					android:id="@+id/animate_in_out"
+					android:text="@string/animate_in_out_yes" />
+				<TextView
+					style="@style/CategoryHeader"
+					android:text="@string/category_app_drawer" />
+				<de.markusfisch.android.pielauncher.widget.PreferenceView
+					style="@style/PreferenceWithSeparator"
+					android:id="@+id/open_list_with"
+					android:text="@string/open_list_with_tap" />
+				<de.markusfisch.android.pielauncher.widget.PreferenceView
+					style="@style/PreferenceWithSeparator"
+					android:id="@+id/list_animation_appearance"
+					android:text="@string/list_animation_appearance_slide" />
+				<de.markusfisch.android.pielauncher.widget.PreferenceView
+					style="@style/PreferenceWithSeparator"
+					android:id="@+id/display_keyboard"
+					android:text="@string/display_keyboard_yes" />
+				<de.markusfisch.android.pielauncher.widget.PreferenceView
+					style="@style/PreferenceWithSeparator"
+					android:id="@+id/space_action"
+					android:text="@string/space_action_move_selection" />
+				<de.markusfisch.android.pielauncher.widget.PreferenceView
+					style="@style/PreferenceWithSeparator"
+					android:id="@+id/auto_launch_matching"
+					android:text="@string/auto_launch_matching_no" />
+				<de.markusfisch.android.pielauncher.widget.PreferenceView
+					style="@style/PreferenceWithSeparator"
+					android:id="@+id/search_strictness"
+					android:text="@string/search_strictness_hamming" />
+				<de.markusfisch.android.pielauncher.widget.PreferenceView
+					style="@style/PreferenceWithSeparator"
+					android:id="@+id/search_parameter"
+					android:text="@string/search_parameter_app_label" />
+				<de.markusfisch.android.pielauncher.widget.PreferenceView
+					style="@style/PreferenceWithSeparator"
+					android:id="@+id/show_app_names"
+					android:text="@string/show_app_names_always" />
+				<de.markusfisch.android.pielauncher.widget.PreferenceView
+					style="@style/PreferenceWithSeparator"
+					android:id="@+id/exclude_pie"
+					android:text="@string/exclude_pie_no" />
+				<de.markusfisch.android.pielauncher.widget.PreferenceView
+					style="@style/Preference"
+					android:id="@+id/icon_press"
+					android:text="@string/icon_press_default" />
+				<TextView
+					style="@style/CategoryHeader"
+					android:text="@string/category_advanced" />
+				<de.markusfisch.android.pielauncher.widget.PreferenceView
+					style="@style/PreferenceWithSeparator"
+					android:id="@+id/icon_pack"
+					android:text="@string/icon_pack_default" />
+				<de.markusfisch.android.pielauncher.widget.PreferenceView
+					style="@style/PreferenceWithSeparator"
+					android:id="@+id/hidden_apps"
+					android:text="@string/show_hidden_apps" />
+				<de.markusfisch.android.pielauncher.widget.PreferenceView
+					style="@style/PreferenceWithSeparator"
+					android:id="@+id/haptic_feedback"
+					android:text="@string/haptic_feedback_follow_system" />
+				<de.markusfisch.android.pielauncher.widget.PreferenceView
+					style="@style/PreferenceWithSeparator"
+					android:id="@+id/use_light_dialogs"
+					android:text="@string/use_light_dialogs_no" />
+				<de.markusfisch.android.pielauncher.widget.PreferenceView
+					style="@style/Preference"
+					android:id="@+id/force_relaunch"
+					android:text="@string/force_relaunch_no" />
+			</LinearLayout>
+			<Button
+				style="@style/Button"
+				android:id="@+id/skip"
+				android:layout_gravity="center_horizontal"
+				android:layout_margin="16dp"
+				android:text="@string/skip" />
+		</LinearLayout>
+	</de.markusfisch.android.pielauncher.widget.ScrollWithListenerView>
+	<TextView
+		style="@style/Toolbar"
+		android:id="@+id/toolbar"
+		android:drawableLeft="@drawable/ic_back"
+		android:drawableStart="@drawable/ic_back"
+		android:text="@string/preferences" />
+</merge>

@@ -1,0 +1,36 @@
+apply plugin: 'com.android.application'
+
+android {
+	namespace 'de.markusfisch.android.pielauncher'
+	compileSdk sdk_version
+
+	defaultConfig {
+		minSdk 9
+		targetSdk sdk_version
+
+		versionCode 59
+		versionName '1.23.6'
+	}
+
+	signingConfigs {
+		release {
+			keyAlias System.getenv('ANDROID_KEY_ALIAS')
+			keyPassword System.getenv('ANDROID_KEY_PASSWORD')
+			storePassword System.getenv('ANDROID_STORE_PASSWORD')
+			def filePath = System.getenv('ANDROID_KEYFILE')
+			storeFile filePath ? file(filePath) : null
+		}
+	}
+
+	buildTypes {
+		debug {
+			applicationIdSuffix '.debug'
+		}
+
+		release {
+			minifyEnabled true
+			shrinkResources true
+			signingConfig signingConfigs.release
+		}
+	}
+}

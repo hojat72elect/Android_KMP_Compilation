@@ -1,0 +1,34 @@
+buildscript {
+	ext {
+		tools_version = '8.10.1'
+		sdk_version = 36
+	}
+
+	repositories {
+		google()
+		mavenCentral()
+	}
+
+	dependencies {
+		classpath "com.android.tools.build:gradle:$tools_version"
+	}
+}
+
+allprojects {
+	repositories {
+		google()
+		mavenCentral()
+	}
+
+	gradle.projectsEvaluated {
+		tasks.withType(JavaCompile).tap {
+			configureEach {
+				options.compilerArgs << "-Xlint:unchecked"
+			}
+		}
+	}
+}
+
+tasks.register('clean', Delete) {
+	delete rootProject.buildDir
+}

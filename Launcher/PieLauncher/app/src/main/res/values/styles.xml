@@ -1,0 +1,45 @@
+<resources>
+	<style name="HomeTheme" parent="android:Theme.NoTitleBar">
+		<item name="android:windowBackground">@android:color/transparent</item>
+		<item name="android:colorBackgroundCacheHint">@null</item>
+		<item name="android:windowShowWallpaper">true</item>
+		<item name="android:windowNoTitle">true</item>
+	</style>
+	<style name="Toolbar" parent="@android:style/Widget.TextView">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:padding">16dp</item>
+		<item name="android:layout_marginBottom">1dp</item>
+		<item name="android:drawablePadding">32dp</item>
+		<item name="android:textColor">@color/text_color</item>
+		<item name="android:textSize">20sp</item>
+		<item name="android:textStyle">bold</item>
+	</style>
+	<style name="CategoryHeader" parent="@android:style/Widget.TextView">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:padding">16dp</item>
+		<item name="android:textColor">@color/text_color</item>
+		<item name="android:textSize">14sp</item>
+		<item name="android:textStyle">bold</item>
+	</style>
+	<style name="Preference" parent="@android:style/Widget.TextView">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:padding">16dp</item>
+		<item name="android:textColor">@color/text_color_preference</item>
+		<item name="android:lineSpacingExtra">3dp</item>
+	</style>
+	<style name="PreferenceWithSeparator" parent="Preference">
+		<item name="android:background">@drawable/bottom_border</item>
+	</style>
+	<style name="Button" parent="@android:style/Widget.Button">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:background">@drawable/button_raised</item>
+		<item name="android:padding">16dp</item>
+		<item name="android:textColor">@color/button_text</item>
+		<item name="android:textStyle">bold</item>
+	</style>
+	<style name="LightDialog" parent="android:Theme.Light"/>
+</resources>
