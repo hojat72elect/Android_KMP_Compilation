@@ -68,6 +68,7 @@ internal class MultiTouchListener(
                 view.bringToFront()
                 firePhotoEditorSDKListener(view, true)
             }
+
             MotionEvent.ACTION_MOVE ->
                 // Only enable dragging on focused stickers.
                 if (view === viewState.currentSelectedView) {
@@ -80,10 +81,11 @@ internal class MultiTouchListener(
                         }
                     }
                 }
+
             MotionEvent.ACTION_CANCEL -> mActivePointerId = INVALID_POINTER_ID
             MotionEvent.ACTION_UP -> {
                 mActivePointerId = INVALID_POINTER_ID
-               if (!isViewInBounds(photoEditImageView, x, y)) {
+                if (!isViewInBounds(photoEditImageView, x, y)) {
                     view.animate().translationY(0f).translationY(0f)
                 }
                 if (deleteView != null) {
@@ -91,6 +93,7 @@ internal class MultiTouchListener(
                 }
                 firePhotoEditorSDKListener(view, false)
             }
+
             MotionEvent.ACTION_POINTER_UP -> {
                 val pointerIndexPointerUp =
                     action and MotionEvent.ACTION_POINTER_INDEX_MASK shr MotionEvent.ACTION_POINTER_INDEX_SHIFT
@@ -194,9 +197,11 @@ internal class MultiTouchListener(
                 degrees > 180.0f -> {
                     degrees - 360.0f
                 }
+
                 degrees < -180.0f -> {
                     degrees + 360.0f
                 }
+
                 else -> degrees
             }
         }

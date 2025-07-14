@@ -163,77 +163,99 @@ internal class ImageFilterView @JvmOverloads constructor(
                         mEffect = createEffect(EffectFactory.EFFECT_AUTOFIX)
                         mEffect?.setParameter("scale", 0.5f)
                     }
+
                     PhotoFilter.BLACK_WHITE -> {
                         mEffect = createEffect(EffectFactory.EFFECT_BLACKWHITE)
                         mEffect?.setParameter("black", .1f)
                         mEffect?.setParameter("white", .7f)
                     }
+
                     PhotoFilter.BRIGHTNESS -> {
                         mEffect = createEffect(EffectFactory.EFFECT_BRIGHTNESS)
                         mEffect?.setParameter("brightness", 2.0f)
                     }
+
                     PhotoFilter.CONTRAST -> {
                         mEffect = createEffect(EffectFactory.EFFECT_CONTRAST)
                         mEffect?.setParameter("contrast", 1.4f)
                     }
+
                     PhotoFilter.CROSS_PROCESS -> mEffect =
                         createEffect(EffectFactory.EFFECT_CROSSPROCESS)
+
                     PhotoFilter.DOCUMENTARY -> mEffect =
                         createEffect(EffectFactory.EFFECT_DOCUMENTARY)
+
                     PhotoFilter.DUE_TONE -> {
                         mEffect = createEffect(EffectFactory.EFFECT_DUOTONE)
                         mEffect?.setParameter("first_color", Color.YELLOW)
                         mEffect?.setParameter("second_color", Color.DKGRAY)
                     }
+
                     PhotoFilter.FILL_LIGHT -> {
                         mEffect = createEffect(EffectFactory.EFFECT_FILLLIGHT)
                         mEffect?.setParameter("strength", .8f)
                     }
+
                     PhotoFilter.FISH_EYE -> {
                         mEffect = createEffect(EffectFactory.EFFECT_FISHEYE)
                         mEffect?.setParameter("scale", .5f)
                     }
+
                     PhotoFilter.FLIP_HORIZONTAL -> {
                         mEffect = createEffect(EffectFactory.EFFECT_FLIP)
                         mEffect?.setParameter("horizontal", true)
                     }
+
                     PhotoFilter.FLIP_VERTICAL -> {
                         mEffect = createEffect(EffectFactory.EFFECT_FLIP)
                         mEffect?.setParameter("vertical", true)
                     }
+
                     PhotoFilter.GRAIN -> {
                         mEffect = createEffect(EffectFactory.EFFECT_GRAIN)
                         mEffect?.setParameter("strength", 1.0f)
                     }
+
                     PhotoFilter.GRAY_SCALE -> mEffect =
                         createEffect(EffectFactory.EFFECT_GRAYSCALE)
+
                     PhotoFilter.LOMISH -> mEffect =
                         createEffect(EffectFactory.EFFECT_LOMOISH)
+
                     PhotoFilter.NEGATIVE -> mEffect =
                         createEffect(EffectFactory.EFFECT_NEGATIVE)
+
                     PhotoFilter.NONE -> {}
                     PhotoFilter.POSTERIZE -> mEffect =
                         createEffect(EffectFactory.EFFECT_POSTERIZE)
+
                     PhotoFilter.ROTATE -> {
                         mEffect = createEffect(EffectFactory.EFFECT_ROTATE)
                         mEffect?.setParameter("angle", 180)
                     }
+
                     PhotoFilter.SATURATE -> {
                         mEffect = createEffect(EffectFactory.EFFECT_SATURATE)
                         mEffect?.setParameter("scale", .5f)
                     }
+
                     PhotoFilter.SEPIA -> mEffect =
                         createEffect(EffectFactory.EFFECT_SEPIA)
+
                     PhotoFilter.SHARPEN -> mEffect =
                         createEffect(EffectFactory.EFFECT_SHARPEN)
+
                     PhotoFilter.TEMPERATURE -> {
                         mEffect = createEffect(EffectFactory.EFFECT_TEMPERATURE)
                         mEffect?.setParameter("scale", .9f)
                     }
+
                     PhotoFilter.TINT -> {
                         mEffect = createEffect(EffectFactory.EFFECT_TINT)
                         mEffect?.setParameter("tint", Color.MAGENTA)
                     }
+
                     PhotoFilter.VIGNETTE -> {
                         mEffect = createEffect(EffectFactory.EFFECT_VIGNETTE)
                         mEffect?.setParameter("scale", .5f)

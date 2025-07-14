@@ -15,7 +15,8 @@ internal abstract class Graphic(
     val context: Context,
     val layoutId: Int,
     val viewType: ViewType,
-    val graphicManager: GraphicManager?) {
+    val graphicManager: GraphicManager?
+) {
 
     val rootView: View
 

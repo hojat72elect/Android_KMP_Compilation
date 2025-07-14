@@ -145,6 +145,7 @@ internal class ScaleGestureDetector(private val mListener: OnScaleGestureListene
                     mActiveId0 = event.getPointerId(0)
                     mActive0MostRecent = true
                 }
+
                 MotionEvent.ACTION_UP -> reset()
                 MotionEvent.ACTION_POINTER_DOWN -> {
 
@@ -188,6 +189,7 @@ internal class ScaleGestureDetector(private val mListener: OnScaleGestureListene
                     setContext(view, event)
                     isInProgress = mListener.onScaleBegin(view, this)
                 }
+
                 MotionEvent.ACTION_POINTER_UP -> {
                     val pointerCount = event.pointerCount
                     val actionIndex = event.actionIndex
@@ -240,10 +242,12 @@ internal class ScaleGestureDetector(private val mListener: OnScaleGestureListene
                         mActive0MostRecent = true
                     }
                 }
+
                 MotionEvent.ACTION_CANCEL -> {
                     mListener.onScaleEnd(view, this)
                     reset()
                 }
+
                 MotionEvent.ACTION_UP -> reset()
                 MotionEvent.ACTION_MOVE -> {
                     setContext(view, event)

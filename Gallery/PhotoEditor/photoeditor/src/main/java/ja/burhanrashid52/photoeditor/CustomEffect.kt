@@ -61,7 +61,7 @@ class CustomEffect private constructor(builder: Builder) {
             mEffectName = effectName
         }
     }
-    
+
     init {
         parameters = builder.parametersMap
     }

@@ -1,8 +1,6 @@
 package ja.burhanrashid52.photoeditor
 
-import ja.burhanrashid52.photoeditor.shape.ShapeType
 import junit.framework.TestCase.assertEquals
-import org.junit.Assert
 import org.junit.Test
 
 class EnumTest {

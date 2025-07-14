@@ -67,9 +67,9 @@ class StickerBSFragment : BottomSheetDialogFragment() {
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             // Load sticker image from remote url
             Glide.with(requireContext())
-                    .asBitmap()
-                    .load(stickerPathList[position])
-                    .into(holder.imgSticker)
+                .asBitmap()
+                .load(stickerPathList[position])
+                .into(holder.imgSticker)
         }
 
         override fun getItemCount(): Int {
@@ -83,15 +83,15 @@ class StickerBSFragment : BottomSheetDialogFragment() {
                 itemView.setOnClickListener {
                     if (mStickerListener != null) {
                         Glide.with(requireContext())
-                                .asBitmap()
-                                .load(stickerPathList[layoutPosition])
-                                .into(object : CustomTarget<Bitmap?>(256, 256) {
-                                    override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap?>?) {
-                                        mStickerListener!!.onStickerClick(resource)
-                                    }
+                            .asBitmap()
+                            .load(stickerPathList[layoutPosition])
+                            .into(object : CustomTarget<Bitmap?>(256, 256) {
+                                override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap?>?) {
+                                    mStickerListener!!.onStickerClick(resource)
+                                }
 
-                                    override fun onLoadCleared(placeholder: Drawable?) {}
-                                })
+                                override fun onLoadCleared(placeholder: Drawable?) {}
+                            })
                     }
                     dismiss()
                 }
@@ -102,15 +102,15 @@ class StickerBSFragment : BottomSheetDialogFragment() {
     companion object {
         // Image Urls from flaticon(https://www.flaticon.com/stickers-pack/food-289)
         private val stickerPathList = arrayOf(
-                "https://cdn-icons-png.flaticon.com/256/4392/4392452.png",
-                "https://cdn-icons-png.flaticon.com/256/4392/4392455.png",
-                "https://cdn-icons-png.flaticon.com/256/4392/4392459.png",
-                "https://cdn-icons-png.flaticon.com/256/4392/4392462.png",
-                "https://cdn-icons-png.flaticon.com/256/4392/4392465.png",
-                "https://cdn-icons-png.flaticon.com/256/4392/4392467.png",
-                "https://cdn-icons-png.flaticon.com/256/4392/4392469.png",
-                "https://cdn-icons-png.flaticon.com/256/4392/4392471.png",
-                "https://cdn-icons-png.flaticon.com/256/4392/4392522.png",
+            "https://cdn-icons-png.flaticon.com/256/4392/4392452.png",
+            "https://cdn-icons-png.flaticon.com/256/4392/4392455.png",
+            "https://cdn-icons-png.flaticon.com/256/4392/4392459.png",
+            "https://cdn-icons-png.flaticon.com/256/4392/4392462.png",
+            "https://cdn-icons-png.flaticon.com/256/4392/4392465.png",
+            "https://cdn-icons-png.flaticon.com/256/4392/4392467.png",
+            "https://cdn-icons-png.flaticon.com/256/4392/4392469.png",
+            "https://cdn-icons-png.flaticon.com/256/4392/4392471.png",
+            "https://cdn-icons-png.flaticon.com/256/4392/4392522.png",
         )
     }
 }

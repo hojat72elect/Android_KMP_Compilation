@@ -1,7 +1,7 @@
 package ja.burhanrashid52.photoeditor
 
 import android.view.View
-import java.util.*
+import java.util.Stack
 
 /**
  * Tracked state of user-added views (stickers, emoji, text, etc)

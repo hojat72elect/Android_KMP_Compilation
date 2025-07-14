@@ -1,12 +1,12 @@
 package ja.burhanrashid52.photoeditor
 
 import android.content.Context
-import org.junit.runner.RunWith
-import org.robolectric.RobolectricTestRunner
 import androidx.test.core.app.ApplicationProvider
 import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertNotNull
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.robolectric.RobolectricTestRunner
 
 /**
  * Created by Burhanuddin Rashid on 15/05/21.

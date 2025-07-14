@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.burhanrashid52.photoediting.R
 import ja.burhanrashid52.photoeditor.PhotoFilter
 import java.io.IOException
-import java.util.ArrayList
 
 /**
  * @author [Burhanuddin Rashid](https://github.com/burhanrashid52)
@@ -45,7 +44,7 @@ class FilterViewAdapter(private val mFilterListener: FilterListener) :
         val mTxtFilterName: TextView = itemView.findViewById(R.id.txtFilterName)
 
         init {
-            itemView.setOnClickListener{
+            itemView.setOnClickListener {
                 mFilterListener.onFilterSelected(
                     mPairList[layoutPosition].second
                 )

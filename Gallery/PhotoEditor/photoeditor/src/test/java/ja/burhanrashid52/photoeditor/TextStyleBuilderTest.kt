@@ -5,10 +5,10 @@ import android.graphics.Typeface
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.widget.TextView
-import junit.framework.TestCase.*
-import org.junit.Assert
+import junit.framework.TestCase.assertEquals
+import junit.framework.TestCase.assertFalse
+import junit.framework.TestCase.assertTrue
 import org.junit.Test
-import org.mockito.Mock
 import org.mockito.Mockito
 
 class TextStyleBuilderTest {

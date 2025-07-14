@@ -10,8 +10,15 @@ import android.util.AttributeSet
 import android.util.Pair
 import android.view.MotionEvent
 import android.view.View
-import ja.burhanrashid52.photoeditor.shape.*
-import java.util.*
+import ja.burhanrashid52.photoeditor.shape.AbstractShape
+import ja.burhanrashid52.photoeditor.shape.BrushShape
+import ja.burhanrashid52.photoeditor.shape.LineShape
+import ja.burhanrashid52.photoeditor.shape.OvalShape
+import ja.burhanrashid52.photoeditor.shape.RectangleShape
+import ja.burhanrashid52.photoeditor.shape.ShapeAndPaint
+import ja.burhanrashid52.photoeditor.shape.ShapeBuilder
+import ja.burhanrashid52.photoeditor.shape.ShapeType
+import java.util.Stack
 
 /**
  *
@@ -136,15 +143,19 @@ class DrawingView @JvmOverloads constructor(
                 ShapeType.Oval -> {
                     shape = OvalShape()
                 }
+
                 ShapeType.Brush -> {
                     shape = BrushShape()
                 }
+
                 ShapeType.Rectangle -> {
                     shape = RectangleShape()
                 }
+
                 ShapeType.Line -> {
                     shape = LineShape(context)
                 }
+
                 is ShapeType.Arrow -> {
                     shape = LineShape(context, shapeType.pointerLocation)
                 }
@@ -164,7 +175,7 @@ class DrawingView @JvmOverloads constructor(
         }
         viewChangeListener?.apply {
             onStopDrawing()
-            if(redoShapes.isNotEmpty()) {
+            if (redoShapes.isNotEmpty()) {
                 redoShapes.clear()
             }
             onViewAdd(this@DrawingView)

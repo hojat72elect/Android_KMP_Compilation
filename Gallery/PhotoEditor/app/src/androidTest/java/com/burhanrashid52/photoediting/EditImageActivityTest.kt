@@ -29,7 +29,8 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 @LargeTest
 class EditImageActivityTest {
-    @Rule @JvmField
+    @Rule
+    @JvmField
     var mActivityRule = ActivityTestRule(
         EditImageActivity::class.java, false, false
     )
@@ -49,7 +50,7 @@ class EditImageActivityTest {
         val editImageActivity = mActivityRule.launchActivity(null)
         assertEquals(editImageActivity.mPhotoEditor.brushDrawableMode, false)
         Espresso.onView(ViewMatchers.withText(R.string.label_shape)).perform(ViewActions.click())
-        assertEquals(editImageActivity.mPhotoEditor.brushDrawableMode,true)
+        assertEquals(editImageActivity.mPhotoEditor.brushDrawableMode, true)
     }
 
     @Test

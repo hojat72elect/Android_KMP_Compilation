@@ -43,15 +43,19 @@ class ShapeBSFragment : BottomSheetDialogFragment(), SeekBar.OnSeekBarChangeList
                 R.id.lineRadioButton -> {
                     mProperties!!.onShapePicked(ShapeType.Line)
                 }
+
                 R.id.arrowRadioButton -> {
                     mProperties!!.onShapePicked(ShapeType.Arrow())
                 }
+
                 R.id.ovalRadioButton -> {
                     mProperties!!.onShapePicked(ShapeType.Oval)
                 }
+
                 R.id.rectRadioButton -> {
                     mProperties!!.onShapePicked(ShapeType.Rectangle)
                 }
+
                 else -> {
                     mProperties!!.onShapePicked(ShapeType.Brush)
                 }
@@ -87,6 +91,7 @@ class ShapeBSFragment : BottomSheetDialogFragment(), SeekBar.OnSeekBarChangeList
             R.id.shapeOpacity -> if (mProperties != null) {
                 mProperties!!.onOpacityChanged(i)
             }
+
             R.id.shapeSize -> if (mProperties != null) {
                 mProperties!!.onShapeSizeChanged(i)
             }

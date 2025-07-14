@@ -5,7 +5,6 @@ import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.os.Build
 import android.widget.TextView
-import java.util.*
 
 /**
  *
@@ -124,18 +123,22 @@ open class TextStyleBuilder {
                     val size = value as Float
                     applyTextSize(textView, size)
                 }
+
                 TextStyle.COLOR -> {
                     val color = value as Int
                     applyTextColor(textView, color)
                 }
+
                 TextStyle.FONT_FAMILY -> {
                     val typeface = value as Typeface
                     applyFontFamily(textView, typeface)
                 }
+
                 TextStyle.GRAVITY -> {
                     val gravity = value as Int
                     applyGravity(textView, gravity)
                 }
+
                 TextStyle.BACKGROUND -> {
                     if (value is Drawable) {
                         applyBackgroundDrawable(textView, value)
@@ -143,19 +146,23 @@ open class TextStyleBuilder {
                         applyBackgroundColor(textView, value)
                     }
                 }
+
                 TextStyle.TEXT_APPEARANCE -> {
                     if (value is Int) {
                         applyTextAppearance(textView, value)
                     }
                 }
+
                 TextStyle.TEXT_STYLE -> {
                     val typeface = value as Int
                     applyTextStyle(textView, typeface)
                 }
+
                 TextStyle.TEXT_FLAG -> {
                     val flag = value as Int
                     applyTextFlag(textView, flag)
                 }
+
                 TextStyle.SHADOW -> {
                     run {
                         if (value is TextShadow) {
@@ -168,6 +175,7 @@ open class TextStyleBuilder {
                         }
                     }
                 }
+
                 TextStyle.BORDER -> {
                     if (value is TextBorder) {
                         applyTextBorder(textView, value)
