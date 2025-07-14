@@ -230,7 +230,7 @@ For more details see [Saving](https://github.com/burhanrashid52/PhotoEditor/wiki
 ## Questions?🤔
 
 Hit me on
-twitter [![Twitter](https://img.shields.io/badge/Twitter-%40burhanrashid52-blue.svg)](https://x.com/hojat_93)
+twitter [![Twitter](https://img.shields.io/badge/Twitter-%40hojat__93-blue.svg)](https://x.com/hojat_93)
 
 ## FAQ
 
