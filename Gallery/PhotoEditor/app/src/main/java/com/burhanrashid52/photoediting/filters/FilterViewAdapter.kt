@@ -11,7 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.burhanrashid52.photoediting.R
-import ja.burhanrashid52.photoeditor.PhotoFilter
+import com.burhanrashid52.photoediting.core.PhotoFilter
 import java.io.IOException
 
 /**

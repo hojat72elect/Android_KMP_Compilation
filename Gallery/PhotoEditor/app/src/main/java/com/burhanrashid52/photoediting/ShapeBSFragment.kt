@@ -9,8 +9,8 @@ import android.widget.SeekBar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.burhanrashid52.photoediting.ColorPickerAdapter.OnColorPickerClickListener
+import com.burhanrashid52.photoediting.core.shape.ShapeType
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import ja.burhanrashid52.photoeditor.shape.ShapeType
 
 class ShapeBSFragment : BottomSheetDialogFragment(), SeekBar.OnSeekBarChangeListener {
     private var mProperties: Properties? = null

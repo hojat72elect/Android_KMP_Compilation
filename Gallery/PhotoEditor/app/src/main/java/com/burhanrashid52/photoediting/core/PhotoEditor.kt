@@ -10,7 +10,7 @@ import android.widget.ImageView
 import androidx.annotation.IntRange
 import androidx.annotation.RequiresPermission
 import androidx.annotation.UiThread
-import ja.burhanrashid52.photoeditor.shape.ShapeBuilder
+import com.burhanrashid52.photoediting.core.shape.ShapeBuilder
 
 /**
  * Created by Burhanuddin Rashid on 14/05/21.

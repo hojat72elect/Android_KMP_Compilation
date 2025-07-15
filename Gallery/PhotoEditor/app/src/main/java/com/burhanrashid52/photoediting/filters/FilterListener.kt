@@ -1,6 +1,6 @@
 package com.burhanrashid52.photoediting.filters
 
-import ja.burhanrashid52.photoeditor.PhotoFilter
+import com.burhanrashid52.photoediting.core.PhotoFilter
 
 interface FilterListener {
     fun onFilterSelected(photoFilter: PhotoFilter)

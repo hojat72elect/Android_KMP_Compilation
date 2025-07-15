@@ -1,9 +1,6 @@
 package com.burhanrashid52.photoediting.core
 
 import android.text.TextUtils
-import com.burhanrashid52.photoediting.core.CustomEffect.Builder
-import ja.burhanrashid52.photoeditor.CustomEffect.Builder
-import java.util.*
 
 /**
  * Define your custom effect using [Builder] class

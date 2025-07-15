@@ -10,14 +10,14 @@ import android.util.AttributeSet
 import android.util.Pair
 import android.view.MotionEvent
 import android.view.View
-import ja.burhanrashid52.photoeditor.shape.AbstractShape
-import ja.burhanrashid52.photoeditor.shape.BrushShape
-import ja.burhanrashid52.photoeditor.shape.LineShape
-import ja.burhanrashid52.photoeditor.shape.OvalShape
-import ja.burhanrashid52.photoeditor.shape.RectangleShape
-import ja.burhanrashid52.photoeditor.shape.ShapeAndPaint
-import ja.burhanrashid52.photoeditor.shape.ShapeBuilder
-import ja.burhanrashid52.photoeditor.shape.ShapeType
+import com.burhanrashid52.photoediting.core.shape.AbstractShape
+import com.burhanrashid52.photoediting.core.shape.BrushShape
+import com.burhanrashid52.photoediting.core.shape.LineShape
+import com.burhanrashid52.photoediting.core.shape.OvalShape
+import com.burhanrashid52.photoediting.core.shape.RectangleShape
+import com.burhanrashid52.photoediting.core.shape.ShapeAndPaint
+import com.burhanrashid52.photoediting.core.shape.ShapeBuilder
+import com.burhanrashid52.photoediting.core.shape.ShapeType
 import java.util.Stack
 
 /**
